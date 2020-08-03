@@ -1,0 +1,24 @@
+.demo {
+  background-color: #fff;
+  border: 1px solid #ebedf1;
+  border-radius: 1px;
+}
+
+.demo-slot {
+  padding: 40px 24px;
+}
+
+.demo-actions {
+  display: flex;
+  height: 40px;
+  padding: 0 1em;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed #ebedf1;
+}
+
+.demo-actions-expand, .demo-actions-copy {
+  margin: 0 8px;
+  cursor: pointer;
+  color: #666;
+}

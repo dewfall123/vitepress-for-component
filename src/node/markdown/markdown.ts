@@ -11,6 +11,7 @@ import { hoistPlugin } from './plugins/hoist'
 import { preWrapperPlugin } from './plugins/preWrapper'
 import { linkPlugin } from './plugins/link'
 import { extractHeaderPlugin } from './plugins/header'
+import { demoPlugin } from './plugins/demo'
 import { Header } from '../../../types/shared'
 
 const emoji = require('markdown-it-emoji')
@@ -30,10 +31,17 @@ export interface MarkdownOptions extends MarkdownIt.Options {
   externalLinks?: Record<string, string>
 }
 
+export interface DemoComponentData {
+  componentName: String
+  src: String
+  htmlStr: String
+}
+
 export interface MarkdownParsedData {
   hoistedTags?: string[]
   links?: string[]
   headers?: Header[]
+  demoSrcs?: DemoComponentData[]
 }
 
 export interface MarkdownRenderer {
@@ -52,7 +60,8 @@ export const createMarkdownRenderer = (
   })
 
   // custom plugins
-  md.use(componentPlugin)
+  md.use(demoPlugin)
+    .use(componentPlugin)
     .use(highlightLinePlugin)
     .use(preWrapperPlugin)
     .use(snippetPlugin)

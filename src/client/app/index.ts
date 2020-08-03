@@ -4,6 +4,7 @@ import { useUpdateHead } from './composables/head'
 import { pageDataSymbol } from './composables/pageData'
 import { Content } from './components/Content'
 import Debug from './components/Debug.vue'
+import Demo from './components/Demo'
 import Theme from '/@theme/index'
 import { inBrowser, pathToFile } from './utils'
 import { useSiteDataByRoute } from './composables/siteDataByRoute'
@@ -75,6 +76,7 @@ export function createApp() {
     'Debug',
     process.env.NODE_ENV === 'production' ? () => null : Debug
   )
+  app.component('Demo', Demo)
 
   const siteDataByRouteRef = useSiteDataByRoute(router.route)
 
