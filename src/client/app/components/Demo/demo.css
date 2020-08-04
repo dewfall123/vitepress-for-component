@@ -1,11 +1,11 @@
 .demo {
   background-color: #fff;
-  border: 1px solid #ebedf1;
+  border: 1px solid var(--border-color);
   border-radius: 1px;
 }
 
 .demo-slot {
-  padding: 40px 24px;
+  padding: 24px 24px;
 }
 
 .demo-actions {
@@ -14,11 +14,22 @@
   padding: 0 1em;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px dashed #ebedf1;
+  border-top: 1px dashed var(--border-color);
 }
 
-.demo-actions-expand, .demo-actions-copy {
-  margin: 0 8px;
+.demo-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.demo-actions-expand,
+.demo-actions-copy {
+  margin: 0 0 0 16px;
   cursor: pointer;
   color: #666;
+}
+
+.extra-class {
+  border-top: 1px dashed var(--border-color);
+  box-sizing: border-box;
 }

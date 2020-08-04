@@ -32,16 +32,21 @@ export interface MarkdownOptions extends MarkdownIt.Options {
 }
 
 export interface DemoComponentData {
-  componentName: String
-  src: String
-  htmlStr: String
+  componentName: string
+  src: string
+  htmlStr: string
+}
+
+export interface HoistedTags {
+  script?: string[]
+  style?: string[]
+  components?: string[]
 }
 
 export interface MarkdownParsedData {
-  hoistedTags?: string[]
+  hoistedTags?: HoistedTags
   links?: string[]
   headers?: Header[]
-  demoSrcs?: DemoComponentData[]
 }
 
 export interface MarkdownRenderer {

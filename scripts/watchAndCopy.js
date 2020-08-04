@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 const chokidar = require('chokidar')
 
 function toDest(file) {
-  return file.replace(/^src\//, 'dist/')
+  return file.replace(/^src(\/|\\)/, 'dist/')
 }
 
 chokidar

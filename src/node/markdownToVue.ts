@@ -4,7 +4,7 @@ import LRUCache from 'lru-cache'
 import {
   createMarkdownRenderer,
   MarkdownOptions,
-  DemoComponentData
+  HoistedTags
 } from './markdown/markdown'
 import { deeplyParseHeader } from './utils/parseHeader'
 import { PageData } from '../../types/shared'
@@ -50,73 +50,44 @@ export function createMarkdownToVueRenderFn(
       lastUpdated
     }
 
-    const additionalBlocks = injectData
-      ? injectPageData(data.hoistedTags || [], pageData)
-      : data.hoistedTags || []
+    data.hoistedTags.script = data.hoistedTags.script || []
+    injectComponentData(data.hoistedTags)
 
-    injectComponentData(additionalBlocks, data.demoSrcs || [])
+    if (injectData) {
+      injectPageData(data.hoistedTags, pageData)
+    }
 
     const vueSrc =
-      additionalBlocks.join('\n') + `\n<template><div>${html}</div></template>`
+      `<script>${data.hoistedTags.script?.join('\n')}</script>` +
+      `<style>${data.hoistedTags.style?.join('\n')}</style>` +
+      `\n<template><div>${html}</div></template>`
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`)
 
     const result = { vueSrc, pageData }
+    console.log(file + '\n')
     console.log(vueSrc)
     cache.set(src, result)
     return result
   }
 }
 
-const scriptRE = /<\/script>/
-
-function injectPageData(tags: string[], data: PageData) {
+function injectPageData(hoistedTags: HoistedTags, data: PageData) {
   const code = `\nexport const __pageData = ${JSON.stringify(
     JSON.stringify(data)
   )}`
-  const existingScriptIndex = tags.findIndex((tag) => scriptRE.test(tag))
-  if (existingScriptIndex > -1) {
-    tags[existingScriptIndex] = tags[existingScriptIndex].replace(
-      scriptRE,
-      code + `</script>`
-    )
-  } else {
-    tags.push(`<script>${code}\nexport default {}</script>`)
-  }
 
-  return tags
+  hoistedTags.script?.push(code)
 }
 
-function injectComponentData(tags: string[], demoSrcs: DemoComponentData[]) {
-  console.log(demoSrcs)
-
-  const importCode = demoSrcs
-    .map((componentData) => {
-      return `\n import ${componentData.componentName} from '${componentData.src}'`
-    })
-    .join(' ')
-
+function injectComponentData(hoistedTags: HoistedTags) {
   const exportCode = `\nexport default {
     components: {
-      ${demoSrcs.map((componentData) => componentData.componentName).join(', ')}
+      ${(hoistedTags.components || []).join(', ')}
     }
   }`
 
-  const existingScriptIndex = tags.findIndex((tag) => scriptRE.test(tag))
-  if (existingScriptIndex > -1) {
-    tags[existingScriptIndex] = tags[existingScriptIndex].replace(
-      `<script>`,
-      `<script> ${importCode}`
-    )
-    tags[existingScriptIndex] = tags[existingScriptIndex].replace(
-      scriptRE,
-      exportCode + `</script>`
-    )
-  } else {
-    tags.push(`<script>${importCode} ${exportCode}</script>`)
-  }
-
-  return tags
+  hoistedTags.script?.push(exportCode)
 }
 
 const inferTitle = (frontmatter: any, content: string) => {

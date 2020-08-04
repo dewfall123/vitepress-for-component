@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/vuejs/vitepress/tree/master/#readme",
   "scripts": {
-    "dev": "run-p dev-client dev-client-copy dev-node dev-shared",
+    "dev": "run-p dev-client dev-node",
     "dev-client": "tsc -w -p src/client",
     "dev-client-copy": "node scripts/watchAndCopy",
     "dev-node": "tsc -w -p src/node",

@@ -10,3 +10,8 @@ declare module '@siteData' {
   const data: string
   export default data
 }
+
+declare module 'prismjs'
+declare module 'escape-html'
+declare module 'prismjs/components/index'
+declare module 'codesandbox-import-utils/lib/api/define'
