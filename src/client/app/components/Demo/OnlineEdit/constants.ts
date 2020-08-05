@@ -1,8 +1,8 @@
-export const JS_RE = /<script>([\s\S]+)<\/script>/
+export const JS_RE = /<script.*>([\s\S]+)<\/script>/
 export const CSS_RE = /<style>([\s\S]+)<\/style>/
 export const HTML_RE = /<template>([\s\S]+)<\/template>/
 
-export const PLATFORMS = ['codepen', 'jsfiddle', 'codesandbox']
+export const PLATFORMS = ['codepen', 'jsfiddle']
 
 export const ACTION_MAP = {
   codepen: 'https://codepen.io/pen/define',

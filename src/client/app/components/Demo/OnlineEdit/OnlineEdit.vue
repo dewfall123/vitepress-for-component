@@ -20,7 +20,7 @@
     </template>
 
     <!-- https://codesandbox.io/docs/importing#define-api -->
-    <template v-if="platform === 'codesandbox'">
+    <!-- <template v-if="platform === 'codesandbox'">
       <input type="hidden" name="parameters" :value="codeSandboxValue" />
       <input
         v-if="codesandboxOptions.query"
@@ -40,7 +40,7 @@
         name="json"
         :value="codesandboxOptions.json"
       />
-    </template>
+    </template> -->
 
     <button type="submit" :data-tip="platformTip">
       <component :is="platform" />
@@ -52,11 +52,11 @@
 import codepen from './icons/CodepenIcon.vue'
 import jsfiddle from './icons/JsfiddleIcon.vue'
 import codesandbox from './icons/CodeSandboxIcon.vue'
-import { getJsTmpl, getHtmlTmpl, getCodeSandboxTmpl } from './utils'
+import { getJsTmpl, getHtmlTmpl } from './utils'
 import { PLATFORMS, ACTION_MAP, PLATFORM_TIP_MAP } from './constants'
 import './onlineEdit.css'
 
-const vueJs = 'https://unpkg.com/vue/dist/vue.js'
+const vueJs = 'https://unpkg.com/vue@3.0.0-beta.14/dist/vue.global.js'
 
 export default {
   name: 'OnlineEdit',
@@ -100,15 +100,6 @@ export default {
         js_external: vm.js_external,
         css_external: vm.css_external,
         js_pre_processor: vm.jsPre
-      }),
-    codeSandboxValue: (vm) =>
-      getCodeSandboxTmpl({
-        js: vm.js,
-        css: vm.css,
-        html: vm.html,
-        deps: vm.codesandboxOptions.deps,
-        jsLibs: vm.jsLibs,
-        cssLibs: vm.cssLibs
       })
   }
 }

@@ -1,4 +1,15 @@
 .demo-and-code-online-edit-wrapper {
   display: flex;
   align-items: center;
+  margin-bottom: 0;
+}
+
+.demo-and-code-online-edit-wrapper button {
+  width: 24px;
+  background: transparent;
+  border: 0;
+  padding: 4px;
+  cursor: pointer;
+  margin-right: 8px;
+  outline: none;
 }

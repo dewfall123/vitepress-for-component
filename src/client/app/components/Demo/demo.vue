@@ -22,13 +22,13 @@
         <codeSvg
           class="demo-actions-expand"
           @click="toggleExpand()"
-          title="展开123"
+          title="展开"
         />
       </div>
     </div>
     <div
       v-show="state.expand"
-      v-html="decodeURIComponent(htmlStr)"
+      v-html="decodedHtmlStr"
       :class="`language-${language} extra-class`"
     />
   </article>
@@ -40,16 +40,22 @@ import './demo.css'
 import copySvg from './icons/copy.vue'
 import codeSvg from './icons/code.vue'
 import OnlineEdit from './OnlineEdit'
+import { JS_RE, CSS_RE, HTML_RE } from './OnlineEdit/constants'
+import { getMatchedResult, parseAndDecode } from './OnlineEdit/utils'
 
 export default {
   props: {
     componentName: String,
     htmlStr: String,
+    codeStr: String,
     language: { default: 'vue', type: String },
     platforms: {
-      default: () => ['codepen', 'jsfiddle', 'codesandbox'],
+      default: () => ['codepen'],
       type: Array
-    }
+    },
+    jsLibsStr: { type: String, default: '[]' },
+    cssLibsStr: { type: String, default: '[]' },
+    codesandboxStr: { type: String, default: '{}' }
   },
   components: {
     copySvg,
@@ -63,11 +69,32 @@ export default {
 
     const toggleExpand = () => (state.expand = !state.expand)
 
-    // const copy = () =>
+    const decodedHtmlStr = computed(() => decodeURIComponent(props.htmlStr))
+    const decodedCodeStr = computed(() => decodeURIComponent(props.codeStr))
+
+    const parsedCode = computed(() => {
+      const js = getMatchedResult(JS_RE)(decodedCodeStr.value) || ''
+      const css = getMatchedResult(CSS_RE)(decodedCodeStr.value) || ''
+      const html =
+        getMatchedResult(HTML_RE)(decodedCodeStr.value) ||
+        decodedCodeStr.value
+          .replace(JS_RE, '')
+          .replace(CSS_RE, '')
+          .replace(HTML_RE, '')
+          .trim()
+
+      const jsLibs = parseAndDecode(props.jsLibsStr)
+      const cssLibs = parseAndDecode(props.cssLibsStr)
+      const codesandboxOptions = parseAndDecode(props.codesandboxStr)
+
+      return { js, css, html, jsLibs, cssLibs, codesandboxOptions }
+    })
 
     return {
       state,
-      toggleExpand
+      toggleExpand,
+      decodedHtmlStr,
+      parsedCode
     }
   }
 }

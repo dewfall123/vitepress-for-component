@@ -37,16 +37,17 @@ export const demoPlugin = (md: MarkdownIt) => {
       }
 
       console.log(`srcPath=${srcPath}`)
-      const htmlStr = encodeURIComponent(
-        highlight(fs.readFileSync(src).toString(), language)
-      )
+      const codeStr = fs.readFileSync(src).toString()
+      const htmlStr = encodeURIComponent(highlight(codeStr, language))
 
       hoistedTags.script!.unshift(`import ${componentName} from '${src}' \n`)
       hoistedTags.components!.push(componentName)
 
       return content.replace(
         '>',
-        ` componentName="${componentName}" htmlStr="${htmlStr}" >
+        ` componentName="${componentName}" htmlStr="${htmlStr}" codeStr="${encodeURIComponent(
+          codeStr
+        )}" >
         <${componentName}></${componentName}>
         `
       )
