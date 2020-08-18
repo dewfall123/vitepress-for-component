@@ -30,6 +30,8 @@ export function createMarkdownToVueRenderFn(
     injectData = true
   ) => {
     file = path.relative(root, file)
+    // TODO
+    ;(global as any).fileRoot = path.resolve(file, '../')
     const cached = cache.get(src)
     if (cached) {
       debug(`[cache hit] ${file}`)
@@ -65,8 +67,8 @@ export function createMarkdownToVueRenderFn(
     debug(`[render] ${file} in ${Date.now() - start}ms.`)
 
     const result = { vueSrc, pageData }
-    console.log(file + '\n')
-    console.log(vueSrc)
+    // console.log(file + '\n')
+    // console.log(vueSrc)
     cache.set(src, result)
     return result
   }

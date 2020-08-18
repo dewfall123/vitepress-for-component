@@ -25,9 +25,9 @@ export const demoPlugin = (md: MarkdownIt) => {
       const componentName = `demo${index++}`
       const src = (content.match(/src=("|')(\S+)('|")/) || [])[2] ?? ''
       let language = (content.match(/language=("|')(.*)('|")/) || [])[2] ?? ''
-      const srcPath = path.resolve(process.cwd(), src)
+      const srcPath = path.resolve((global as any).fileRoot, src)
       if (!src || !fs.existsSync(srcPath)) {
-        const warningMsg = `${srcPath} is not exist!`
+        const warningMsg = `${srcPath} does not exist!`
         console.warn(`[vitepress]: ${warningMsg}`)
         return `<demo src="${src}" >
         <p>${warningMsg}</p>`
@@ -37,7 +37,7 @@ export const demoPlugin = (md: MarkdownIt) => {
       }
 
       console.log(`srcPath=${srcPath}`)
-      const codeStr = fs.readFileSync(src).toString()
+      const codeStr = fs.readFileSync(srcPath).toString()
       const htmlStr = encodeURIComponent(highlight(codeStr, language))
 
       hoistedTags.script!.unshift(`import ${componentName} from '${src}' \n`)
