@@ -52,6 +52,7 @@ export function createMarkdownToVueRenderFn(
       lastUpdated
     }
 
+    data.hoistedTags = data.hoistedTags || {}
     data.hoistedTags.script = data.hoistedTags.script || []
     injectComponentData(data.hoistedTags)
 
@@ -86,8 +87,9 @@ function injectComponentData(hoistedTags: HoistedTags) {
   const exportCode = `\nexport default {
     components: {
       ${(hoistedTags.components || []).join(', ')}
-    }
-  }`
+    },
+  }
+  `
 
   hoistedTags.script?.push(exportCode)
 }

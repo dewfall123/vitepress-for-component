@@ -10,38 +10,6 @@
       <input type="hidden" name="data" :value="codepenValue" />
     </template>
 
-    <!-- https://docs.jsfiddle.net/api/display-a-fiddle-from-post -->
-    <template v-if="platform === 'jsfiddle'">
-      <input type="hidden" name="js" :value="js" />
-      <input type="hidden" name="css" :value="css" />
-      <input type="hidden" name="html" :value="html" />
-      <input type="hidden" name="panel_js" value="3" />
-      <input type="hidden" name="resources" :value="resources" />
-    </template>
-
-    <!-- https://codesandbox.io/docs/importing#define-api -->
-    <!-- <template v-if="platform === 'codesandbox'">
-      <input type="hidden" name="parameters" :value="codeSandboxValue" />
-      <input
-        v-if="codesandboxOptions.query"
-        type="hidden"
-        name="query"
-        :value="codesandboxOptions.query"
-      />
-      <input
-        v-if="codesandboxOptions.embed"
-        type="hidden"
-        name="embed"
-        :value="codesandboxOptions.embed"
-      />
-      <input
-        v-if="codesandboxOptions.json"
-        type="hidden"
-        name="json"
-        :value="codesandboxOptions.json"
-      />
-    </template> -->
-
     <button type="submit" :data-tip="platformTip">
       <component :is="platform" />
     </button>
@@ -78,8 +46,7 @@ export default {
     layout: { type: String, default: 'left' },
     jsLibs: { type: Array, default: () => [] },
     cssLibs: { type: Array, default: () => [] },
-    editors: { type: String, default: '101' },
-    codesandboxOptions: { type: Object, default: () => ({}) }
+    editors: { type: String, default: '101' }
   },
   computed: {
     jsTmpl: (vm) => getJsTmpl(vm.js),

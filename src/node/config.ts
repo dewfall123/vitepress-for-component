@@ -16,8 +16,8 @@ export interface UserConfig<ThemeConfig = any> {
   description?: string
   head?: HeadConfig[]
   themeConfig?: ThemeConfig
-  locales?: Record<string, LocaleConfig>
   // TODO locales support etc.
+  locales?: Record<string, LocaleConfig>
   alias?: Record<string, string>
 }
 

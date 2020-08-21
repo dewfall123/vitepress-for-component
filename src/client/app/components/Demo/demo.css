@@ -5,7 +5,7 @@
 }
 
 .demo-slot {
-  padding: 24px 24px;
+  padding: 40px 24px;
 }
 
 .demo-actions {
@@ -28,14 +28,34 @@
   cursor: pointer;
   color: #666;
 }
+.demo-actions-tip {
+  font-size: 12px;
+  color: #3eaf7c;
+}
 
 .extra-class {
   border-top: 1px dashed var(--border-color);
   box-sizing: border-box;
 }
 
-
 .demo-platforms {
   display: flex;
   align-items: center;
+}
+
+.demo-title-desc {
+  border-top: 1px dashed var(--border-color);
+  padding: 1.5em 1em;
+  color: #454d64;
+  position: relative;
+  font-size: 14px;
+}
+
+.demo-title {
+  position: absolute;
+  top: 0;
+  left: 1em;
+  transform: translateY(-50%);
+  background: #fff;
+  font-weight: 500;
 }
