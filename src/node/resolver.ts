@@ -15,14 +15,18 @@ export const SITE_DATA_REQUEST_PATH = '/' + SITE_DATA_ID
 // so that we can resolve custom requests that start with /@app or /@theme
 // we also need to map file paths back to their public served paths so that
 // vite HMR can send the correct update notifications to the client.
-export function createResolver(themeDir: string): Resolver {
+export function createResolver(
+  themeDir: string,
+  userAlias?: Record<string, string>
+): Resolver {
   return {
     alias: {
       '/@app/': APP_PATH,
       '/@theme/': themeDir,
       '/@shared/': SHARED_PATH,
       vitepress: '/@app/exports.js',
-      [SITE_DATA_ID]: SITE_DATA_REQUEST_PATH
+      [SITE_DATA_ID]: SITE_DATA_REQUEST_PATH,
+      ...(userAlias ?? {})
     },
     requestToFile(publicPath) {
       if (publicPath === SITE_DATA_REQUEST_PATH) {

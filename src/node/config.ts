@@ -18,6 +18,7 @@ export interface UserConfig<ThemeConfig = any> {
   themeConfig?: ThemeConfig
   locales?: Record<string, LocaleConfig>
   // TODO locales support etc.
+  alias?: Record<string, string>
 }
 
 export interface SiteConfig<ThemeConfig = any> {
@@ -34,32 +35,7 @@ export interface SiteConfig<ThemeConfig = any> {
 const resolve = (root: string, file: string) =>
   path.resolve(root, `.vitepress`, file)
 
-export async function resolveConfig(
-  root: string = process.cwd()
-): Promise<SiteConfig> {
-  const site = await resolveSiteData(root)
-
-  // resolve theme path
-  const userThemeDir = resolve(root, 'theme')
-  const themeDir = (await fs.pathExists(userThemeDir))
-    ? userThemeDir
-    : path.join(__dirname, '../client/theme-default')
-
-  const config: SiteConfig = {
-    root,
-    site,
-    themeDir,
-    pages: await globby(['**.md'], { cwd: root, ignore: ['node_modules'] }),
-    configPath: resolve(root, 'config.js'),
-    outDir: resolve(root, 'dist'),
-    tempDir: path.resolve(APP_PATH, 'temp'),
-    resolver: createResolver(themeDir)
-  }
-
-  return config
-}
-
-export async function resolveSiteData(root: string): Promise<SiteData> {
+async function loadUserConfig(root: string) {
   // load user config
   const configPath = resolve(root, 'config.js')
   const hasUserConfig = await fs.pathExists(configPath)
@@ -71,7 +47,38 @@ export async function resolveSiteData(root: string): Promise<SiteData> {
   } else {
     debug(`no config file found.`)
   }
+  return userConfig
+}
 
+export async function resolveConfig(
+  root: string = process.cwd()
+): Promise<SiteConfig> {
+  const site = await resolveSiteData(root)
+
+  // resolve theme path
+  const userThemeDir = resolve(root, 'theme')
+  const themeDir = (await fs.pathExists(userThemeDir))
+    ? userThemeDir
+    : path.join(__dirname, '../client/theme-default')
+
+  const userConfig = await loadUserConfig(root)
+
+  const config: SiteConfig = {
+    root,
+    site,
+    themeDir,
+    pages: await globby(['**.md'], { cwd: root, ignore: ['node_modules'] }),
+    configPath: resolve(root, 'config.js'),
+    outDir: resolve(root, 'dist'),
+    tempDir: path.resolve(APP_PATH, 'temp'),
+    resolver: createResolver(themeDir, userConfig.alias)
+  }
+
+  return config
+}
+
+export async function resolveSiteData(root: string): Promise<SiteData> {
+  const userConfig = await loadUserConfig(root)
   return {
     lang: userConfig.lang || 'en-US',
     title: userConfig.title || 'VitePress',
