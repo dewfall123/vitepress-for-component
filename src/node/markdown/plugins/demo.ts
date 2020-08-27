@@ -3,6 +3,15 @@ import { MarkdownParsedData } from '../markdown'
 import fs from 'fs'
 import path from 'path'
 import { highlight } from './highlight'
+// import matter from 'gray-matter'
+
+// interface DemoProps {
+//   componentName: string,
+//   htmlStr: string,
+//   codeStr: string,
+//   title?: string,
+//   desc?: string,
+// }
 
 let index = 1
 // hoist <script> and <style> tags out of the returned html
@@ -38,6 +47,7 @@ export const demoPlugin = (md: MarkdownIt) => {
 
       console.log(`srcPath=${srcPath}`)
       const codeStr = fs.readFileSync(srcPath).toString()
+      // const { content: codeContent, data: frontmatter } = matter(codeStr)
       const htmlStr = encodeURIComponent(highlight(codeStr, language))
 
       hoistedTags.script!.unshift(`import ${componentName} from '${src}' \n`)

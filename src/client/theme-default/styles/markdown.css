@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ebedf1;
+}
+
+table th {
+  font-weight: 600;
+  background: #f9fafb;
+}
+
+table td:first-child {
+  font-weight: 500;
+}
+
+table td,
+table th {
+  padding: 10px 24px;
+  border: 1px solid #ebedf1;
+}

@@ -61,8 +61,8 @@ export function createMarkdownToVueRenderFn(
     }
 
     const vueSrc =
-      `<script>${data.hoistedTags.script?.join('\n')}</script>` +
-      `<style>${data.hoistedTags.style?.join('\n')}</style>` +
+      `<script>${(data.hoistedTags.script ?? []).join('\n')}</script>` +
+      `<style>${(data.hoistedTags.style ?? []).join('\n')}</style>` +
       `\n<template><div>${html}</div></template>`
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`)
