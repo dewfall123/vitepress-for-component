@@ -1,31 +1,40 @@
-import { usePageData, useRoute, useSiteDataByRoute } from 'vitepress'
+import {
+  usePageData,
+  useRoute,
+  useSiteDataByRoute,
+  useSiteData
+} from 'vitepress'
 import { computed, h, FunctionalComponent, VNode } from 'vue'
 import { Header } from '../../../../types/shared'
-import { isActive, getPathDirName } from '../utils'
+import { isActive, joinUrl, getPathDirName } from '../utils'
 import { DefaultTheme } from '../config'
 import { useActiveSidebarLinks } from '../composables/activeSidebarLink'
+import NavBarLinks from './NavBarLinks.vue'
 
 const SideBarItem: FunctionalComponent<{
   item: ResolvedSidebarItem
 }> = (props) => {
   const {
-    item: { link, text, children }
+    item: { link: relLink, text, children }
   } = props
 
   const route = useRoute()
-  const pageData = usePageData()
+  // const pageData = usePageData()
+  const siteData = useSiteData()
 
+  const link = resolveLink(siteData.value.base, relLink || '')
   const active = isActive(route, link)
-  const headers = pageData.value.headers
+  // const headers = pageData.value.headers
 
   return h('li', { class: 'sidebar-item' }, [
     createLink(active, text, link),
-    createChildren(active, children, headers)
+    createChildren(active, children)
   ])
 }
 
 export default {
   components: {
+    NavBarLinks,
     SideBarItem
   },
 
@@ -129,7 +138,8 @@ function resolveMultiSidebar(
   headers: Header[],
   depth: number
 ): ResolvedSidebar {
-  const item = config[getPathDirName(path)]
+  const paths = [path, Object.keys(config)[0]]
+  const item = paths.map((x) => config[getPathDirName(x)]).find(Boolean)
 
   if (Array.isArray(item)) {
     return resolveArraySidebar(item, depth)
@@ -140,6 +150,10 @@ function resolveMultiSidebar(
   }
 
   return []
+}
+
+function resolveLink(base: string, path: string): string | undefined {
+  return path ? joinUrl(base, path || '') : undefined
 }
 
 function createLink(active: boolean, text: string, link?: string): VNode {

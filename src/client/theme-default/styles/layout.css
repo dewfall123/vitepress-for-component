@@ -1,5 +1,8 @@
 body {
+  padding: 0;
   margin: 0;
+  background-color: #fff;
+  color: var(--text-color);
 }
 
 * {
@@ -7,10 +10,11 @@ body {
 }
 
 .theme {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
   color: var(--text-color);
 }
 
@@ -26,7 +30,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.75rem 0 1.5rem;
+  padding: 0.7rem 1.5rem;
+}
+
+@media screen and (max-width: 719px) {
+  header {
+    padding-left: 4rem;
+  }
 }
 
 aside {
@@ -35,16 +45,64 @@ aside {
   left: 0;
   height: 100%;
   width: var(--sidebar-width);
-  padding: calc(var(--header-height) + 1.5rem) 0 1.5rem 0;
+  padding: var(--header-height) 0 1.5rem 0;
   border-right: 1px solid var(--border-color);
   background-color: #fff;
   z-index: 3;
   overflow-y: auto;
 }
 
+.slug {
+  position: fixed;
+  top: var(--header-height);
+  right: 0;
+  max-height: calc(100% - var(--header-height) - 10rem);
+  width: var(--slug-width);
+  padding: 50px 24px 0 0;
+  border-right: 1px solid var(--border-color);
+  background-color: #fff;
+  z-index: 3;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 959px) {
+  aside {
+    width: 16.4rem;
+  }
+}
+
+@media screen and (max-width: 719px) {
+  aside {
+    transition: transform 0.2s ease;
+    transform: translateX(-100%);
+  }
+
+  aside.open {
+    transform: translateX(0);
+  }
+}
+
+.sidebar-mask {
+  z-index: 2;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+
+.sidebar-mask.sidebar-open {
+  display: block;
+}
+
 main {
   margin-top: var(--header-height);
   margin-left: var(--sidebar-width);
+}
+
+@media screen and (max-width: 959px) {
+  main {
+    margin-left: 16.4rem;
+  }
 }
 
 a {
@@ -69,7 +127,7 @@ h1 {
 
 h2 {
   font-size: 1.65rem;
-  padding-bottom: .3rem;
+  padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--border-color);
 }
 

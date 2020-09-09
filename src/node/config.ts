@@ -16,9 +16,9 @@ export interface UserConfig<ThemeConfig = any> {
   description?: string
   head?: HeadConfig[]
   themeConfig?: ThemeConfig
-  // TODO locales support etc.
   locales?: Record<string, LocaleConfig>
   alias?: Record<string, string>
+  // TODO locales support etc.
 }
 
 export interface SiteConfig<ThemeConfig = any> {
@@ -35,21 +35,6 @@ export interface SiteConfig<ThemeConfig = any> {
 const resolve = (root: string, file: string) =>
   path.resolve(root, `.vitepress`, file)
 
-async function loadUserConfig(root: string) {
-  // load user config
-  const configPath = resolve(root, 'config.js')
-  const hasUserConfig = await fs.pathExists(configPath)
-  // always delete cache first before loading config
-  delete require.cache[configPath]
-  const userConfig: UserConfig = hasUserConfig ? require(configPath) : {}
-  if (hasUserConfig) {
-    debug(`loaded config at ${chalk.yellow(configPath)}`)
-  } else {
-    debug(`no config file found.`)
-  }
-  return userConfig
-}
-
 export async function resolveConfig(
   root: string = process.cwd()
 ): Promise<SiteConfig> {
@@ -61,7 +46,7 @@ export async function resolveConfig(
     ? userThemeDir
     : path.join(__dirname, '../client/theme-default')
 
-  const userConfig = await loadUserConfig(root)
+  const userConfig = await resolveUserConfig(root)
 
   const config: SiteConfig = {
     root,
@@ -71,14 +56,31 @@ export async function resolveConfig(
     configPath: resolve(root, 'config.js'),
     outDir: resolve(root, 'dist'),
     tempDir: path.resolve(APP_PATH, 'temp'),
-    resolver: createResolver(themeDir, userConfig.alias)
+    resolver: createResolver(themeDir, userConfig)
   }
 
   return config
 }
 
+export async function resolveUserConfig(root: string) {
+  // load user config
+  const configPath = resolve(root, 'config.js')
+  const hasUserConfig = await fs.pathExists(configPath)
+  // always delete cache first before loading config
+  delete require.cache[configPath]
+  const userConfig: UserConfig = hasUserConfig ? require(configPath) : {}
+  if (hasUserConfig) {
+    debug(`loaded config at ${chalk.yellow(configPath)}`)
+  } else {
+    debug(`no config file found.`)
+  }
+
+  return userConfig
+}
+
 export async function resolveSiteData(root: string): Promise<SiteData> {
-  const userConfig = await loadUserConfig(root)
+  const userConfig = await resolveUserConfig(root)
+
   return {
     lang: userConfig.lang || 'en-US',
     title: userConfig.title || 'VitePress',

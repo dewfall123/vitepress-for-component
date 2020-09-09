@@ -1,5 +1,6 @@
 import path from 'path'
 import { Resolver } from 'vite'
+import { UserConfig } from './config'
 
 export const APP_PATH = path.join(__dirname, '../client/app')
 export const SHARED_PATH = path.join(__dirname, '../client/shared')
@@ -17,16 +18,16 @@ export const SITE_DATA_REQUEST_PATH = '/' + SITE_DATA_ID
 // vite HMR can send the correct update notifications to the client.
 export function createResolver(
   themeDir: string,
-  userAlias?: Record<string, string>
+  userConfig: UserConfig
 ): Resolver {
   return {
     alias: {
+      ...userConfig.alias,
       '/@app/': APP_PATH,
       '/@theme/': themeDir,
       '/@shared/': SHARED_PATH,
       vitepress: '/@app/exports.js',
-      [SITE_DATA_ID]: SITE_DATA_REQUEST_PATH,
-      ...(userAlias ?? {})
+      [SITE_DATA_ID]: SITE_DATA_REQUEST_PATH
     },
     requestToFile(publicPath) {
       if (publicPath === SITE_DATA_REQUEST_PATH) {

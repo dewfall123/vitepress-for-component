@@ -12,12 +12,7 @@
     />
     <span>{{ $site.title }}</span>
   </a>
-  <nav class="nav-links" v-if="navData">
-    <template v-for="item of navData">
-      <NavDropdownLink v-if='item.items' :item="item"/>
-      <NavBarLink v-else :item="item"/>
-    </template>
-  </nav>
+  <NavBarLinks class="hide-mobile"/>
 </template>
 
 <script src="./NavBar"></script>
@@ -35,7 +30,9 @@
   vertical-align: bottom;
 }
 
-.nav-links {
-  list-style-type: none;
+@media screen and (max-width: 719px) {
+  .hide-mobile {
+    display: none;
+  }
 }
 </style>

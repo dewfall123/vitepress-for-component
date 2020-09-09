@@ -2,6 +2,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #ebedf1;
+  color: var(--text-color);
 }
 
 table th {
@@ -17,4 +18,18 @@ table td,
 table th {
   padding: 10px 24px;
   border: 1px solid #ebedf1;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
 }
