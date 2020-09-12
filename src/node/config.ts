@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import chalk from 'chalk'
 import globby from 'globby'
 import { createResolver, APP_PATH } from './resolver'
-import { Resolver } from 'vite'
+import { Resolver, ServerConfig } from 'vite'
 import { SiteData, HeadConfig, LocaleConfig } from '../../types/shared'
 export { resolveSiteDataByRoute } from '../shared/config'
 
@@ -19,6 +19,7 @@ export interface UserConfig<ThemeConfig = any> {
   locales?: Record<string, LocaleConfig>
   alias?: Record<string, string>
   // TODO locales support etc.
+  viteOptions: ServerConfig
 }
 
 export interface SiteConfig<ThemeConfig = any> {
@@ -30,6 +31,7 @@ export interface SiteConfig<ThemeConfig = any> {
   tempDir: string
   resolver: Resolver
   pages: string[]
+  userConfig: UserConfig
 }
 
 const resolve = (root: string, file: string) =>
@@ -56,7 +58,8 @@ export async function resolveConfig(
     configPath: resolve(root, 'config.js'),
     outDir: resolve(root, 'dist'),
     tempDir: path.resolve(APP_PATH, 'temp'),
-    resolver: createResolver(themeDir, userConfig)
+    resolver: createResolver(themeDir, userConfig),
+    userConfig
   }
 
   return config
