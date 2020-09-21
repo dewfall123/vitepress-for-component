@@ -1,14 +1,18 @@
 <template>
   <div class="content">
+    <slot name="top" />
     <Content />
     <NextAndPrevLinks />
+    <PageEdit />
+    <slot name="bottom" />
   </div>
 </template>
 
 <script>
 import NextAndPrevLinks from './NextAndPrevLinks.vue'
+import PageEdit from './PageEdit.vue'
 export default {
-  components:{ NextAndPrevLinks }
+  components: { NextAndPrevLinks, PageEdit }
 }
 </script>
 

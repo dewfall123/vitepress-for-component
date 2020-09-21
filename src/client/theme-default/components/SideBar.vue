@@ -1,11 +1,14 @@
 <template>
   <NavBarLinks class="show-mobile" />
 
+  <slot name="top" />
+
   <ul class="sidebar">
     <SideBarItem v-for="item of items" :item="item" />
   </ul>
 
   <ul class="slug"></ul>
+  <slot name="bottom" />
 </template>
 
 <script src="./SideBar"></script>
