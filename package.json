@@ -1,11 +1,11 @@
 {
-  "name": "vitepress",
+  "name": "doc-the-lib",
   "version": "0.6.0",
   "description": "",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
   "bin": {
-    "vitepress": "bin/vitepress.js"
+    "vdoc": "bin/vdoc.js"
   },
   "files": [
     "bin",
@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vitepress.git"
+    "url": "git+https://github.com/dewfall123/doc-the-lib.git"
   },
   "bugs": {
     "url": "https://github.com/vuejs/vitepress/issues"
