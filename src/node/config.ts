@@ -20,6 +20,7 @@ export interface UserConfig<ThemeConfig = any> {
   alias?: Record<string, string>
   // TODO locales support etc.
   viteOptions: ServerConfig
+  outDir?: string
 }
 
 export interface SiteConfig<ThemeConfig = any> {
@@ -56,7 +57,9 @@ export async function resolveConfig(
     themeDir,
     pages: await globby(['**.md'], { cwd: root, ignore: ['node_modules'] }),
     configPath: resolve(root, 'config.js'),
-    outDir: resolve(root, 'dist'),
+    outDir: userConfig.outDir
+      ? path.resolve(root, userConfig.outDir)
+      : path.resolve(root, 'dist'),
     tempDir: path.resolve(APP_PATH, 'temp'),
     resolver: createResolver(themeDir, userConfig),
     userConfig

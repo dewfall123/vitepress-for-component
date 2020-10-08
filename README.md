@@ -7,12 +7,12 @@
 **Note this is early WIP! Currently the focus is on making doc-the-lib stable and feature complete first. It is not recommended to use this for anything serious yet.**
 
 ``` bash
-npm install -D vdoc
-echo '# Hello vdoc' > index.md
+npm install -D doc-the-lib
+echo '# Hello doc-the-lib' > index.md
 
 # starts dev server
-npx vdoc
+npx doc-the-lib
 
-# build > .vdoc/dist
-npx vdoc build
+# build > .doc-the-lib/dist
+npx doc-the-lib build
 ```
