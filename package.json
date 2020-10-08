@@ -1,11 +1,11 @@
 {
   "name": "doc-the-lib",
-  "version": "0.6.0",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
   "bin": {
-    "vdoc": "bin/vdoc.js"
+    "doc-the-lib": "bin/doc-the-lib.js"
   },
   "files": [
     "bin",
@@ -23,9 +23,9 @@
     "url": "git+https://github.com/dewfall123/doc-the-lib.git"
   },
   "bugs": {
-    "url": "https://github.com/vuejs/vitepress/issues"
+    "url": "https://github.com/dewfall123/doc-the-lib/issues"
   },
-  "homepage": "https://github.com/vuejs/vitepress/tree/master/#readme",
+  "homepage": "https://github.com/dewfall123/doc-the-lib/#readme",
   "scripts": {
     "dev": "run-p dev-client dev-node",
     "dev-client": "tsc -w -p src/client",
@@ -50,7 +50,7 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "author": "Evan You",
+  "author": "dewfall",
   "license": "MIT",
   "dependencies": {
     "@vue/compiler-sfc": "^3.0.0-rc.11",

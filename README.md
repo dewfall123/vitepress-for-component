@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/doc-the-lib)](https://www.npmjs.com/package/doc-the-lib)
 
-> forked from vitepress.
+> A doc generator tool for libiary. based on vitepress.
 
 **Note this is early WIP! Currently the focus is on making doc-the-lib stable and feature complete first. It is not recommended to use this for anything serious yet.**
 
