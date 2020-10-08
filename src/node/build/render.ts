@@ -4,6 +4,7 @@ import { SiteConfig, resolveSiteDataByRoute } from '../config'
 import { HeadConfig } from '../../../types/shared'
 import { BuildResult } from 'vite'
 import { OutputChunk, OutputAsset } from 'rollup'
+import { assetsPath } from './bundle'
 
 const escape = require('escape-html')
 
@@ -16,7 +17,7 @@ export async function renderPage(
   pageToHashMap: Record<string, string>,
   hashMapStirng: string
 ) {
-  const { createApp } = require(path.join(config.tempDir, 'app.js'))
+  const { createApp } = require(path.join(config.tempDir, assetsPath, 'app.js'))
   const { app, router } = createApp()
   const routePath = `/${page.replace(/\.md$/, '')}`
   const siteData = resolveSiteDataByRoute(config.site, routePath)
@@ -35,11 +36,12 @@ export async function renderPage(
   // resolve page data so we can render head tags
   const { __pageData } = require(path.join(
     config.tempDir,
+    assetsPath,
     pageServerJsFileName
   ))
   const pageData = JSON.parse(__pageData)
 
-  const assetPath = `${siteData.base}_assets/`
+  const assetPath = `${siteData.base}${assetsPath}/`
   const preloadLinks = [
     // resolve imports for index.js + page.md.js and inject script tags for
     // them as well so we fetch everything as early as possible without having

@@ -1,6 +1,6 @@
 {
   "name": "doc-the-lib",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
