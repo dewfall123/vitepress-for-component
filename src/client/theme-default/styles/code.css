@@ -22,6 +22,7 @@ div[class*='language-'] {
   border-radius: 1px;
   overflow-x: auto;
   position: relative;
+  margin: 0.85rem 0;
 }
 
 [class*='language-'] pre {
