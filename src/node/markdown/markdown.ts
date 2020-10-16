@@ -52,6 +52,7 @@ export interface MarkdownParsedData {
 export interface MarkdownRenderer {
   __data: MarkdownParsedData
   render: (src: string, env?: any) => { html: string; data: any }
+  root?: string
 }
 
 export const createMarkdownRenderer = (

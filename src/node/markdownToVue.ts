@@ -30,8 +30,8 @@ export function createMarkdownToVueRenderFn(
     injectData = true
   ) => {
     file = path.relative(root, file)
-    // TODO
-    ;(global as any).fileRoot = path.resolve(file, '../')
+    // record file root
+    md.root = path.resolve(file, '../')
     const cached = cache.get(src)
     if (cached) {
       debug(`[cache hit] ${file}`)

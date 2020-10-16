@@ -34,7 +34,7 @@ export const demoPlugin = (md: MarkdownIt) => {
       const componentName = `demo${index++}`
       const src = (content.match(/src=("|')(\S+)('|")/) || [])[2] ?? ''
       let language = (content.match(/language=("|')(.*)('|")/) || [])[2] ?? ''
-      const srcPath = path.resolve((global as any).fileRoot, src)
+      const srcPath = path.resolve((md as any).root, src)
       if (!src || !fs.existsSync(srcPath)) {
         const warningMsg = `${srcPath} does not exist!`
         console.warn(`[vitepress]: ${warningMsg}`)
@@ -45,7 +45,7 @@ export const demoPlugin = (md: MarkdownIt) => {
         language = (src.match(/\.(.+)$/) || [])[1] ?? 'vue'
       }
 
-      console.log(`srcPath=${srcPath}`)
+      // console.log(`srcPath=${srcPath}`)
       const codeStr = fs.readFileSync(srcPath).toString()
       // const { content: codeContent, data: frontmatter } = matter(codeStr)
       const htmlStr = encodeURIComponent(highlight(codeStr, language))

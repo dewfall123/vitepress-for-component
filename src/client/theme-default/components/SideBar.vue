@@ -80,7 +80,7 @@
   padding: 0.35rem 1.5rem 0.35rem 1.25rem;
   line-height: 1.7;
   font-size: 1.05em;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-color);
 }
 

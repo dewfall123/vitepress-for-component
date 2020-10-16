@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 const chalk = require('chalk')
 const argv = require('minimist')(process.argv.slice(2))
+const portfinder = require('portfinder')
 
-console.log(chalk.green('forked version~'))
+console.log(chalk.green('[vlib-docsify] forked from vitepress~'))
 
 console.log(chalk.cyan(`vitepress v${require('../package.json').version}`))
 console.log(chalk.cyan(`vite v${require('vite/package.json').version}`))
@@ -14,10 +15,11 @@ if (root) {
 }
 
 if (!command || command === 'dev') {
-  const port = argv.port || 3000
   require('../dist/node')
     .createServer(argv)
-    .then((server) => {
+    .then(async (server) => {
+      portfinder.basePort = parseInt(argv.port) || 3000
+      const port = await portfinder.getPortPromise()
       server.listen(port, () => {
         console.log(`listening at http://localhost:${port}`)
       })

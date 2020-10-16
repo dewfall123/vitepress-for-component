@@ -185,7 +185,6 @@ function getNextAndPrev(themeConfig: any, pagePath: string) {
 export async function createServer(options: ServerConfig = {}) {
   const config = await resolveConfig(options.root)
 
-  console.log(config.userConfig.viteOptions ?? {})
   return createViteServer({
     ...(config.userConfig.viteOptions ?? {}),
     ...options,
