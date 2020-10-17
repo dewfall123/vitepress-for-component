@@ -1,7 +1,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid #ebedf1;
+  /* border: 1px solid #ebedf1; */
   color: var(--text-color);
 }
 

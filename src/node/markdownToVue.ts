@@ -29,9 +29,10 @@ export function createMarkdownToVueRenderFn(
     lastUpdated: number,
     injectData = true
   ) => {
-    file = path.relative(root, file)
     // record file root
     md.root = path.resolve(file, '../')
+
+    file = path.relative(root, file)
     const cached = cache.get(src)
     if (cached) {
       debug(`[cache hit] ${file}`)

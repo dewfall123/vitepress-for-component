@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/dewfall123/vlib-docsify/#readme",
   "scripts": {
-    "dev": "run-p dev-client dev-node",
+    "dev": "run-p dev-client dev-node dev-client-copy",
     "dev-client": "tsc -w -p src/client",
     "dev-client-copy": "node scripts/watchAndCopy",
     "dev-node": "tsc -w -p src/node",

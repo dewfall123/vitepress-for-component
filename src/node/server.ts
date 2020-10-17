@@ -86,6 +86,7 @@ function createVitePressPlugin({
       // handle .md -> vue transforms
       if (ctx.path.endsWith('.md')) {
         const file = resolver.requestToFile(ctx.path)
+        console.log(ctx.path, file)
         if (!existsSync(file)) {
           return next()
         }
