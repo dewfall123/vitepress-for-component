@@ -5,6 +5,8 @@ export interface LocaleConfig {
   title?: string
   description?: string
   head?: HeadConfig[]
+  label?: string
+  selectText?: string
 }
 
 export interface SiteData<ThemeConfig = any> {
