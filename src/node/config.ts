@@ -21,6 +21,8 @@ export interface UserConfig<ThemeConfig = any> {
   // TODO locales support etc.
   viteOptions: ServerConfig
   outDir?: string
+  // virtualFiles
+  virtualFiles?: Record<string, string>
 }
 
 export interface SiteConfig<ThemeConfig = any> {

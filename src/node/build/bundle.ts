@@ -19,6 +19,48 @@ const staticStripRE = /__VP_STATIC_START__.*?__VP_STATIC_END__/g
 const staticRestoreRE = /__VP_STATIC_(START|END)__/g
 export const assetsPath = 'assets'
 
+export interface LangToPrefix {
+  [key: string]: string
+}
+
+export interface UserAlias {
+  [key: string]: string
+}
+
+const withLangSuffix = /\.(.*)\.md$/
+
+// index.zh-CN.md -> /zh/index.md
+export function localeFile(langToPrefix: Record<string, string>, file: string) {
+  if (file.match(withLangSuffix)) {
+    const lang = file.match(withLangSuffix)![1]
+    const prefix = langToPrefix[lang]
+    const vitrualFile = `${prefix.slice(1)}${file.slice(
+      0,
+      -(lang.length + 3)
+    )}md`
+    return vitrualFile
+  }
+  return file
+}
+
+// packages/vhooks/src/useFullscreen/index.zh-CN.md -> /vhooks/useFullscreen/index.zh-CN.md
+export function resolveAlias(file: string, userAlias: Record<string, string>) {
+  if (!file.startsWith('/')) {
+    file = '/' + file
+  }
+  let result = file
+  for (let [alias, path] of Object.entries(userAlias)) {
+    if (file.startsWith(path)) {
+      result = alias + file.slice(path.length)
+      break
+    }
+  }
+  if (result.startsWith('/')) {
+    result = result.slice(1)
+  }
+  return result
+}
+
 const isPageChunk = (
   chunk: OutputAsset | OutputChunk
 ): chunk is OutputChunk & { facadeModuleId: string } =>
@@ -32,10 +74,13 @@ const isPageChunk = (
 // bundles the VitePress app for both client AND server.
 export async function bundle(
   config: SiteConfig,
-  options: BuildOptions
+  options: BuildOptions,
+  langToPrefix: LangToPrefix,
+  userAlias: UserAlias
 ): Promise<[BuildResult, BuildResult, Record<string, string>]> {
   const root = config.root
   const userConfig = await resolveUserConfig(root)
+
   const resolver = createResolver(config.themeDir, userConfig)
   const markdownToVue = createMarkdownToVueRenderFn(root)
 
@@ -112,9 +157,14 @@ export async function bundle(
     app: path.resolve(APP_PATH, 'index.js')
   }
   config.pages.forEach((file) => {
+    const mdEntry = localeFile(
+      langToPrefix,
+      resolveAlias(file, userAlias ?? {})
+    )
+    console.log(file + ' -> ' + mdEntry)
     // page filename conversion
     // foo/bar.md -> foo_bar.md
-    input[slash(file).replace(/\//g, '_')] = path.resolve(root, file)
+    input[slash(mdEntry).replace(/\//g, '_')] = path.resolve(root, file)
   })
 
   // resolve options to pass to vite

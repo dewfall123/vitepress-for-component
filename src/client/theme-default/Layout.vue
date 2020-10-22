@@ -2,7 +2,11 @@
   <div class="theme">
     1111111
     <header>
-      <NavBar />
+      <NavBar>
+        <template #search>
+          <slot name="navbar-search" />
+        </template>
+      </NavBar>
       <ToggleSideBarButton @toggle="toggleSidebar" />
     </header>
     <aside :class="{ open }">

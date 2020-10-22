@@ -15,10 +15,16 @@ const debugHmr = require('debug')('vitepress:hmr')
 
 function createVitePressPlugin({
   configPath,
-  site: initialSiteData
+  site: initialSiteData,
+  userConfig
 }: SiteConfig): ServerPlugin {
   return ({ app, root, watcher, resolver }) => {
     const markdownToVue = createMarkdownToVueRenderFn(root)
+    const localeConfigs = userConfig.themeConfig.locales
+    const localePathPrefixs = Object.keys(localeConfigs).filter(
+      (i) => i !== '/'
+    )
+    const defaultLang = userConfig.themeConfig.lang ?? 'en-US'
 
     // hot reload .md files as .vue files
     watcher.on('change', async (file) => {
@@ -83,10 +89,15 @@ function createVitePressPlugin({
         return
       }
 
+      const localePrefix =
+        localePathPrefixs.find((i) => ctx.path.startsWith(i)) ?? '/'
+      const lang = localeConfigs[localePrefix].lang ?? defaultLang
       // handle .md -> vue transforms
       if (ctx.path.endsWith('.md')) {
-        const file = resolver.requestToFile(ctx.path)
-        console.log(ctx.path, file)
+        const path =
+          ctx.path.slice(localePrefix.length - 1).slice(0, -3) + `.${lang}.md`
+        const file = resolver.requestToFile(path)
+        // console.log(ctx.path + ' -> 文件路径: ' + file)
         if (!existsSync(file)) {
           return next()
         }
@@ -120,6 +131,9 @@ function createVitePressPlugin({
           )}`
         }
         return
+      } else {
+        // only *.md file has locale diff
+        ctx.path = ctx.path.slice(localePrefix.length - 1)
       }
 
       await next()

@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
-import { bundle } from './bundle'
+import { bundle, LangToPrefix } from './bundle'
 import { BuildConfig as ViteBuildOptions } from 'vite'
-import { resolveConfig } from '../config'
+import { resolveConfig, resolveUserConfig } from '../config'
 import { renderPage } from './render'
 import { OutputChunk, OutputAsset } from 'rollup'
 
@@ -16,10 +16,24 @@ export type BuildOptions = Pick<
 export async function build(buildOptions: BuildOptions = {}) {
   process.env.NODE_ENV = 'production'
   const siteConfig = await resolveConfig(buildOptions.root)
+  const userConfig = await resolveUserConfig(siteConfig.root)
+  const userAlias = userConfig.alias ?? {}
+  // locale configs
+  const localeConfigs = userConfig.themeConfig.locales ?? {}
+  const langToPrefix = Object.entries(localeConfigs).reduce(
+    (map, [key, { lang }]: any) => {
+      map[lang] = key
+      return map
+    },
+    {} as LangToPrefix
+  )
+
   try {
     const [clientResult, , pageToHashMap] = await bundle(
       siteConfig,
-      buildOptions
+      buildOptions,
+      langToPrefix,
+      userAlias
     )
     console.log('rendering pages...')
 
@@ -39,15 +53,21 @@ export async function build(buildOptions: BuildOptions = {}) {
     const hashMapStirng = JSON.stringify(JSON.stringify(pageToHashMap))
 
     for (const page of siteConfig.pages) {
-      await renderPage(
-        siteConfig,
-        page,
-        clientResult,
-        appChunk,
-        cssChunk,
-        pageToHashMap,
-        hashMapStirng
-      )
+      try {
+        await renderPage(
+          siteConfig,
+          page,
+          clientResult,
+          appChunk,
+          cssChunk,
+          pageToHashMap,
+          hashMapStirng,
+          langToPrefix,
+          userAlias
+        )
+      } catch (err) {
+        console.log(err)
+      }
     }
   } finally {
     await fs.remove(siteConfig.tempDir)

@@ -4,7 +4,13 @@ import { SiteConfig, resolveSiteDataByRoute } from '../config'
 import { HeadConfig } from '../../../types/shared'
 import { BuildResult } from 'vite'
 import { OutputChunk, OutputAsset } from 'rollup'
-import { assetsPath } from './bundle'
+import {
+  assetsPath,
+  localeFile,
+  LangToPrefix,
+  resolveAlias,
+  UserAlias
+} from './bundle'
 
 const escape = require('escape-html')
 
@@ -15,17 +21,22 @@ export async function renderPage(
   appChunk: OutputChunk,
   cssChunk: OutputAsset,
   pageToHashMap: Record<string, string>,
-  hashMapStirng: string
+  hashMapStirng: string,
+  langToPrefix: LangToPrefix,
+  userAlias: UserAlias
 ) {
+  console.log(page)
   const { createApp } = require(path.join(config.tempDir, assetsPath, 'app.js'))
   const { app, router } = createApp()
-  const routePath = `/${page.replace(/\.md$/, '')}`
+  // index.zh-CN.md -> /zh/index.md
+  const virtualPage = localeFile(langToPrefix, resolveAlias(page, userAlias))
+  const routePath = `/${virtualPage.replace(/\.md$/, '')}`
   const siteData = resolveSiteDataByRoute(config.site, routePath)
   router.go(routePath)
   // lazy require server-renderer for production build
   const content = await require('@vue/server-renderer').renderToString(app)
 
-  const pageName = page.replace(/\//g, '_')
+  const pageName = virtualPage.replace(/\//g, '_')
   // server build doesn't need hash
   const pageServerJsFileName = pageName + '.js'
   // for any initial page load, we only need the lean version of the page js
@@ -76,7 +87,10 @@ export async function renderPage(
     <script type="module" async src="${assetPath}${appChunk.fileName}"></script>
   </body>
 </html>`.trim()
-  const htmlFileName = path.join(config.outDir, page.replace(/\.md$/, '.html'))
+  const htmlFileName = path.join(
+    config.outDir,
+    virtualPage.replace(/\.md$/, '.html')
+  )
   await fs.ensureDir(path.dirname(htmlFileName))
   await fs.writeFile(htmlFileName, html)
 }
