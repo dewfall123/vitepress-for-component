@@ -3,6 +3,7 @@ import { useSiteData, useSiteDataByRoute, useRoute } from 'vitepress'
 import NavBarLink from './NavBarLink.vue'
 import NavDropdownLink from './NavDropdownLink.vue'
 import { DefaultTheme } from '../config'
+import { inBrowser } from '/@app/utils'
 
 const platforms = ['GitHub', 'GitLab', 'Bitbucket'].map(
   (platform) => [platform, new RegExp(platform, 'i')] as const
@@ -52,21 +53,30 @@ export default {
         return null
       }
 
+      // index.html
+      const base = siteData.value.base.endsWith('/')
+        ? siteData.value.base.slice(0, -1)
+        : siteData.value.base
+
+      // inBrowser router
+      const routerPath = inBrowser ? route.path.slice(base.length) : route.path
+
       const currentLangBase = localeKeys.find((v) => {
         if (v === '/') {
           return false
         }
-        return route.path.startsWith(v)
+        return routerPath.startsWith(v)
       })
       const currentContentPath = currentLangBase
-        ? route.path.substring(currentLangBase.length - 1)
-        : route.path
+        ? routerPath.substring(currentLangBase.length - 1)
+        : routerPath
       const candidates = localeKeys.map((v) => {
         return {
           text: locales[v].label || locales[v].lang,
-          link: `${v}${currentContentPath}`
+          link: `${v.slice(0, -1)}${currentContentPath}`
         }
       })
+      console.log(candidates)
 
       const currentLangKey = currentLangBase ? currentLangBase : '/'
       const selectText = locales[currentLangKey].selectText

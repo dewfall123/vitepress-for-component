@@ -32,6 +32,8 @@ export async function renderPage(
   const virtualPage = localeFile(langToPrefix, resolveAlias(page, userAlias))
   const routePath = `/${virtualPage.replace(/\.md$/, '')}`
   const siteData = resolveSiteDataByRoute(config.site, routePath)
+  // const base = config.site.base.slice(0, -1)
+  console.log('go -> ' + routePath)
   router.go(routePath)
   // lazy require server-renderer for production build
   const content = await require('@vue/server-renderer').renderToString(app)
