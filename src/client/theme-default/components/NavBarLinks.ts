@@ -53,13 +53,13 @@ export default {
         return null
       }
 
-      // index.html
-      const base = siteData.value.base.endsWith('/')
-        ? siteData.value.base.slice(0, -1)
-        : siteData.value.base
-
-      // inBrowser router
-      const routerPath = inBrowser ? route.path.slice(base.length) : route.path
+      // handle site base
+      const siteBase = inBrowser ? siteData.value.base : '/'
+      const siteBaseWithoutSuffix = siteBase.endsWith('/')
+        ? siteBase.slice(0, -1)
+        : siteBase
+      // remove site base in browser env
+      const routerPath = route.path.slice(siteBaseWithoutSuffix.length)
 
       const currentLangBase = localeKeys.find((v) => {
         if (v === '/') {
@@ -71,9 +71,10 @@ export default {
         ? routerPath.substring(currentLangBase.length - 1)
         : routerPath
       const candidates = localeKeys.map((v) => {
+        const localePath = v.endsWith('/') ? v.slice(0, -1) : v
         return {
           text: locales[v].label || locales[v].lang,
-          link: `${v.slice(0, -1)}${currentContentPath}`
+          link: `${localePath}${currentContentPath}`
         }
       })
       console.log(candidates)
@@ -88,13 +89,11 @@ export default {
       }
     })
 
+    const navData = computed(() => {
+      return siteDataByRoute.value.themeConfig.nav
+    })
     return {
-      navData:
-        process.env.NODE_ENV === 'production'
-          ? // navbar items do not change in production
-            siteDataByRoute.value.themeConfig.nav
-          : // use computed in dev for hot reload
-            computed(() => siteDataByRoute.value.themeConfig.nav),
+      navData,
       repoInfo,
       localeCandidates
     }
