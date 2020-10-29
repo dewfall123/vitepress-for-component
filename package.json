@@ -1,6 +1,6 @@
 {
   "name": "vlib-docsify",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
