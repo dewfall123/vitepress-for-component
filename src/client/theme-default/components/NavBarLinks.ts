@@ -77,7 +77,6 @@ export default {
           link: `${localePath}${currentContentPath}`
         }
       })
-      console.log(candidates)
 
       const currentLangKey = currentLangBase ? currentLangBase : '/'
       const selectText = locales[currentLangKey].selectText
