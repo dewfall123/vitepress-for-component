@@ -20,7 +20,7 @@ function createVitePressPlugin({
 }: SiteConfig): ServerPlugin {
   return ({ app, root, watcher, resolver }) => {
     const markdownToVue = createMarkdownToVueRenderFn(root)
-    const localeConfigs = userConfig.themeConfig.locales
+    const localeConfigs = userConfig.themeConfig.locales ?? {}
     const localePathPrefixs = Object.keys(localeConfigs).filter(
       (i) => i !== '/'
     )

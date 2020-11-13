@@ -57,7 +57,10 @@ export async function resolveConfig(
     root,
     site,
     themeDir,
-    pages: await globby(['**.md'], { cwd: root, ignore: ['node_modules'] }),
+    pages: await globby(['**.md'], {
+      cwd: root,
+      ignore: ['node_modules', '**/node_modules']
+    }),
     configPath: resolve(root, 'config.js'),
     outDir: userConfig.outDir
       ? path.resolve(root, userConfig.outDir)
