@@ -27,14 +27,15 @@
   },
   "homepage": "https://github.com/dewfall123/vlib-docsify/#readme",
   "scripts": {
-    "dev": "run-p dev-client dev-node dev-client-copy",
+    "dev": "yarn dev-shared && yarn dev-start",
+    "dev-start": "run-p dev-client dev-node dev-watch",
     "dev-client": "tsc -w -p src/client",
-    "dev-client-copy": "node scripts/watchAndCopy",
     "dev-node": "tsc -w -p src/node",
-    "dev-shared": "tsc -w -p src/shared",
-    "release": "bash scripts/release.sh",
-    "build": "rimraf -rf dist && tsc -p src/client && tsc -p src/node && tsc -p src/shared && node scripts/copy",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "dev-shared": "node scripts/copyShared",
+    "dev-watch": "node scripts/watchAndCopy",
+    "build": "rimraf -rf dist && node scripts/copyShared && tsc -p src/client && tsc -p src/node && node scripts/copyClient",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "bash scripts/release.sh"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -53,8 +54,8 @@
   "author": "dewfall",
   "license": "MIT",
   "dependencies": {
-    "@vue/compiler-sfc": "^3.0.0-rc.11",
-    "@vue/server-renderer": "^3.0.0-rc.11",
+    "@vue/compiler-sfc": "^3.0.2",
+    "@vue/server-renderer": "^3.0.2",
     "debug": "^4.1.1",
     "diacritics": "^1.3.0",
     "escape-html": "^1.0.3",
@@ -71,8 +72,8 @@
     "portfinder": "^1.0.28",
     "prismjs": "^1.20.0",
     "slash": "^3.0.0",
-    "vite": "^1.0.0-rc.4",
-    "vue": "^3.0.0-rc.11"
+    "vite": "^1.0.0-rc.9",
+    "vue": "^3.0.2"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.1",

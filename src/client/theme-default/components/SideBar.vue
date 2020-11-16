@@ -7,7 +7,7 @@
     <SideBarItem v-for="item of items" :item="item" />
   </ul>
 
-  <ul class="slug"></ul>
+  <Slugs class="right-slug"></Slugs>
   <slot name="bottom" />
 </template>
 
