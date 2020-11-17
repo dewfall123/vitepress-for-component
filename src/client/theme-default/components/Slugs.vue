@@ -14,9 +14,6 @@
 <script lang="ts" src="./Slugs"></script>
 
 <style scoped>
-.right-slug {
-}
-
 .slug-item {
   list-style: none;
   font-size: 14px;
@@ -25,11 +22,15 @@
   overflow: hidden;
   padding: 4px 0 4px 16px;
   margin: 0;
-  border-left: 2px solid #dfdfdf;
+  border-left: 2px solid #ebedf1;
 }
 
 .level-2 {
-  font-size: 12px;
-  padding-left: 24px;
+  font-size: 13px;
+  padding-left: 28px;
+}
+
+.link {
+  color: var(--text-color);
 }
 </style>
