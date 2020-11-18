@@ -21,8 +21,8 @@ export interface UserConfig<ThemeConfig = any> {
   // TODO locales support etc.
   viteOptions: ServerConfig
   outDir?: string
-  // virtualFiles
-  virtualFiles?: Record<string, string>
+  // src
+  srcIncludes?: string[]
 }
 
 export interface SiteConfig<ThemeConfig = any> {
@@ -40,9 +40,7 @@ export interface SiteConfig<ThemeConfig = any> {
 const resolve = (root: string, file: string) =>
   path.resolve(root, `.vitepress`, file)
 
-export async function resolveConfig(
-  root: string = process.cwd()
-): Promise<SiteConfig> {
+export async function resolveConfig(root: string): Promise<SiteConfig> {
   const site = await resolveSiteData(root)
 
   // resolve theme path

@@ -4,6 +4,8 @@ import { BuildConfig as ViteBuildOptions } from 'vite'
 import { resolveConfig, resolveUserConfig } from '../config'
 import { renderPage } from './render'
 import { OutputChunk, OutputAsset } from 'rollup'
+import { TempFileName } from '../genTemporary'
+import { join } from 'path'
 
 export type BuildOptions = Pick<
   Partial<ViteBuildOptions>,
@@ -15,7 +17,9 @@ export type BuildOptions = Pick<
 
 export async function build(buildOptions: BuildOptions = {}) {
   process.env.NODE_ENV = 'production'
-  const siteConfig = await resolveConfig(buildOptions.root)
+
+  const root = join(buildOptions.root ?? process.cwd(), TempFileName)
+  const siteConfig = await resolveConfig(root)
   const userConfig = await resolveUserConfig(siteConfig.root)
   const userAlias = userConfig.alias ?? {}
   // locale configs

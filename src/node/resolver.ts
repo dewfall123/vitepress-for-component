@@ -1,6 +1,8 @@
 import path from 'path'
 import { Resolver } from 'vite'
 import { UserConfig } from './config'
+import { DefaultSrcIncludes } from './genTemporary'
+import { clearSuffix } from './utils/parseHeader'
 
 export const APP_PATH = path.join(__dirname, '../client/app')
 export const SHARED_PATH = path.join(__dirname, '../client/shared')
@@ -20,9 +22,16 @@ export function createResolver(
   themeDir: string,
   userConfig: UserConfig
 ): Resolver {
+  const srcIncludes = userConfig.srcIncludes ?? DefaultSrcIncludes
+  const srcAlias = srcIncludes.reduce((map, src) => {
+    map[`/@${clearSuffix(src)}/`] = path.resolve(src)
+    return map
+  }, {} as Record<string, string>)
+
   return {
     alias: {
       ...userConfig.alias,
+      ...srcAlias,
       '/@app/': APP_PATH,
       '/@theme/': themeDir,
       '/@shared/': SHARED_PATH,

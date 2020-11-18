@@ -1,4 +1,4 @@
-import path from 'path'
+import path, { join } from 'path'
 import {
   createServer as createViteServer,
   cachedRead,
@@ -9,6 +9,7 @@ import { resolveConfig, SiteConfig, resolveSiteData } from './config'
 import { createMarkdownToVueRenderFn } from './markdownToVue'
 import { APP_PATH, SITE_DATA_REQUEST_PATH } from './resolver'
 import { existsSync } from 'fs'
+import { TempFileName } from './genTemporary'
 
 const debug = require('debug')('vitepress:serve')
 const debugHmr = require('debug')('vitepress:hmr')
@@ -20,11 +21,6 @@ function createVitePressPlugin({
 }: SiteConfig): ServerPlugin {
   return ({ app, root, watcher, resolver }) => {
     const markdownToVue = createMarkdownToVueRenderFn(root)
-    const localeConfigs = userConfig.themeConfig.locales ?? {}
-    const localePathPrefixs = Object.keys(localeConfigs).filter(
-      (i) => i !== '/'
-    )
-    const defaultLang = userConfig.themeConfig.lang ?? 'en-US'
 
     // hot reload .md files as .vue files
     watcher.on('change', async (file) => {
@@ -89,13 +85,9 @@ function createVitePressPlugin({
         return
       }
 
-      const localePrefix =
-        localePathPrefixs.find((i) => ctx.path.startsWith(i)) ?? '/'
-      const lang = localeConfigs[localePrefix].lang ?? defaultLang
       // handle .md -> vue transforms
       if (ctx.path.endsWith('.md')) {
-        const path =
-          ctx.path.slice(localePrefix.length - 1).slice(0, -3) + `.${lang}.md`
+        const path = ctx.path
         const file = resolver.requestToFile(path)
         // console.log(ctx.path + ' -> 文件路径: ' + file)
         if (!existsSync(file)) {
@@ -131,9 +123,6 @@ function createVitePressPlugin({
           )}`
         }
         return
-      } else {
-        // only *.md file has locale diff
-        ctx.path = ctx.path.slice(localePrefix.length - 1)
       }
 
       await next()
@@ -198,11 +187,13 @@ function getNextAndPrev(themeConfig: any, pagePath: string) {
 }
 
 export async function createServer(options: ServerConfig = {}) {
-  const config = await resolveConfig(options.root)
+  const root = join(options.root ?? process.cwd(), TempFileName)
+  const config = await resolveConfig(root)
 
   return createViteServer({
     ...(config.userConfig.viteOptions ?? {}),
     ...options,
+    root: config.root,
     configureServer: createVitePressPlugin(config),
     resolvers: [config.resolver]
   })

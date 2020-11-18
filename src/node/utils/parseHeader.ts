@@ -62,3 +62,11 @@ export const parseHeader = compose(
 // Because we want to support using VUE components in headers.
 // e.g. https://vuepress.vuejs.org/guide/using-vue.html#badge
 export const deeplyParseHeader = compose(removeNonCodeWrappedHTML, parseHeader)
+
+export const clearSuffix = (s: string) => {
+  let str = s.trim()
+  if (str.endsWith('/')) {
+    str = str.slice(0, -1)
+  }
+  return str
+}

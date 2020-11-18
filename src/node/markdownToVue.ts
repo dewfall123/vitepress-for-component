@@ -10,7 +10,7 @@ import { deeplyParseHeader } from './utils/parseHeader'
 import { PageData } from '../../types/shared'
 
 const debug = require('debug')('vitepress:md')
-const cache = new LRUCache<string, MarkdownCompileResult>({ max: 1024 })
+export const cache = new LRUCache<string, MarkdownCompileResult>({ max: 1024 })
 
 interface MarkdownCompileResult {
   vueSrc: string
@@ -29,9 +29,6 @@ export function createMarkdownToVueRenderFn(
     lastUpdated: number,
     injectData = true
   ) => {
-    // record file root
-    md.root = path.resolve(file, '../')
-
     file = path.relative(root, file)
     const cached = cache.get(src)
     if (cached) {
@@ -41,6 +38,7 @@ export function createMarkdownToVueRenderFn(
     const start = Date.now()
 
     const { content, data: frontmatter } = matter(src)
+    md.realPath = frontmatter?.map?.realPath
     const { html, data } = md.render(content)
 
     // TODO validate data.links?

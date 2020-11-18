@@ -32,25 +32,28 @@ export const demoPlugin = (md: MarkdownIt) => {
 
     if (RE.test(content.trim())) {
       const componentName = `demo${index++}`
-      const src = (content.match(/src=("|')(\S+)('|")/) || [])[2] ?? ''
       let language = (content.match(/language=("|')(.*)('|")/) || [])[2] ?? ''
-      const srcPath = path.resolve((md as any).root, src)
-      if (!src || !fs.existsSync(srcPath)) {
-        const warningMsg = `${srcPath} does not exist!`
+      const src = (content.match(/src=("|')(\S+)('|")/) || [])[2] ?? ''
+      const realPath = (md as any).realPath
+      const srcFilePath = path.join(realPath, '../', src)
+      const importPath = '/@' + srcFilePath.split(path.sep).join('/')
+      if (!src || !fs.existsSync(srcFilePath)) {
+        const warningMsg = `${srcFilePath} does not exist!`
         console.warn(`[vitepress]: ${warningMsg}`)
-        return `<demo src="${src}" >
+        return `<demo src="${importPath}" >
         <p>${warningMsg}</p>`
       }
       if (!language) {
-        language = (src.match(/\.(.+)$/) || [])[1] ?? 'vue'
+        language = (importPath.match(/\.(.+)$/) || [])[1] ?? 'vue'
       }
 
-      // console.log(`srcPath=${srcPath}`)
-      const codeStr = fs.readFileSync(srcPath).toString()
+      const codeStr = fs.readFileSync(srcFilePath).toString()
       // const { content: codeContent, data: frontmatter } = matter(codeStr)
       const htmlStr = encodeURIComponent(highlight(codeStr, language))
 
-      hoistedTags.script!.unshift(`import ${componentName} from '${src}' \n`)
+      hoistedTags.script!.unshift(
+        `import ${componentName} from '${importPath}' \n`
+      )
       hoistedTags.components!.push(componentName)
 
       return content.replace(

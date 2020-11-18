@@ -6,7 +6,7 @@ export default {
     const route = useRoute()
     const slugs = computed(() => {
       // only display two level
-      const headers = route.data.headers
+      const headers = route.data.headers ?? []
       let minLevel = 10
       for (const { level } of headers) {
         minLevel > level && (minLevel = level)
