@@ -2,7 +2,13 @@
 const chalk = require('chalk')
 const argv = require('minimist')(process.argv.slice(2))
 const portfinder = require('portfinder')
-const { createServer, genTemporary, build } = require('../dist/node')
+const path = require('path')
+const {
+  createServer,
+  genTemporary,
+  build,
+  TempFileName
+} = require('../dist/node')
 
 console.log(chalk.green('[vlib-docsify] forked from vitepress~'))
 
@@ -11,9 +17,7 @@ console.log(chalk.cyan(`vite v${require('vite/package.json').version}`))
 
 const command = argv._[0]
 const root = argv._[command ? 1 : 0]
-if (root) {
-  argv.root = root
-}
+argv.root = path.join(root ?? argv.root ?? process.cwd(), TempFileName)
 
 async function run() {
   await genTemporary(argv)

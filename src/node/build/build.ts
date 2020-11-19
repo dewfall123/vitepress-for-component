@@ -1,11 +1,9 @@
 import fs from 'fs-extra'
-import { bundle, LangToPrefix } from './bundle'
+import { bundle } from './bundle'
 import { BuildConfig as ViteBuildOptions } from 'vite'
-import { resolveConfig, resolveUserConfig } from '../config'
+import { resolveConfig } from '../config'
 import { renderPage } from './render'
 import { OutputChunk, OutputAsset } from 'rollup'
-import { TempFileName } from '../genTemporary'
-import { join } from 'path'
 
 export type BuildOptions = Pick<
   Partial<ViteBuildOptions>,
@@ -17,27 +15,11 @@ export type BuildOptions = Pick<
 
 export async function build(buildOptions: BuildOptions = {}) {
   process.env.NODE_ENV = 'production'
-
-  const root = join(buildOptions.root ?? process.cwd(), TempFileName)
-  const siteConfig = await resolveConfig(root)
-  const userConfig = await resolveUserConfig(siteConfig.root)
-  const userAlias = userConfig.alias ?? {}
-  // locale configs
-  const localeConfigs = userConfig.themeConfig.locales ?? {}
-  const langToPrefix = Object.entries(localeConfigs).reduce(
-    (map, [key, { lang }]: any) => {
-      map[lang] = key
-      return map
-    },
-    {} as LangToPrefix
-  )
-
+  const siteConfig = await resolveConfig(buildOptions.root!)
   try {
     const [clientResult, , pageToHashMap] = await bundle(
       siteConfig,
-      buildOptions,
-      langToPrefix,
-      userAlias
+      buildOptions
     )
     console.log('rendering pages...')
 
@@ -57,21 +39,15 @@ export async function build(buildOptions: BuildOptions = {}) {
     const hashMapStirng = JSON.stringify(JSON.stringify(pageToHashMap))
 
     for (const page of siteConfig.pages) {
-      try {
-        await renderPage(
-          siteConfig,
-          page,
-          clientResult,
-          appChunk,
-          cssChunk,
-          pageToHashMap,
-          hashMapStirng,
-          langToPrefix,
-          userAlias
-        )
-      } catch (err) {
-        console.log(err)
-      }
+      await renderPage(
+        siteConfig,
+        page,
+        clientResult,
+        appChunk,
+        cssChunk,
+        pageToHashMap,
+        hashMapStirng
+      )
     }
   } finally {
     await fs.remove(siteConfig.tempDir)

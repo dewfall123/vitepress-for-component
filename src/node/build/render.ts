@@ -4,13 +4,7 @@ import { SiteConfig, resolveSiteDataByRoute } from '../config'
 import { HeadConfig } from '../../../types/shared'
 import { BuildResult } from 'vite'
 import { OutputChunk, OutputAsset } from 'rollup'
-import {
-  assetsPath,
-  localeFile,
-  LangToPrefix,
-  resolveAlias,
-  UserAlias
-} from './bundle'
+import { assetsDir } from './bundle'
 
 const escape = require('escape-html')
 
@@ -21,24 +15,20 @@ export async function renderPage(
   appChunk: OutputChunk,
   cssChunk: OutputAsset,
   pageToHashMap: Record<string, string>,
-  hashMapStirng: string,
-  langToPrefix: LangToPrefix,
-  userAlias: UserAlias
+  hashMapStirng: string
 ) {
-  console.log(page)
-  const { createApp } = require(path.join(config.tempDir, assetsPath, 'app.js'))
+  const { createApp } = require(path.join(
+    config.tempDir,
+    `${assetsDir}/app.js`
+  ))
   const { app, router } = createApp()
-  // index.zh-CN.md -> /zh/index.md
-  const virtualPage = localeFile(langToPrefix, resolveAlias(page, userAlias))
-  const routePath = `/${virtualPage.replace(/\.md$/, '')}`
+  const routePath = `/${page.replace(/\.md$/, '')}`
   const siteData = resolveSiteDataByRoute(config.site, routePath)
-  // const base = config.site.base.slice(0, -1)
-  console.log('go -> ' + routePath)
   router.go(routePath)
   // lazy require server-renderer for production build
   const content = await require('@vue/server-renderer').renderToString(app)
 
-  const pageName = virtualPage.replace(/\//g, '_')
+  const pageName = page.replace(/\//g, '_')
   // server build doesn't need hash
   const pageServerJsFileName = pageName + '.js'
   // for any initial page load, we only need the lean version of the page js
@@ -49,12 +39,12 @@ export async function renderPage(
   // resolve page data so we can render head tags
   const { __pageData } = require(path.join(
     config.tempDir,
-    assetsPath,
+    assetsDir,
     pageServerJsFileName
   ))
   const pageData = JSON.parse(__pageData)
 
-  const assetPath = `${siteData.base}${assetsPath}/`
+  const assetPath = `${siteData.base}${assetsDir}/`
   const preloadLinks = [
     // resolve imports for index.js + page.md.js and inject script tags for
     // them as well so we fetch everything as early as possible without having
@@ -89,10 +79,7 @@ export async function renderPage(
     <script type="module" async src="${assetPath}${appChunk.fileName}"></script>
   </body>
 </html>`.trim()
-  const htmlFileName = path.join(
-    config.outDir,
-    virtualPage.replace(/\.md$/, '.html')
-  )
+  const htmlFileName = path.join(config.outDir, page.replace(/\.md$/, '.html'))
   await fs.ensureDir(path.dirname(htmlFileName))
   await fs.writeFile(htmlFileName, html)
 }

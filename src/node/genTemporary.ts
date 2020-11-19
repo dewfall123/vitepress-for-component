@@ -12,8 +12,7 @@ export const DefaultSrcIncludes = ['src']
 
 // generate a .temp dir
 export async function genTemporary(options: ServerConfig = {}) {
-  const root = options.root ?? process.cwd()
-  const realRoot = join(root, TempFileName)
+  const root = options.root!
   const config = await resolveConfig(root)
   const userConfig = config.userConfig
   const langToPathMapping = getLangToPathMapping(
@@ -25,13 +24,15 @@ export async function genTemporary(options: ServerConfig = {}) {
     userConfig: { srcIncludes: srcIncludes = DefaultSrcIncludes }
   } = config
 
-  await fsExtra.remove(realRoot)
-  await fsExtra.ensureDir(realRoot)
+  await fsExtra.remove(root)
+  await fsExtra.ensureDir(root)
 
   await Promise.all([
     copyDocs(root, langToPathMapping),
     copySrc(root, srcIncludes, langToPathMapping)
   ])
+
+  console.log('copy done.')
 }
 
 // copy all file at root to .temp dir
@@ -39,18 +40,15 @@ async function copyDocs(
   root: string,
   langToPathMapping: Record<string, string> | null
 ) {
-  const files = await globby([`**`, `!${TempFileName}`], {
+  const docsPath = join(root, '..')
+  const files = await globby([`**`, `!${TempFileName}`, '!dist'], {
     dot: true,
-    cwd: root
+    cwd: docsPath
   })
   files.forEach((file) => {
-    const descFile = join(
-      root,
-      TempFileName,
-      tolocalePath(langToPathMapping, file)
-    )
+    const descFile = join(root, tolocalePath(langToPathMapping, file))
     console.log(file + ' -> ' + descFile)
-    fsExtra.copy(join(root, file), descFile)
+    fsExtra.copy(join(docsPath, file), descFile)
   })
 }
 
@@ -86,19 +84,14 @@ async function copySrc(
         ...frontmatter.map,
         realPath: file
       }
-      const destFile = join(
-        root,
-        TempFileName,
-        tolocalePath(langToPathMapping, destPath)
-      )
+      const destFile = join(root, tolocalePath(langToPathMapping, destPath))
 
-      console.log(destFile)
+      console.log(file + ' -> ' + destFile)
 
       await fsExtra.ensureFile(destFile)
       await fsExtra.writeFile(destFile, matter.stringify(content, frontmatter))
     })
   )
-  console.log('copy done.')
 }
 
 // resolve a mapping from localeConfig
@@ -123,7 +116,7 @@ function getLangToPathMapping(
     defaultLangPrefix = Object.values(mapping)[0]
   }
   mapping[''] = defaultLangPrefix
-  console.log(mapping)
+
   return mapping
 }
 
@@ -133,14 +126,11 @@ function tolocalePath(mapping: Record<string, string> | null, path: string) {
     return path
   }
   const fileName = basename(path)
+  // .md
   const ext = extname(fileName)
-  console.log('fileName = ' + fileName)
-  console.log('ext = ' + ext)
   // .zh-CN
   const lang = extname(fileName.slice(0, -ext.length))
-  console.log('lang = ' + lang)
+  // en/
   const langPrefix = mapping[lang.slice(1)]
-  console.log(`${langPrefix}${path.slice(0, -(ext + lang).length)}${ext}`)
-  console.log('\n')
   return `${langPrefix}${path.slice(0, -(ext + lang).length)}${ext}`
 }

@@ -1,4 +1,4 @@
-import path, { join } from 'path'
+import path from 'path'
 import {
   createServer as createViteServer,
   cachedRead,
@@ -9,7 +9,6 @@ import { resolveConfig, SiteConfig, resolveSiteData } from './config'
 import { createMarkdownToVueRenderFn } from './markdownToVue'
 import { APP_PATH, SITE_DATA_REQUEST_PATH } from './resolver'
 import { existsSync } from 'fs'
-import { TempFileName } from './genTemporary'
 
 const debug = require('debug')('vitepress:serve')
 const debugHmr = require('debug')('vitepress:hmr')
@@ -187,8 +186,7 @@ function getNextAndPrev(themeConfig: any, pagePath: string) {
 }
 
 export async function createServer(options: ServerConfig = {}) {
-  const root = join(options.root ?? process.cwd(), TempFileName)
-  const config = await resolveConfig(root)
+  const config = await resolveConfig(options.root!)
 
   return createViteServer({
     ...(config.userConfig.viteOptions ?? {}),
