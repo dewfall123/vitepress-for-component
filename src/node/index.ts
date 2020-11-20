@@ -1,4 +1,4 @@
 export * from './server'
 export * from './build/build'
 export * from './config'
-export * from './genTemporary'
+export * from './temporary/genTemp'

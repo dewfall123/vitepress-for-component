@@ -39,15 +39,19 @@ export async function build(buildOptions: BuildOptions = {}) {
     const hashMapStirng = JSON.stringify(JSON.stringify(pageToHashMap))
 
     for (const page of siteConfig.pages) {
-      await renderPage(
-        siteConfig,
-        page,
-        clientResult,
-        appChunk,
-        cssChunk,
-        pageToHashMap,
-        hashMapStirng
-      )
+      try {
+        await renderPage(
+          siteConfig,
+          page,
+          clientResult,
+          appChunk,
+          cssChunk,
+          pageToHashMap,
+          hashMapStirng
+        )
+      } catch {
+        //
+      }
     }
   } finally {
     await fs.remove(siteConfig.tempDir)

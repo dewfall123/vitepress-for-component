@@ -1,7 +1,7 @@
 import path from 'path'
 import { Resolver } from 'vite'
 import { UserConfig } from './config'
-import { DefaultSrcIncludes } from './genTemporary'
+import { DefaultSrcIncludes } from './temporary/genTemp'
 import { clearSuffix } from './utils/parseHeader'
 
 export const APP_PATH = path.join(__dirname, '../client/app')

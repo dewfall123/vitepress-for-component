@@ -5,6 +5,9 @@ code {
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
   margin: 0;
+  padding: 2px 5px;
+  color: #d56161;
+  background: #f6f7f9;
 }
 
 code .token.deleted {

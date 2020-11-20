@@ -1,12 +1,13 @@
 .theme {
   --border-color: #ebedf1;
   --header-height: 3.6rem;
-  --sidebar-width: 20rem;
+  --sidebar-width: 16rem;
   --slug-width: 10rem;
   --text-color: #454d64;
   --text-color-light: #476582;
   --code-bg-color: #f9fafb;
-  --accent-color: #3eaf7c;
+  /* --accent-color: #3eaf7c; */
+  --accent-color: #4569d4;
   --placeholder-color: #c0c4cc;
 
   /* responsive breakpoints */

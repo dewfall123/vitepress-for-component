@@ -29,7 +29,6 @@ Then you can use it like `vitepress`
 yarn global add vitepress-dg
 ```
 
-###
 
 ## License
 
