@@ -10,7 +10,7 @@ const {
   TempFileName
 } = require('../dist/node')
 
-console.log(chalk.green('[vlib-docsify] forked from vitepress~'))
+console.log(chalk.green('[vitepress-dg] forked from vitepress~'))
 
 console.log(chalk.cyan(`vitepress v${require('../package.json').version}`))
 console.log(chalk.cyan(`vite v${require('vite/package.json').version}`))

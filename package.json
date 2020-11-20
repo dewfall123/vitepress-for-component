@@ -1,11 +1,11 @@
 {
-  "name": "vlib-docsify",
-  "version": "0.3.1",
+  "name": "vitepress-dg",
+  "version": "0.8.0",
   "description": "",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
   "bin": {
-    "vlib-docsify": "bin/vlib-docsify.js"
+    "vitepress-dg": "bin/vitepress-dg.js"
   },
   "files": [
     "bin",
@@ -14,18 +14,21 @@
     "types"
   ],
   "keywords": [
-    "vite",
+    "documentation",
+    "generator",
+    "vuepress",
+    "dumi",
     "vue",
-    "vuepress"
+    "vite"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dewfall123/vlib-docsify.git"
+    "url": "git+https://github.com/dewfall123/vitepress-dg.git"
   },
   "bugs": {
-    "url": "https://github.com/dewfall123/vlib-docsify/issues"
+    "url": "https://github.com/dewfall123/vitepress-dg/issues"
   },
-  "homepage": "https://github.com/dewfall123/vlib-docsify/#readme",
+  "homepage": "https://github.com/dewfall123/vitepress-dg/#readme",
   "scripts": {
     "dev": "yarn dev-shared && yarn dev-start",
     "dev-start": "run-p dev-client dev-node dev-watch",

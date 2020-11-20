@@ -1,18 +1,24 @@
-# (WIP) vlib-docsify 📝💨
+# vitepress-dg
 
-[![npm](https://img.shields.io/npm/v/vlib-docsify)](https://www.npmjs.com/package/vlib-docsify)
+A documentation site generator based on vitepress.
 
-> A doc generator tool for libiary. based on vitepress.
+Inspired by [dumi](https://github.com/umijs/dumi).
 
-**Note this is early WIP! Currently the focus is on making vlib-docsify stable and feature complete first. It is not recommended to use this for anything serious yet.**
+## Features
 
-``` bash
-npm install -D vlib-docsify
-echo '# Hello vlib-docsify' > index.md
+- Support `demo` in \*.md file.
+- Suppout locale suffix \*.md (like `index.zh-CN.md`).
 
-# starts dev server
-npx vlib-docsify
+## Cli
 
-# build > .vlib-docsify/dist
-npx vlib-docsify build
+[vitepress-dg-cli](https://github.com/dewfall123/vitepress-dg-cli)
+
 ```
+yarn add vitepress-dg-cli -g
+
+vitepress-dg-cli my-project
+```
+
+## License
+
+[MIT](LICENSE)
