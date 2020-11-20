@@ -9,15 +9,27 @@ Inspired by [dumi](https://github.com/umijs/dumi).
 - Support `demo` in \*.md file.
 - Suppout locale suffix \*.md (like `index.zh-CN.md`).
 
-## Cli
+## Usage
 
-[vitepress-dg-cli](https://github.com/dewfall123/vitepress-dg-cli)
+### Using it with cli
+
+We recommend using it with [cli](https://github.com/dewfall123/create-vlib.git)
 
 ```
-yarn add vitepress-dg-cli -g
-
-vitepress-dg-cli my-project
+yarn create vlib
 ```
+
+or
+
+### Using it alone
+
+Then you can use it like `vitepress`
+
+```
+yarn global add vitepress-dg
+```
+
+###
 
 ## License
 

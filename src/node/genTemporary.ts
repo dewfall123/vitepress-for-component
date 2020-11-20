@@ -13,7 +13,7 @@ export const DefaultSrcIncludes = ['src']
 // generate a .temp dir
 export async function genTemporary(options: ServerConfig = {}) {
   const root = options.root!
-  const config = await resolveConfig(root)
+  const config = await resolveConfig(join(root, '..'))
   const userConfig = config.userConfig
   const langToPathMapping = getLangToPathMapping(
     userConfig.locales ?? userConfig.themeConfig?.locales,
@@ -47,7 +47,7 @@ async function copyDocs(
   })
   files.forEach((file) => {
     const descFile = join(root, tolocalePath(langToPathMapping, file))
-    console.log(file + ' -> ' + descFile)
+    // console.log(file + ' -> ' + descFile)
     fsExtra.copy(join(docsPath, file), descFile)
   })
 }
@@ -86,7 +86,7 @@ async function copySrc(
       }
       const destFile = join(root, tolocalePath(langToPathMapping, destPath))
 
-      console.log(file + ' -> ' + destFile)
+      // console.log(file + ' -> ' + destFile)
 
       await fsExtra.ensureFile(destFile)
       await fsExtra.writeFile(destFile, matter.stringify(content, frontmatter))
