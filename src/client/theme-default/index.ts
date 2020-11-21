@@ -5,9 +5,9 @@ import './styles/custom-blocks.css'
 import './styles/markdown.css'
 import './styles/reset.css'
 
+import { Theme } from 'vitepress'
 import Layout from './Layout.vue'
 import NotFound from './NotFound.vue'
-import { Theme } from '../app/theme'
 
 const theme: Theme = {
   Layout,

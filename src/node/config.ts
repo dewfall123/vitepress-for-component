@@ -5,6 +5,7 @@ import globby from 'globby'
 import { createResolver, APP_PATH } from './resolver'
 import { Resolver, ServerConfig } from 'vite'
 import { SiteData, HeadConfig, LocaleConfig } from '../../types/shared'
+import { MarkdownOptions } from './markdown/markdown'
 export { resolveSiteDataByRoute } from './shared/config'
 
 const debug = require('debug')('vitepress:config')
@@ -18,6 +19,7 @@ export interface UserConfig<ThemeConfig = any> {
   themeConfig?: ThemeConfig
   locales?: Record<string, LocaleConfig>
   alias?: Record<string, string>
+  markdown?: MarkdownOptions
   // TODO locales support etc.
   viteOptions: ServerConfig
   outDir?: string
@@ -35,6 +37,7 @@ export interface SiteConfig<ThemeConfig = any> {
   resolver: Resolver
   pages: string[]
   userConfig: UserConfig
+  markdown?: MarkdownOptions
 }
 
 const resolve = (root: string, file: string) =>
@@ -65,7 +68,8 @@ export async function resolveConfig(root: string): Promise<SiteConfig> {
       : path.resolve(root, 'dist'),
     tempDir: path.resolve(APP_PATH, 'temp'),
     resolver: createResolver(themeDir, userConfig),
-    userConfig
+    userConfig,
+    markdown: userConfig.markdown
   }
 
   return config

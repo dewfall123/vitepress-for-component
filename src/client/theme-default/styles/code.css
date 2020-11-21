@@ -1,7 +1,6 @@
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
   font-size: 0.85em;
-  color: var(--text-color-light);
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
   margin: 0;
@@ -15,7 +14,7 @@ code .token.deleted {
 }
 
 code .token.inserted {
-  color: var(--accent-color);
+  color: var(--c-brand);
 }
 
 div[class*='language-'] {

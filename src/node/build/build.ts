@@ -1,9 +1,10 @@
 import fs from 'fs-extra'
-import { bundle } from './bundle'
+import { bundle, okMark, failMark } from './bundle'
 import { BuildConfig as ViteBuildOptions } from 'vite'
 import { resolveConfig } from '../config'
 import { renderPage } from './render'
 import { OutputChunk, OutputAsset } from 'rollup'
+import ora from 'ora'
 
 export type BuildOptions = Pick<
   Partial<ViteBuildOptions>,
@@ -21,40 +22,52 @@ export async function build(buildOptions: BuildOptions = {}) {
       siteConfig,
       buildOptions
     )
-    console.log('rendering pages...')
 
-    const appChunk = clientResult.assets.find(
-      (chunk) =>
-        chunk.type === 'chunk' && chunk.fileName.match(/^app\.\w+\.js$/)
-    ) as OutputChunk
+    const spinner = ora()
+    spinner.start('rendering pages...')
 
-    const cssChunk = clientResult.assets.find(
-      (chunk) => chunk.type === 'asset' && chunk.fileName.endsWith('.css')
-    ) as OutputAsset
+    try {
+      const appChunk = clientResult.assets.find(
+        (chunk) =>
+          chunk.type === 'chunk' && chunk.fileName.match(/^app\.\w+\.js$/)
+      ) as OutputChunk
 
-    // We embed the hash map string into each page directly so that it doesn't
-    // alter the main chunk's hash on every build. It's also embedded as a
-    // string and JSON.parsed from the client because it's faster than embedding
-    // as JS object literal.
-    const hashMapStirng = JSON.stringify(JSON.stringify(pageToHashMap))
+      const cssChunk = clientResult.assets.find(
+        (chunk) => chunk.type === 'asset' && chunk.fileName.endsWith('.css')
+      ) as OutputAsset
 
-    for (const page of siteConfig.pages) {
-      try {
-        await renderPage(
-          siteConfig,
-          page,
-          clientResult,
-          appChunk,
-          cssChunk,
-          pageToHashMap,
-          hashMapStirng
-        )
-      } catch {
-        //
+      // We embed the hash map string into each page directly so that it doesn't
+      // alter the main chunk's hash on every build. It's also embedded as a
+      // string and JSON.parsed from the client because it's faster than embedding
+      // as JS object literal.
+      const hashMapStirng = JSON.stringify(JSON.stringify(pageToHashMap))
+
+      for (const page of siteConfig.pages) {
+        try {
+          await renderPage(
+            siteConfig,
+            page,
+            clientResult,
+            appChunk,
+            cssChunk,
+            pageToHashMap,
+            hashMapStirng
+          )
+        } catch {
+          //
+        }
       }
+    } catch (e) {
+      spinner.stopAndPersist({
+        symbol: failMark
+      })
+      throw e
     }
+    spinner.stopAndPersist({
+      symbol: okMark
+    })
   } finally {
     await fs.remove(siteConfig.tempDir)
+    process.exit()
   }
-  console.log('done.')
 }

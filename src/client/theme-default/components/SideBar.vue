@@ -89,13 +89,14 @@ a.sidebar-link {
 }
 
 a.sidebar-link:hover {
-  color: var(--accent-color);
+  text-decoration: none;
+  color: var(--c-brand);
 }
 
 a.sidebar-link.active {
-  border-left-color: var(--accent-color);
+  border-left-color: var(--c-brand);
   font-weight: 600;
-  color: var(--accent-color);
+  color: var(--c-brand);
 }
 
 .sidebar-right {

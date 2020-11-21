@@ -1,6 +1,9 @@
-/dist
-/node_modules
+/coverage
 /src/client/shared
 /src/node/shared
 *.log
 .DS_Store
+.vite_opt_cache
+dist
+node_modules
+TODOs.md
