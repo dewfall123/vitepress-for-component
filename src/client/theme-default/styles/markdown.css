@@ -26,10 +26,16 @@ h1 {
 
 h2 {
   font-size: 1.45rem;
-  font-weight: 500;
 }
 
 h3 {
   font-size: 1.25rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 500;
 }

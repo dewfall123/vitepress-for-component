@@ -18,6 +18,7 @@ console.log(chalk.cyan(`vite v${require('vite/package.json').version}`))
 const command = argv._[0]
 const root = argv._[command ? 1 : 0]
 argv.root = path.join(root ?? argv.root ?? process.cwd(), TempFileName)
+console.log('root = ' + argv.root)
 
 async function run() {
   await genTemporary(argv)

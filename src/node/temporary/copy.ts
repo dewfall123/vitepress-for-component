@@ -7,7 +7,7 @@ import { basename, extname, join } from 'path'
 import { TempFileName } from './genTemp'
 import chokidar from 'chokidar'
 
-// copy userConfig.includes (default to ['src']) *.md to .temp
+// copy userConfig.srcIncludes (default to ['src']) *.md to .temp
 // dest file is frontmatter.map?.path or real path at .temp
 export async function copyAndWatchSrc(
   root: string,

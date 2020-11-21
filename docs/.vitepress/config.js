@@ -1,21 +1,22 @@
 module.exports = {
-  lang: 'en-US',
-  title: 'VitePress',
-  description: 'Vite & Vue powered static site generator.',
+  lang: 'zh-CN',
+  title: 'vitepress-for-component',
+  description: 'Fork自vitepress，针对组件开发做了一些功能增强',
 
   themeConfig: {
-    repo: 'vuejs/vitepress',
+    repo: 'vitepress-for-component',
     docsDir: 'docs',
 
     editLinks: true,
-    editLinkText: 'Edit this page on GitHub',
+    editLinkText: '在Github上编辑此页面',
 
     nav: [
-      { text: 'Guide', link: '/' },
-      { text: 'Config Reference', link: '/config/' },
+      { text: '指南', link: '/' },
+      { text: '配置项', link: '/config/' },
       {
-        text: 'Release Notes',
-        link: 'https://github.com/vuejs/vitepress/releases'
+        text: '更新日志',
+        link:
+          'https://github.com/dewfall123/vitepress-for-component/blob/master/CHANGELOG.md'
       }
     ],
 
@@ -30,11 +31,11 @@ module.exports = {
 function getGuideSidebar() {
   return [
     {
-      text: 'Introduction',
+      text: '介绍',
       children: [
-        { text: 'What is VitePress?', link: '/' },
-        { text: 'Getting Started', link: '/guide/getting-started' },
-        { text: 'Configuration', link: '/guide/configuration' },
+        { text: '介绍?', link: '/' },
+        { text: '快速上手', link: '/guide/getting-started' },
+        { text: '配置项', link: '/guide/configuration' },
         { text: 'Customization', link: '/guide/customization' },
         { text: 'Deploying', link: '/guide/deploy' }
       ]

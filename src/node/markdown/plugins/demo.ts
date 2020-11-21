@@ -1,8 +1,8 @@
 import MarkdownIt from 'markdown-it'
 import { MarkdownParsedData } from '../markdown'
 import fs from 'fs'
-import path from 'path'
 import { highlight } from './highlight'
+import path from 'path'
 // import matter from 'gray-matter'
 
 // interface DemoProps {
@@ -34,9 +34,16 @@ export const demoPlugin = (md: MarkdownIt) => {
       const componentName = `demo${index++}`
       let language = (content.match(/language=("|')(.*)('|")/) || [])[2] ?? ''
       const src = (content.match(/src=("|')(\S+)('|")/) || [])[2] ?? ''
-      const realPath = (md as any).realPath
-      const srcFilePath = path.join(realPath, '../', src)
-      const importPath = '/@' + srcFilePath.split(path.sep).join('/')
+
+      const { realPath, urlPath } = md as any
+      const srcFilePath = path.join(realPath ?? urlPath, '../', src)
+      let importPath = '/@' + srcFilePath.split(path.sep).join('/')
+      if (realPath) {
+        importPath = '/@' + srcFilePath.split(path.sep).join('/')
+      } else {
+        importPath = src
+      }
+
       if (!src || !fs.existsSync(srcFilePath)) {
         const warningMsg = `${srcFilePath} does not exist!`
         console.warn(`[vitepress]: ${warningMsg}`)
@@ -47,6 +54,7 @@ export const demoPlugin = (md: MarkdownIt) => {
         language = (importPath.match(/\.(.+)$/) || [])[1] ?? 'vue'
       }
 
+      // TODO cache it
       const codeStr = fs.readFileSync(srcFilePath).toString()
       // const { content: codeContent, data: frontmatter } = matter(codeStr)
       const htmlStr = encodeURIComponent(highlight(codeStr, language))

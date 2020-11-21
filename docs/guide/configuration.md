@@ -1,23 +1,20 @@
 # Configuration
 
-Without any configuration, the page is pretty minimal, and the user has no way to navigate around the site. To customize your site, let’s first create a `.vitepress` directory inside your docs directory. This is where all VitePress-specific files will be placed. Your project structure is probably like this:
+在`VitePress`里，`.md`文件的路径决定它的路由。如果我们想把文档和 demo 放在一起，配置`alias`会很麻烦而且复杂。
 
-```bash
-.
-├─ docs
-│  ├─ .vitepress
-│  │  └─ config.js
-│  └─ index.md
-└─ package.json
-````
+`vitepress-for-componnet`提供了 root 外`.md`文件映射功能。
 
-The essential file for configuring a VitePress site is `.vuepress/config.js`, which should export a JavaScript object:
+假设文档 root 是`docs/`。我们有这样一个文件`packages\vhooks\src\useHover\index.zh-CN.md`。
 
-```js
-module.exports = {
-  title: 'Hello VitePress',
-  description: 'Just playing around.'
-}
+```
+---
+map:
+  path: /hooks/use-hover
+---
+
+## useHover
+
+...
 ```
 
-Check out the [Config Reference](/config/) for a full list of options.
+它实际会被映射成到`docs/zh/hooks/use-hover/index.md`。也就是说，我们可以把`.md`和源码放在一起，又不影响`vitepress`。

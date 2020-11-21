@@ -29,7 +29,9 @@ export function createMarkdownToVueRenderFn(
     lastUpdated: number,
     injectData = true
   ) => {
-    file = path.relative(root, file)
+    const fileFullPath = file
+    file = path.relative(root, fileFullPath)
+
     const cached = cache.get(src)
     if (cached) {
       debug(`[cache hit] ${file}`)
@@ -39,6 +41,7 @@ export function createMarkdownToVueRenderFn(
 
     const { content, data: frontmatter } = matter(src)
     md.realPath = frontmatter?.map?.realPath
+    md.urlPath = fileFullPath
     const { html, data } = md.render(content)
 
     // TODO validate data.links?
@@ -68,8 +71,6 @@ export function createMarkdownToVueRenderFn(
     debug(`[render] ${file} in ${Date.now() - start}ms.`)
 
     const result = { vueSrc, pageData }
-    // console.log(file + '\n')
-    // console.log(vueSrc)
     cache.set(src, result)
     return result
   }
