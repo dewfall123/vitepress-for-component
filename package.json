@@ -1,11 +1,11 @@
 {
-  "name": "vitepress-dg",
-  "version": "0.8.1",
+  "name": "vitepress-for-component",
+  "version": "0.8.2",
   "description": "",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
   "bin": {
-    "vitepress-dg": "bin/vitepress-dg.js"
+    "vitepress-fc": "bin/vitepress-fc.js"
   },
   "files": [
     "bin",
@@ -23,12 +23,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dewfall123/vitepress-dg.git"
+    "url": "git+https://github.com/dewfall123/vitepress-for-component.git"
   },
   "bugs": {
-    "url": "https://github.com/dewfall123/vitepress-dg/issues"
+    "url": "https://github.com/dewfall123/vitepress-for-component/issues"
   },
-  "homepage": "https://github.com/dewfall123/vitepress-dg/#readme",
+  "homepage": "https://github.com/dewfall123/vitepress-for-component/#readme",
   "scripts": {
     "dev": "yarn dev-shared && yarn dev-start",
     "dev-start": "run-p dev-client dev-node dev-watch",

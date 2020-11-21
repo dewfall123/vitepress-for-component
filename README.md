@@ -1,13 +1,20 @@
-# vitepress-dg
+# vitepress-for-component
 
-A documentation site generator based on vitepress.
+Enhance vitepress for vue component development.
 
 Inspired by [dumi](https://github.com/umijs/dumi).
 
 ## Features
 
-- Support `demo` in \*.md file.
-- Suppout locale suffix \*.md (like `index.zh-CN.md`).
+- Support write `demo` in `.md` file.
+- Sopport mapping `.md` file in src directory to docs directory.
+- Based on vitepress.
+
+## Showcase
+
+Show you the code.
+
+### [ahooks-vue](https://dewfall123.github.io/ahooks-vue/).
 
 ## Usage
 
@@ -23,12 +30,11 @@ or
 
 ### Using it alone
 
-Then you can use it like `vitepress`
+You can use it like [`vitepress`](https://vitepress.vuejs.org/#motivation).
 
 ```
-yarn global add vitepress-dg
+yarn global add vitepress-for-component
 ```
-
 
 ## License
 
