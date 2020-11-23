@@ -1,6 +1,6 @@
 {
   "name": "vitepress-for-component",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
@@ -46,7 +46,9 @@
     "docs": "run-p dev docs-dev",
     "docs-dev": "node ./bin/vitepress-fc dev docs",
     "docs-build": "yarn build && node ./bin/vitepress-fc build docs",
-    "docs-serve": "yarn docs-build && node ./bin/vitepress-fc serve --root docs"
+    "docs-serve": "yarn docs-build && node ./bin/vitepress-fc serve --root docs",
+    "docs-deploy": "gh-pages -d docs/dist",
+    "docs-build-deploy": "yarn docs-build && yarn docs-deploy"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -102,6 +104,7 @@
     "conventional-changelog-cli": "^2.1.0",
     "enquirer": "^2.3.6",
     "execa": "^4.1.0",
+    "gh-pages": "^3.1.0",
     "jest": "^26.6.3",
     "koa": "^2.13.0",
     "koa-static": "^5.0.0",

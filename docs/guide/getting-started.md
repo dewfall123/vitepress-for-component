@@ -1,51 +1,36 @@
-# Getting Started
+## 使用脚手架（推荐）
 
-This section will help you build a basic VuePress documentation site from ground up. If you already have an existing project and would like to keep documentation inside the project, start from Step 3.
+### 初始化
 
-- **Step. 1:** Create and change into a new directory.
+```
+yarn create vlib
+```
 
-  ```bash
-  $ mkdir vitepress-starter && cd vitepress-starter
-  ```
+按照提示输入项目信息后，会看到如下信息：
 
-- **Step. 2:** Initialize with your preferred package manager.
+```
+�  Successfully created project test-project.
+�  Get started with the following commands:
 
-  ```bash
-  $ yarn init
-  ```
+$ cd test-project
+$ yarn dev
+```
 
-- **Step. 3:** Install VuePress locally.
+### 开发
 
-  ```bash
-  $ yarn add --dev vitepress
-  ```
+成功初始化后，会有一个简单的模板项目，并且包含一些组件开发常用的功能。
 
-- **Step. 4:** Create your first document.
+1. `yarn dev`: 热更新的开发服务.
+2. `yarn test`: [jest](https://jestjs.io/) 单元测试.
+3. `yarn build`: [Rollup](https://www.rollupjs.com/) 打包源码.
+4. `yarn docs-build`: 文档打包（SSR）.
+5. `docs-static`: 验证文档打包（通过 koa 开启静态文件服务）.
+6. `yarn docs-deploy`: 使用 [gh-pages](https://pages.github.com/) 以分支的形式部署到 github.io.
+7. `yarn changelog`: 用`conventional-changelog-cli`生成 changelog .
+8. `yarn lint` && `yarn ls-lint`: lint 检查.
 
-  ```bash
-  $ mkdir docs && echo '# Hello VitePress' > docs/index.md
-  ```
+## 普通使用
 
-- **Step. 5:** Add some scripts to `package.json`.
+像`vitepress`一样使用。
 
-  ```json
-  {
-    "scripts": {
-      "docs:dev": "vitepress dev docs",
-      "docs:build": "vitepress build docs",
-      "docs:serve": "vitepress serve docs"
-    }
-  }
-  ```
-
-- **Step. 6:** Serve the documentation site in the local server.
-
-  ```bash
-  $ yarn docs:dev
-  ```
-
-  VitePress will start a hot-reloading development server at http://localhost:3000.
-
-By now, you should have a basic but functional VuePress documentation site.
-
-When your documentation site starts to take shape, be sure to read the [deployment guide](./deploy).
+[getting-started](https://vitepress.vuejs.org/guide/getting-started.html).
