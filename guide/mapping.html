@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      文件映射 | VitePress
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/assets/style.cf75ddc7.css">
+    <link rel="modulepreload" href="/assets/common-f3b25f27.js">
+    <link rel="modulepreload" href="/assets/guide_mapping.md.34a4acfd.lean.js">
+    <link rel="modulepreload" href="/assets/app.a93ca5b2.js">
+    
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="no-sidebar theme"><header class="navbar"><!--[--><a class="title" aria-label="VitePress, back to home" href="/"><!----><span>VitePress</span></a><div class="flex-grow"></div><!----><!--[--><!--[--><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><!----><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><!--]--></ul><ul class="right-slug" data-v-76e1e4a9><!--[--><li class="slug-item level-1" data-v-76e1e4a9><a href="#文件映射" class="link" data-v-76e1e4a9>文件映射</a></li><li class="slug-item level-2" data-v-76e1e4a9><a href="#_1-根据map-path映射" class="link" data-v-76e1e4a9>1. 根据map.path映射</a></li><li class="slug-item level-2" data-v-76e1e4a9><a href="#_2-locale-后缀映射规则" class="link" data-v-76e1e4a9>2. locale 后缀映射规则</a></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="page" data-v-cd43aab0><!--[--><!--[--><!--]--><!--]--><div class="content" data-v-cd43aab0><div data-v-cd43aab0><h2 id="文件映射"><a class="header-anchor" href="#文件映射" aria-hidden="true">#</a> 文件映射</h2><p>运行<code>yarn dev</code>后可以看到，VFC 会在 docs 目录里面生成一个<code>.temp</code>文件，<code>.temp</code>是 <strong>当前 root 下所有文件</strong> + <strong><code>config.srcIncludes</code>里面的<code>.md</code>文件</strong> 映射结果。</p><p>例如<code>yarn create vlib</code>生成的<code>.temp</code>文件结构如下：</p><div class="language-"><pre><code>.temp
+├── components
+│   ├── button
+│   │   └── index.md
+│   └── loading
+│       └── index.md
+├── en
+│   ├── components
+│   │   ├── button
+│   │   │   └── index.md
+│   │   └── loading
+│   │       └── index.md
+│   └── index.md
+├── index.md
+└── package.json
+</code></pre></div><p>文件映射规则有两个:</p><h3 id="_1-根据map-path映射"><a class="header-anchor" href="#_1-根据map-path映射" aria-hidden="true">#</a> 1. 根据<code>map.path</code>映射</h3><p>VFC 在启动服务前会根据<code>config.srcIncludes</code>(默认<code>[src]</code>)的目录，来扫描里面的<code>.md</code>文件。识别<code>.md</code>文件的<code>Front Matter</code>的<code>map.path</code>字段，这个 path 就是映射的目标地址。</p><p>例如:</p><p><code>src\loading\index.en-US.md</code></p><div class="language-"><pre><code>---
+map:
+  path: /components/loading
+---
+...
+</code></pre></div><p>会被映射成<code>.temp\en\components\loading\index.md</code>。</p><p>如果<code>src\loading\index.en-US.md</code>缺少<code>Front Matter</code>的<code>map.path</code>字段，会以当前路径映射到<code>.temp</code>里面，即<code>.temp\en\components\loading\index.md</code>。</p><h3 id="_2-locale-后缀映射规则"><a class="header-anchor" href="#_2-locale-后缀映射规则" aria-hidden="true">#</a> 2. locale 后缀映射规则</h3><p>VFC 会根据 locale 配置生成一个<code>lang</code> -&gt; <code>path</code>的映射表。</p><p>例如模板项目里面的 locale 配置如下： docs.vitepress\config.js</p><div class="language-js"><pre><code><span class="token punctuation">{</span>
+  lang<span class="token operator">:</span> <span class="token string">&#39;zh-CN&#39;</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+  locales<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&#39;/&#39;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      lang<span class="token operator">:</span> <span class="token string">&#39;zh-CN&#39;</span><span class="token punctuation">,</span>
+      <span class="token operator">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">&#39;/en/&#39;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      lang<span class="token operator">:</span> <span class="token string">&#39;en-US&#39;</span><span class="token punctuation">,</span>
+      <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>会生成这样的一个映射表:</p><div class="language-js"><pre><code><span class="token punctuation">{</span> <span class="token string">&#39;zh-CN: &#39;</span><span class="token operator">/</span><span class="token string">&#39;, &#39;</span>en<span class="token operator">-</span><span class="token constant">US</span><span class="token string">&#39;: &#39;</span><span class="token operator">/</span>en<span class="token operator">/</span><span class="token string">&#39;, &#39;</span><span class="token string">&#39;: &#39;</span><span class="token operator">/</span>&#39; <span class="token punctuation">}</span>
+</code></pre></div><p>映射例子:</p><p><code>/comp/foo.zh-CN.md</code> -&gt; <code>/comp/foo.md</code></p><p><code>/comp/foo.en-US.md</code> -&gt; <code>/en/comp/foo.md</code></p><p><code>/comp/foo.md -&gt;</code> <code>/comp/foo.md</code></p></div></div><div class="edit-link" data-v-cd43aab0 data-v-1813d5d3><!----></div><!----><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"dbf30bc5\",\"guide_config.md\":\"827f7691\",\"guide_demo.md\":\"9d2c859b\",\"guide_getting-started.md\":\"7e7e59dc\",\"guide_mapping.md\":\"34a4acfd\"}")</script>
+    <script type="module" async src="/assets/app.a93ca5b2.js"></script>
+  </body>
+</html>

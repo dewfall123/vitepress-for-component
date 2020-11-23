@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      介绍 | VitePress
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/assets/style.cf75ddc7.css">
+    <link rel="modulepreload" href="/assets/common-f3b25f27.js">
+    <link rel="modulepreload" href="/assets/index.md.dbf30bc5.lean.js">
+    <link rel="modulepreload" href="/assets/app.a93ca5b2.js">
+    
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="no-sidebar theme"><header class="navbar"><!--[--><a class="title" aria-label="VitePress, back to home" href="/"><!----><span>VitePress</span></a><div class="flex-grow"></div><!----><!--[--><!--[--><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><!----><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><!--]--></ul><ul class="right-slug" data-v-76e1e4a9><!--[--><li class="slug-item level-1" data-v-76e1e4a9><a href="#vfc-是什么" class="link" data-v-76e1e4a9>VFC 是什么?</a></li><li class="slug-item level-1" data-v-76e1e4a9><a href="#vfc-做了哪些增强" class="link" data-v-76e1e4a9>VFC 做了哪些增强?</a></li><li class="slug-item level-2" data-v-76e1e4a9><a href="#_1-内置demo组件" class="link" data-v-76e1e4a9>1. 内置Demo组件</a></li><li class="slug-item level-2" data-v-76e1e4a9><a href="#_2-像-dumi-一样的组织文件" class="link" data-v-76e1e4a9>2. 像 dumi 一样的组织文件</a></li><li class="slug-item level-2" data-v-76e1e4a9><a href="#_3-更合适的默认样式" class="link" data-v-76e1e4a9>3. 更合适的默认样式</a></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="page" data-v-cd43aab0><!--[--><!--[--><!--]--><!--]--><div class="content" data-v-cd43aab0><div data-v-cd43aab0><h1 id="vitepress-for-component"><a class="header-anchor" href="#vitepress-for-component" aria-hidden="true">#</a> vitepress-for-component</h1><p>下面简称<code>VFC</code>。</p><h2 id="vfc-是什么"><a class="header-anchor" href="#vfc-是什么" aria-hidden="true">#</a> VFC 是什么?</h2><p>Fork 自<a href="https://github.com/vuejs/vitepress" target="_blank" rel="noopener noreferrer"><code>VitePress</code></a>，针对 <strong>组件开发</strong> 场景做了一些功能增强和默认样式修改。</p><div class="warning custom-block"><p>可以理解为是一个在 <code>vitepress</code> 的基础上向 <a href="https://d.umijs.org/" target="_blank" rel="noopener noreferrer"><code>dumi</code></a> 靠拢的工具。</p></div><h2 id="vfc-做了哪些增强"><a class="header-anchor" href="#vfc-做了哪些增强" aria-hidden="true">#</a> VFC 做了哪些增强?</h2><h3 id="_1-内置demo组件"><a class="header-anchor" href="#_1-内置demo组件" aria-hidden="true">#</a> 1. 内置<code>Demo</code>组件</h3><p>我们可以在<code>.md</code>文件中这样来引入<code>demo</code>。</p><div class="language-md"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>demo</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>./demo.vue<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">language</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>vue<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Demo演示<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">desc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>这是一个Demo渲染示例<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>demo</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>渲染效果如下 <article class="demo" src="./demo.vue" data-v-cd43aab0><div class="demo-slot"><!--[--><div data-v-cd43aab0><p><span style="padding:0 16px 0 4px;font-size:14px;color:#777;">点击次数:</span><span>0</span></p><button>count++</button></div><!--]--></div><div class="demo-title-desc" style=""><span class="demo-title">Demo演示</span><span class="demo-desc">这是一个Demo渲染示例</span></div><div class="demo-actions"><div class="demo-platforms"><!--[--><form class="demo-and-code-online-edit-wrapper" target="_blank" action="https://codepen.io/pen/define" method="post" data-v-cd43aab0><!-- https://blog.codepen.io/documentation/api/prefill/ --><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: &#39;#app&#39;, \n\timport { ref } from &#39;vue&#39;\n\n  setup() {\n    const count = ref(0)\n    function onClick() {\n      count.value++\n    }\n\n    return {\n      count,\n      onClick\n    }\n  }\n})&quot;,&quot;css&quot;:&quot;&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div&gt;\n    &lt;p&gt;\n      &lt;span style=\&quot;padding: 0 16px 0 4px; font-size: 14px; color: #777\&quot;\n        &gt;点击次数:&lt;/span\n      &gt;\n      &lt;span&gt;{{ count }}&lt;/span&gt;\n    &lt;/p&gt;\n    &lt;button @click=\&quot;onClick\&quot;&gt;count++&lt;/button&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue@3.0.0-beta.14/dist/vue.global.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"><button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 1024 1024" xml:space="preserve" data-v-cd43aab0><g><path d="M1004.57 319.408l-468-312c-15.974-9.83-33.022-9.92-49.142 0l-468 312C7.428 327.406 0 341.694 0 355.978v311.998c0 14.286 7.428 28.572 19.43 36.572l468 312.044c15.974 9.83 33.022 9.92 49.142 0l468-312.044c12-7.998 19.43-22.286 19.43-36.572V355.978c-0.002-14.284-7.43-28.572-19.432-36.57zM556 126.262l344.572 229.716-153.714 102.858L556 331.406V126.262z m-88 0v205.144l-190.858 127.43-153.714-102.858L468 126.262zM88 438.264l110.286 73.714L88 585.692v-147.428z m380 459.43L123.428 667.978l153.714-102.858L468 692.55v205.144z m44-281.716l-155.43-104 155.43-104 155.43 104-155.43 104z m44 281.716V692.55l190.858-127.43 153.714 102.858L556 897.694z m380-312.002l-110.286-73.714L936 438.264v147.428z" p-id="2793" fill="#555"></path></g></svg></button></form><!--]--></div><div class="demo-buttons"><div class="demo-actions-copy"><span style="display:none;" class="demo-actions-tip">复制成功!</span><svg t="1596458734865" class="icon" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4898" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" style="" title="复制" data-v-cd43aab0><path d="M68.608 962.56V206.848h740.864V962.56H68.608zM746.496 271.36H131.584v629.248h614.912V271.36zM131.584 262.144" p-id="4899" fill="#666"></path><path d="M219.136 65.024v116.224h62.976V129.536h614.912v629.248h-60.416v61.952h123.392V65.024z" p-id="4900" fill="#666"></path></svg></div><svg t="1596458647160" class="icon demo-actions-expand" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2840" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="22" title="展开" data-v-cd43aab0><path d="M311.1 739c-6.1 0-12.2-2.3-16.8-7L69.7 507.4l224.6-224.6c9.3-9.3 24.3-9.3 33.6 0s9.3 24.3 0 33.6l-191 191 191 191c9.3 9.3 9.3 24.3 0 33.6-4.6 4.7-10.7 7-16.8 7zM711.5 739c-6.1 0-12.2-2.3-16.8-7-9.3-9.3-9.3-24.3 0-33.6l191-191-191-191c-9.3-9.3-9.3-24.3 0-33.6s24.3-9.3 33.6 0L953 507.4 728.3 732c-4.6 4.7-10.7 7-16.8 7zM418.5 814.7c-2.4 0-4.8-0.4-7.2-1.1-12.5-4-19.4-17.3-15.5-29.8l179.6-567.1c4-12.5 17.3-19.4 29.8-15.5 12.5 4 19.4 17.3 15.5 29.8L441.1 798.1a23.73 23.73 0 0 1-22.6 16.6z" fill="#666" p-id="2841"></path></svg></div></div><div style="display:none;" class="language-vue extra-class"><pre v-pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">padding</span><span class="token punctuation">:</span> 0 16px 0 4px<span class="token punctuation">;</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> #777</span><span class="token punctuation">"</span></span>
+        <span class="token punctuation">></span></span>点击次数:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span>
+      <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>{{ count }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onClick<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>count++<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ts<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">function</span> <span class="token function">onClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      count<span class="token punctuation">.</span>value<span class="token operator">++</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      count<span class="token punctuation">,</span>
+      onClick
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre></div></article></p><h3 id="_2-像-dumi-一样的组织文件"><a class="header-anchor" href="#_2-像-dumi-一样的组织文件" aria-hidden="true">#</a> 2. 像 dumi 一样的组织文件</h3><p>在组件编写的场景中，我们觉得 <a href="https://d.umijs.org/zh-CN/guide" target="_blank" rel="noopener noreferrer">dumi</a> 的文件结构更合适。</p><h4 id="示例："><a class="header-anchor" href="#示例：" aria-hidden="true">#</a> 示例：</h4><p>假设我们有这样一个组件库。</p><p><code>VitePress</code>文件结构如下。</p><div class="language-"><pre><code>docs
+├─ index.md
+├─ loading
+│  └─ index.md
+├─ zh
+│  ├─ index.md
+│  └─ loading
+│     └─ index.md
+src
+├── loading
+│ ├── demo
+│ │ └── demo.vue
+│ └── loading.vue
+└── ...
+</code></pre></div><p><code>vitepress-for-componnet</code>文件结构如下。</p><div class="language-"><pre><code>docs
+├── index.en-US.md
+├── index.zh-CN.md
+src
+├── loading
+│ ├── demo
+│ │ └── demo.vue
+│ ├── index.en-US.md
+│ ├── index.zh-CN.md
+│ └── loading.vue
+└── ...
+</code></pre></div><p>我们觉得<code>dumi</code>的组织结构有如下好处：</p><ul><li>demo.vue 和 <a href="http://loading.md" target="_blank" rel="noopener noreferrer">loading.md</a> 都放在 src 下面，源码和文档联系感更强。</li><li>用后缀<code>.zh-CN</code>来区分 locale，更加有对比度。</li></ul><p><a href="/guide/mapping.html">映射原理</a>。</p><h3 id="_3-更合适的默认样式"><a class="header-anchor" href="#_3-更合适的默认样式" aria-hidden="true">#</a> 3. 更合适的默认样式</h3><ul><li>修改了默认主题，包括布局，颜色等。</li><li>增加右侧目录。</li></ul><p>示例站点：(需要能访问 <a href="http://github.io" target="_blank" rel="noopener noreferrer">github.io</a>)</p><ul><li><a href="https://dewfall123.github.io/ahooks-vue/zh/" target="_blank" rel="noopener noreferrer">ahooks-vue</a></li></ul></div></div><div class="edit-link" data-v-cd43aab0 data-v-1813d5d3><!----></div><!----><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"dbf30bc5\",\"guide_config.md\":\"827f7691\",\"guide_demo.md\":\"9d2c859b\",\"guide_getting-started.md\":\"7e7e59dc\",\"guide_mapping.md\":\"34a4acfd\"}")</script>
+    <script type="module" async src="/assets/app.a93ca5b2.js"></script>
+  </body>
+</html>
