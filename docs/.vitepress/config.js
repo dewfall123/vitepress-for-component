@@ -33,10 +33,7 @@ module.exports = {
       }
     ],
 
-    sidebar: {
-      '/': getGuideSidebar(),
-      '/guide': getGuideSidebar()
-    }
+    sidebar: getGuideSidebar()
   }
 }
 

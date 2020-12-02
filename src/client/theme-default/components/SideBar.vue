@@ -8,7 +8,7 @@
 
     <slot name="sidebar-bottom" />
 
-    <Slugs class="right-slug"></Slugs>
+    <Slugs />
   </aside>
 </template>
 

@@ -1,5 +1,5 @@
 import Koa from 'koa'
-import koaServe from 'koa-static'
+import StaticServer from 'koa-static-server'
 import { resolveConfig } from '../config'
 
 export interface ServeOptions {
@@ -13,7 +13,16 @@ export async function serve(options: ServeOptions = {}) {
 
   const app = new Koa()
 
-  app.use(koaServe(site.outDir))
+  app.use(
+    StaticServer({
+      rootDir: site.outDir,
+      rootPath: site.userConfig.base
+    })
+  )
+
+  app.use(async (ctx) => {
+    ctx.redirect(site.userConfig.base ?? '/')
+  })
 
   app.listen(port)
 
