@@ -9,7 +9,7 @@ module.exports = {
   outDir: '../dist/',
   base,
   themeConfig: {
-    repo: 'vitepress-for-component',
+    repo: 'dewfall123/vitepress-for-component',
     docsDir: 'docs',
 
     editLinks: false,
