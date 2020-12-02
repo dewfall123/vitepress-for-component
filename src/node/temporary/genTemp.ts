@@ -30,7 +30,7 @@ export async function genTemporary(options: ServerConfig = {}) {
     copyAndWatchSrc(root, srcIncludes, langToPathMapping)
   ])
 
-  console.log('copy done.')
+  console.log('copy to .temp success.')
 }
 
 // resolve a mapping from localeConfig

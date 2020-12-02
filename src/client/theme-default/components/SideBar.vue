@@ -1,79 +1,60 @@
 <template>
-  <NavBarLinks class="show-mobile" />
+  <aside class="sidebar" :class="{ open }">
+    <NavLinks class="nav" />
 
-  <slot name="top" />
+    <slot name="sidebar-top" />
 
-  <ul class="sidebar">
-    <SideBarItem v-for="item of items" :item="item" />
-  </ul>
+    <SideBarLinks />
 
-  <Slugs class="right-slug"></Slugs>
-  <slot name="bottom" />
+    <slot name="sidebar-bottom" />
+
+    <Slugs class="right-slug"></Slugs>
+  </aside>
 </template>
 
-<script src="./SideBar"></script>
+<script setup lang="ts">
+import { defineProps } from 'vue'
+import NavLinks from './NavLinks.vue'
+import SideBarLinks from './SideBarLinks.vue'
+import Slugs from './Slugs.vue'
 
-<style>
-.show-mobile {
-  display: none;
-}
+defineProps({
+  open: { type: Boolean, required: true }
+})
+</script>
 
-@media screen and (max-width: 719px) {
-  .show-mobile {
-    display: block;
-  }
-}
-
-.sidebar,
-.sidebar-items {
-  list-style-type: none;
-  line-height: 2;
-  padding: 0;
-  margin: 0;
-}
-
+<style scoped>
 .sidebar {
-  padding: 1.5rem 0;
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-index-sidebar);
+  border-right: 1px solid var(--c-divider);
+  width: 16.4rem;
+  background-color: var(--c-bg);
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
 }
 
-.sidebar-data {
-  padding: 1.5rem 0;
-}
-
-@media screen and (max-width: 719px) {
-  .sidebar-data {
-    padding: 1rem;
+@media (min-width: 720px) {
+  .sidebar {
+    transform: translateX(0);
   }
 }
 
-.sidebar-items .sidebar-items {
-  padding-left: 1rem;
+@media (min-width: 960px) {
+  .sidebar {
+    width: 20rem;
+  }
 }
 
-.sidebar-items .sidebar-items .sidebar-link {
-  border-left: 0;
+.sidebar.open {
+  transform: translateX(0);
 }
 
-.sidebar-items .sidebar-items .sidebar-link.active {
-  font-weight: 500;
-}
-
-.sidebar-items .sidebar-link {
-  padding: 0.35rem 1rem 0.35rem 2rem;
-  line-height: 1.4;
-  font-size: 0.95em;
-  font-weight: 400;
-}
-
-.sidebar-item + .sidebar-item {
-  padding-top: 0.75rem;
-}
-
-.sidebar-items > .sidebar-item + .sidebar-item {
-  padding-top: 0;
-}
-
-.sidebar-link {
+.nav {
   display: block;
   margin: 0;
   border-left: 0.25rem solid transparent;
@@ -88,15 +69,10 @@ a.sidebar-link {
   transition: color 0.15s ease;
 }
 
-a.sidebar-link:hover {
-  text-decoration: none;
-  color: var(--c-brand);
-}
-
-a.sidebar-link.active {
-  border-left-color: var(--c-brand);
-  font-weight: 600;
-  color: var(--c-brand);
+@media (min-width: 720px) {
+  .nav {
+    display: none;
+  }
 }
 
 .sidebar-right {

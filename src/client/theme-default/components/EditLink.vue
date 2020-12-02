@@ -6,36 +6,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import { useEditLink } from '../composables/editLink'
 import OutboundLink from './icons/OutboundLink.vue'
 
-export default defineComponent({
-  components: {
-    OutboundLink
-  },
-
-  setup() {
-    const { url, text } = useEditLink()
-
-    return {
-      url,
-      text
-    }
-  }
-})
+const { url, text } = useEditLink()
 </script>
 
 <style scoped>
-.edit-link {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  overflow: auto;
-}
-
 .link {
   display: inline-block;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--c-text-light);
 }

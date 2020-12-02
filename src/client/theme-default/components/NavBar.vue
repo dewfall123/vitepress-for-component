@@ -1,48 +1,61 @@
 <template>
-  <a
-    class="title"
-    :aria-label="$site.title + ', back to home'"
-    :href="$site.base"
-  >
-    <img
-      class="logo"
-      v-if="$theme.logo"
-      :src="withBase($theme.logo)"
-      alt="logo"
-    />
-    <span>{{ $site.title }}</span>
-  </a>
-  <div class="flex-grow"></div>
-  <NavBarLinks class="hide-mobile" />
-  <slot name="search" />
+  <header class="nav-bar">
+    <ToggleSideBarButton @toggle="$emit('toggle')" />
+
+    <NavBarTitle />
+
+    <div class="flex-grow" />
+
+    <div class="nav">
+      <NavLinks />
+    </div>
+
+    <slot name="search" />
+  </header>
 </template>
 
-<script src="./NavBar"></script>
+<script setup lang="ts">
+import { defineEmit } from 'vue'
+import NavBarTitle from './NavBarTitle.vue'
+import NavLinks from './NavLinks.vue'
+import ToggleSideBarButton from './ToggleSideBarButton.vue'
 
-<style>
-.title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--c-text);
+defineEmit(['toggle'])
+</script>
+
+<style scoped>
+.nav-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: var(--z-index-navbar);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--c-divider);
+  padding: .7rem 1.5rem .7rem 4rem;
+  height: var(--header-height);
+  background-color: #ffffff;
 }
 
-.title:hover {
-  text-decoration: none;
+@media (min-width: 720px) {
+  .nav-bar {
+    padding: .7rem 1.5rem;
+  }
 }
 
 .flex-grow {
   flex-grow: 1;
 }
 
-.logo {
-  margin-right: 0.75rem;
-  height: 1.3rem;
-  vertical-align: bottom;
+.nav {
+  display: none;
 }
 
-@media screen and (max-width: 719px) {
-  .hide-mobile {
-    display: none;
+@media (min-width: 720px) {
+  .nav {
+    display: block;
   }
 }
 </style>

@@ -15,6 +15,15 @@ module.exports = {
     editLinks: false,
     editLinkText: '在Github上编辑此页面',
 
+    editLinks: false,
+    editLinkText: 'Edit this page on GitHub',
+    lastUpdated: '最近更新',
+
+    algolia: {
+      apiKey: 'c57105e511faa5558547599f120ceeba',
+      indexName: 'vitepress'
+    },
+
     nav: [
       { text: '指南', link: '/' },
       {
@@ -25,7 +34,8 @@ module.exports = {
     ],
 
     sidebar: {
-      '/': getGuideSidebar()
+      '/': getGuideSidebar(),
+      '/guide': getGuideSidebar()
     }
   }
 }

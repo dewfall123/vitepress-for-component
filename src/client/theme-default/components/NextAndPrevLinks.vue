@@ -2,13 +2,13 @@
   <div v-if="hasLinks" class="next-and-prev-link">
     <div class="container">
       <div class="prev">
-        <a v-if="prev" class="link" :href="withBase(prev.link)">
+        <a v-if="prev" class="link" :href="$withBase(prev.link)">
           <ArrowLeft class="icon icon-prev" />
           <span class="text">{{ prev.text }}</span>
         </a>
       </div>
       <div class="next">
-        <a v-if="next" class="link" :href="withBase(next.link)">
+        <a v-if="next" class="link" :href="$withBase(next.link)">
           <span class="text">{{ next.text }}</span>
           <ArrowRight class="icon icon-next" />
         </a>
@@ -17,30 +17,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import { useNextAndPrevLinks } from '../composables/nextAndPrevLinks'
-import { withBase } from '../utils'
 import ArrowLeft from './icons/ArrowLeft.vue'
 import ArrowRight from './icons/ArrowRight.vue'
 
-export default defineComponent({
-  components: {
-    ArrowLeft,
-    ArrowRight
-  },
-
-  setup () {
-    const { hasLinks, prev, next } = useNextAndPrevLinks()
-
-    return {
-      hasLinks,
-      prev,
-      next,
-      withBase,
-    }
-  }
-})
+const { hasLinks, prev, next } = useNextAndPrevLinks()
 </script>
 
 <style scoped>
@@ -96,6 +78,10 @@ export default defineComponent({
   transform: translateY(1px);
 }
 
-.icon-prev { margin-right: 8px; }
-.icon-next { margin-left: 8px; }
+.icon-prev {
+  margin-right: 8px;
+}
+.icon-next {
+  margin-left: 8px;
+}
 </style>

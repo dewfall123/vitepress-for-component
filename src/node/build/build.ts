@@ -15,6 +15,8 @@ export type BuildOptions = Pick<
 >
 
 export async function build(buildOptions: BuildOptions = {}) {
+  const start = Date.now()
+
   process.env.NODE_ENV = 'production'
   const siteConfig = await resolveConfig(buildOptions.root!)
   try {
@@ -70,4 +72,6 @@ export async function build(buildOptions: BuildOptions = {}) {
     await fs.remove(siteConfig.tempDir)
     process.exit()
   }
+
+  console.log(`build complete in ${((Date.now() - start) / 1000).toFixed(2)}s.`)
 }

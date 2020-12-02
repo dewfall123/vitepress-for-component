@@ -77,10 +77,10 @@ export async function copyAndWatchRoot(
     const descFile = join(root, tolocalePath(langToPathMapping, file))
     if (isRemove) {
       // console.log('remove ' + descFile)
-      fsExtra.remove(descFile)
+      return fsExtra.remove(descFile)
     } else {
       // console.log(file + ' -> ' + descFile)
-      fsExtra.copy(join(docsPath, file), descFile)
+      return fsExtra.copy(join(docsPath, file), descFile)
     }
   }
 

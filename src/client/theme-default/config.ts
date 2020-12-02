@@ -3,7 +3,6 @@ export namespace DefaultTheme {
     logo?: string
     nav?: NavItem[] | false
     sidebar?: SideBarConfig | MultiSideBarConfig
-    search?: SearchConfig | false
 
     /**
      * GitHub repository following the format <user>/<project>.
@@ -51,14 +50,37 @@ export namespace DefaultTheme {
      */
     editLinkText?: string
 
+    /**
+     * Show last updated time at the bottom of the page. Defaults to `false`.
+     * If given a string, it will be displayed as a prefix (default value:
+     * "Last Updated").
+     */
     lastUpdated?: string | boolean
-    prevLink?: boolean
-    nextLink?: boolean
+
+    prevLinks?: boolean
+    nextLinks?: boolean
+
+    locales?: Record<string, LocaleConfig & Omit<Config, 'locales'>>
+
+    algolia?: AlgoliaSearchOptions
+
+    carbonAds?: {
+      carbon: string
+      custom?: string
+      placement: string
+    }
   }
 
   // navbar --------------------------------------------------------------------
 
   export type NavItem = NavItemWithLink | NavItemWithChildren
+
+  export interface NavItemBase {
+    text: string
+    target?: string
+    rel?: string
+    ariaLabel?: string
+  }
 
   export interface NavItemWithLink extends NavItemBase {
     link: string
@@ -66,13 +88,6 @@ export namespace DefaultTheme {
 
   export interface NavItemWithChildren extends NavItemBase {
     items: NavItem[]
-  }
-
-  export interface NavItemBase {
-    text: string
-    target?: string
-    rel?: string
-    ariaLabel?: string
   }
 
   // sidebar -------------------------------------------------------------------
@@ -102,22 +117,29 @@ export namespace DefaultTheme {
     children: SideBarItem[]
   }
 
-  // search --------------------------------------------------------------------
-
-  export interface SearchConfig {
-    /**
-     * @default 5
-     */
-    maxSuggestions?: number
-
-    /**
-     * @default ''
-     */
+  // algolia  ------------------------------------------------------------------
+  // partially copied from @docsearch/react/dist/esm/DocSearch.d.ts
+  export interface AlgoliaSearchOptions {
+    appId?: string
+    apiKey: string
+    indexName: string
     placeholder?: string
+    searchParameters?: any
+    disableUserPersonalization?: boolean
+    initialQuery?: string
+  }
 
-    algolia?: {
-      apiKey: string
-      indexName: string
-    }
+  // locales -------------------------------------------------------------------
+
+  export interface LocaleConfig {
+    /**
+     * Text for the language dropdown.
+     */
+    selectText?: string
+
+    /**
+     * Label for this locale in the language dropdown.
+     */
+    label?: string
   }
 }
