@@ -6,9 +6,13 @@ import { clearSuffix } from './utils/parseHeader'
 
 export const APP_PATH = path.join(__dirname, '../client/app')
 export const SHARED_PATH = path.join(__dirname, '../client/shared')
+export const DEFAULT_THEME_PATH = path.join(
+  __dirname,
+  '../client/theme-default'
+)
 
 // special virtual file
-// we can't directly import '/@siteData' becase
+// we can't directly import '/@siteData' because
 // - it's not an actual file so we can't use tsconfig paths to redirect it
 // - TS doesn't allow shimming a module that starts with '/'
 export const SITE_DATA_ID = '@siteData'
@@ -34,6 +38,7 @@ export function createResolver(
       ...srcAlias,
       '/@app/': APP_PATH,
       '/@theme/': themeDir,
+      '/@default-theme/': DEFAULT_THEME_PATH,
       '/@shared/': SHARED_PATH,
       vitepress: '/@app/exports.js',
       [SITE_DATA_ID]: SITE_DATA_REQUEST_PATH

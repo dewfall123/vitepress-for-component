@@ -19,7 +19,9 @@
     <!-- TODO: make this button accessible -->
     <div class="sidebar-mask" @click="toggleSidebar(false)" />
 
-    <Home v-if="enableHome">
+    <Content v-if="isCustomLayout" />
+
+    <Home v-else-if="enableHome">
       <template #hero>
         <slot name="home-hero" />
       </template>
@@ -72,9 +74,9 @@ import type { DefaultTheme } from './config'
 
 // components
 import NavBar from './components/NavBar.vue'
-import Home from './components/Home.vue'
 import SideBar from './components/SideBar.vue'
 import Page from './components/Page.vue'
+const Home = defineAsyncComponent(() => import('./components/Home.vue'))
 const CarbonAds = defineAsyncComponent(
   () => import('./components/CarbonAds.vue')
 )
@@ -92,6 +94,8 @@ const siteRouteData = useSiteDataByRoute()
 const theme = computed(() => siteData.value.themeConfig)
 const page = usePageData()
 
+// custom layout
+const isCustomLayout = computed(() => !!route.data.frontmatter.customLayout)
 // home
 const enableHome = computed(() => !!route.data.frontmatter.home)
 

@@ -15,7 +15,7 @@ export async function renderPage(
   appChunk: OutputChunk,
   cssChunk: OutputAsset,
   pageToHashMap: Record<string, string>,
-  hashMapStirng: string
+  hashMapString: string
 ) {
   const { createApp } = require(path.join(
     config.tempDir,
@@ -75,7 +75,7 @@ export async function renderPage(
   </head>
   <body>
     <div id="app">${content}</div>
-    <script>__VP_HASH_MAP__ = JSON.parse(${hashMapStirng})</script>
+    <script>__VP_HASH_MAP__ = JSON.parse(${hashMapString})</script>
     <script type="module" async src="${assetPath}${appChunk.fileName}"></script>
   </body>
 </html>`.trim()
