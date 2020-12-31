@@ -19,7 +19,7 @@ code .token.inserted {
 
 div[class*='language-'] {
   position: relative;
-  margin: 1rem -1.5rem;
+  margin: 1rem 0rem;
   background-color: var(--code-bg-color);
   border-radius: 1px;
   overflow-x: auto;
