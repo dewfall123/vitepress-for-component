@@ -2,7 +2,6 @@ import matter from 'gray-matter'
 import { clearSuffix } from '../utils/parseHeader'
 import globby from 'globby'
 import fsExtra from 'fs-extra'
-import { cachedRead } from 'vite'
 import { basename, extname, join } from 'path'
 import { TempFileName } from './genTemp'
 import chokidar from 'chokidar'
@@ -22,7 +21,7 @@ export async function copyAndWatchSrc(
   })
 
   async function injectMatterAndCopy(file: string, isRemove?: boolean) {
-    const fileBuffer = await cachedRead(null, file)
+    const fileBuffer = await fsExtra.readFile(file)
     const { data: frontmatter, content } = matter(fileBuffer)
 
     const fileName = basename(file)

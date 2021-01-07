@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import LRUCache from 'lru-cache'
@@ -8,6 +9,7 @@ import {
 } from './markdown/markdown'
 import { deeplyParseHeader } from './utils/parseHeader'
 import { PageData, HeadConfig } from '../../types/shared'
+import slash from 'slash'
 
 const debug = require('debug')('vitepress:md')
 export const cache = new LRUCache<string, MarkdownCompileResult>({ max: 1024 })
@@ -23,46 +25,44 @@ export function createMarkdownToVueRenderFn(
 ) {
   const md = createMarkdownRenderer(options)
 
-  return (
-    src: string,
-    file: string,
-    lastUpdated: number,
-    injectData = true
-  ) => {
-    const fileFullPath = file
-    file = path.relative(root, fileFullPath)
+  return (src: string, file: string): MarkdownCompileResult => {
+    // file is full path
+    const relativePath = slash(path.relative(root, file))
 
     const cached = cache.get(src)
     if (cached) {
-      debug(`[cache hit] ${file}`)
+      debug(`[cache hit] ${relativePath}`)
       return cached
     }
+
     const start = Date.now()
 
     const { content, data: frontmatter } = matter(src)
     md.realPath = frontmatter?.map?.realPath
-    md.urlPath = fileFullPath
-    const { html, data } = md.render(content)
+    md.urlPath = file
+    let { html, data } = md.render(content)
+
+    // avoid env variables being replaced by vite
+    html = html
+      .replace(/import\.meta/g, 'import.<wbr/>meta')
+      .replace(/process\.env/g, 'process.<wbr/>env')
 
     // TODO validate data.links?
-
-    // inject page data
     const pageData: PageData = {
       title: inferTitle(frontmatter, content),
       description: inferDescription(frontmatter),
       frontmatter,
       headers: data.headers,
-      relativePath: file.replace(/\\/g, '/'),
-      lastUpdated
+      relativePath,
+      // TODO use git timestamp?
+      lastUpdated: Math.round(fs.statSync(file).mtimeMs)
     }
 
     data.hoistedTags = data.hoistedTags || {}
     data.hoistedTags.script = data.hoistedTags.script || []
     injectComponentData(data.hoistedTags)
 
-    if (injectData) {
-      injectPageData(data.hoistedTags, pageData)
-    }
+    injectPageData(data.hoistedTags, pageData)
 
     const vueSrc =
       `<script>${(data.hoistedTags.script ?? []).join('\n')}</script>` +
@@ -71,7 +71,10 @@ export function createMarkdownToVueRenderFn(
 
     debug(`[render] ${file} in ${Date.now() - start}ms.`)
 
-    const result = { vueSrc, pageData }
+    const result = {
+      vueSrc,
+      pageData
+    }
     cache.set(src, result)
     return result
   }

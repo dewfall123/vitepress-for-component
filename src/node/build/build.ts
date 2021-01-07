@@ -1,24 +1,17 @@
 import fs from 'fs-extra'
 import { bundle, okMark, failMark } from './bundle'
-import { BuildConfig as ViteBuildOptions } from 'vite'
+import { BuildOptions } from 'vite'
 import { resolveConfig } from '../config'
 import { renderPage } from './render'
 import { OutputChunk, OutputAsset } from 'rollup'
 import ora from 'ora'
 
-export type BuildOptions = Pick<
-  Partial<ViteBuildOptions>,
-  | 'root'
-  | 'rollupInputOptions'
-  | 'rollupOutputOptions'
-  | 'rollupPluginVueOptions'
->
-
-export async function build(buildOptions: BuildOptions = {}) {
+export async function build(root: string, buildOptions: BuildOptions = {}) {
   const start = Date.now()
 
   process.env.NODE_ENV = 'production'
-  const siteConfig = await resolveConfig(buildOptions.root!)
+  const siteConfig = await resolveConfig(root)
+
   try {
     const [clientResult, , pageToHashMap] = await bundle(
       siteConfig,
@@ -29,12 +22,11 @@ export async function build(buildOptions: BuildOptions = {}) {
     spinner.start('rendering pages...')
 
     try {
-      const appChunk = clientResult.assets.find(
-        (chunk) =>
-          chunk.type === 'chunk' && chunk.fileName.match(/^app\.\w+\.js$/)
+      const appChunk = clientResult.output.find(
+        (chunk) => chunk.type === 'chunk' && chunk.isEntry && chunk
       ) as OutputChunk
 
-      const cssChunk = clientResult.assets.find(
+      const cssChunk = clientResult.output.find(
         (chunk) => chunk.type === 'asset' && chunk.fileName.endsWith('.css')
       ) as OutputAsset
 
@@ -45,19 +37,15 @@ export async function build(buildOptions: BuildOptions = {}) {
       const hashMapString = JSON.stringify(JSON.stringify(pageToHashMap))
 
       for (const page of siteConfig.pages) {
-        try {
-          await renderPage(
-            siteConfig,
-            page,
-            clientResult,
-            appChunk,
-            cssChunk,
-            pageToHashMap,
-            hashMapString
-          )
-        } catch {
-          //
-        }
+        await renderPage(
+          siteConfig,
+          page,
+          clientResult,
+          appChunk,
+          cssChunk,
+          pageToHashMap,
+          hashMapString
+        )
       }
     } catch (e) {
       spinner.stopAndPersist({
@@ -70,8 +58,8 @@ export async function build(buildOptions: BuildOptions = {}) {
     })
   } finally {
     await fs.remove(siteConfig.tempDir)
-    process.exit()
   }
 
   console.log(`build complete in ${((Date.now() - start) / 1000).toFixed(2)}s.`)
+  process.exit()
 }

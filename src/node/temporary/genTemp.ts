@@ -1,6 +1,5 @@
 import fsExtra from 'fs-extra'
-import { ServerConfig } from 'vite'
-import { resolveConfig } from '..'
+import { resolveConfig, ServeOptions } from '../index'
 import { LocaleConfig } from '/@types/shared'
 import { copyAndWatchRoot, copyAndWatchSrc } from './copy'
 import { join } from 'path'
@@ -9,7 +8,7 @@ export const TempFileName = '.temp'
 export const DefaultSrcIncludes = ['src']
 
 // generate a .temp dir
-export async function genTemporary(options: ServerConfig = {}) {
+export async function genTemporary(options: ServeOptions = {}) {
   const root = options.root!
   const config = await resolveConfig(join(root, '..'))
   const userConfig = config.userConfig

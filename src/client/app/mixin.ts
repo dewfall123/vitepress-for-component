@@ -1,9 +1,8 @@
-import { App } from 'vue'
+import { App, defineAsyncComponent } from 'vue'
 import { joinPath } from './utils'
 import { SiteDataRef } from './composables/siteData'
 import { PageDataRef } from './composables/pageData'
 import { Content } from './components/Content'
-import Debug from './components/Debug.vue'
 import Demo from './components/Demo'
 import { ClientOnly } from './components/ClientOnly'
 
@@ -67,11 +66,14 @@ export function mixinGlobalComputed(
 }
 
 export function mixinGlobalComponents(app: App) {
-  const isProd = process.env.NODE_ENV === 'production'
-
   app.component('Content', Content)
   app.component('ClientOnly', ClientOnly)
-  app.component('Debug', isProd ? () => null : Debug)
 
   app.component('Demo', Demo)
+  app.component(
+    'Debug',
+    import.meta.env.PROD
+      ? () => null
+      : defineAsyncComponent(() => import('./components/Debug.vue'))
+  )
 }

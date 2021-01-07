@@ -2,10 +2,10 @@ import path from 'path'
 import fs from 'fs-extra'
 import chalk from 'chalk'
 import globby from 'globby'
-import { createResolver, APP_PATH, DEFAULT_THEME_PATH } from './resolver'
-import { Resolver, ServerConfig } from 'vite'
+import { resolveAliases, APP_PATH, DEFAULT_THEME_PATH } from './alias'
 import { SiteData, HeadConfig, LocaleConfig } from '../../types/shared'
 import { MarkdownOptions } from './markdown/markdown'
+import { AliasOptions } from 'vite'
 export { resolveSiteDataByRoute } from './shared/config'
 
 const debug = require('debug')('vitepress:config')
@@ -20,8 +20,6 @@ export interface UserConfig<ThemeConfig = any> {
   locales?: Record<string, LocaleConfig>
   alias?: Record<string, string>
   markdown?: MarkdownOptions
-  // TODO locales support etc.
-  viteOptions: ServerConfig
   outDir?: string
   // src
   srcIncludes?: string[]
@@ -34,7 +32,7 @@ export interface SiteConfig<ThemeConfig = any> {
   themeDir: string
   outDir: string
   tempDir: string
-  resolver: Resolver
+  aliases: AliasOptions
   pages: string[]
   userConfig: UserConfig
   markdown?: MarkdownOptions
@@ -63,13 +61,11 @@ export async function resolveConfig(root: string): Promise<SiteConfig> {
       ignore: ['node_modules', '**/node_modules']
     }),
     configPath: resolve(root, 'config.js'),
-    outDir: userConfig.outDir
-      ? path.resolve(root, userConfig.outDir)
-      : path.resolve(root, 'dist'),
+    outDir: path.resolve(root, userConfig.outDir ?? 'dist'),
     tempDir: path.resolve(APP_PATH, 'temp'),
-    resolver: createResolver(themeDir, userConfig),
     userConfig,
-    markdown: userConfig.markdown
+    markdown: userConfig.markdown,
+    aliases: resolveAliases(root, themeDir, userConfig)
   }
 
   return config
