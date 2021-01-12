@@ -45,8 +45,8 @@
     "release": "node scripts/release.js",
     "docs": "run-p dev docs-dev",
     "docs-dev": "node ./bin/vitepress-fc dev docs",
-    "docs-build": "yarn build && node ./bin/vitepress-fc build docs",
-    "docs-serve": "cross-env NODE_ENV=production node ./bin/vitepress-fc serve --root docs",
+    "docs-build": "yarn build && cross-env NODE_ENV=production node ./bin/vitepress-fc build docs",
+    "docs-serve": "yarn docs-build && cross-env NODE_ENV=production node ./bin/vitepress-fc serve --root docs",
     "docs-build-serve": "yarn docs-build && yarn docs-serve",
     "docs-deploy": "gh-pages -d docs/dist",
     "docs-build-deploy": "yarn docs-build && yarn docs-deploy"
