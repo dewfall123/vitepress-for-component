@@ -1,6 +1,8 @@
 import path from 'path'
 import { Alias, AliasOptions } from 'vite'
 import { UserConfig } from './config'
+import { DefaultSrcIncludes } from './temporary/genTemp'
+import { clearSuffix } from './utils/parseHeader'
 
 const PKG_ROOT = path.join(__dirname, '../../')
 export const APP_PATH = path.join(__dirname, '../client/app')
@@ -22,8 +24,15 @@ export function resolveAliases(
   themeDir: string,
   userConfig: UserConfig
 ): AliasOptions {
+  const srcIncludes = userConfig.srcIncludes ?? DefaultSrcIncludes
+  const srcAlias = srcIncludes.reduce((map, src) => {
+    map[`/@${clearSuffix(src)}/`] = path.resolve(src)
+    return map
+  }, {} as Record<string, string>)
+
   const paths: Record<string, string> = {
     ...userConfig.alias,
+    ...srcAlias,
     '/@theme': themeDir,
     '/@shared': SHARED_PATH,
     [SITE_DATA_ID]: SITE_DATA_REQUEST_PATH
