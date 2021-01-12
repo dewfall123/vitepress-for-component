@@ -23,6 +23,7 @@ export interface UserConfig<ThemeConfig = any> {
   outDir?: string
   // src
   srcIncludes?: string[]
+  customData?: any
 }
 
 export interface SiteConfig<ThemeConfig = any> {
@@ -32,7 +33,7 @@ export interface SiteConfig<ThemeConfig = any> {
   themeDir: string
   outDir: string
   tempDir: string
-  aliases: AliasOptions
+  alias: AliasOptions
   pages: string[]
   userConfig: UserConfig
   markdown?: MarkdownOptions
@@ -65,7 +66,7 @@ export async function resolveConfig(root: string): Promise<SiteConfig> {
     tempDir: path.resolve(APP_PATH, 'temp'),
     userConfig,
     markdown: userConfig.markdown,
-    aliases: resolveAliases(root, themeDir, userConfig)
+    alias: resolveAliases(root, themeDir, userConfig)
   }
 
   return config
@@ -97,6 +98,7 @@ export async function resolveSiteData(root: string): Promise<SiteData> {
     base: userConfig.base ? userConfig.base.replace(/([^/])$/, '$1/') : '/',
     head: userConfig.head || [],
     themeConfig: userConfig.themeConfig || {},
-    locales: userConfig.locales || {}
+    locales: userConfig.locales || {},
+    customData: userConfig.customData || {}
   }
 }
