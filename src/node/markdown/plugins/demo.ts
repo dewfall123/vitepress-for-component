@@ -36,31 +36,32 @@ export const demoPlugin = (md: MarkdownIt) => {
       const src = (content.match(/src=("|')(\S+)('|")/) || [])[2] ?? ''
 
       const { realPath, urlPath } = md as any
-      const srcFilePath = path.join(realPath ?? urlPath, '../', src)
-      let importPath = '/@' + srcFilePath.split(path.sep).join('/')
-      if (realPath) {
-        importPath = '/@' + srcFilePath.split(path.sep).join('/')
-      } else {
-        importPath = src
-      }
+      const absolutePath = path
+        .resolve(realPath ?? urlPath, '../', src)
+        .split(path.sep)
+        .join('/')
 
-      if (!src || !fs.existsSync(srcFilePath)) {
-        const warningMsg = `${srcFilePath} does not exist!`
+      // console.log('urlPath =' + urlPath)
+      // console.log('realPath =' + realPath)
+      // console.log('absolutePath =' + absolutePath)
+
+      if (!src || !fs.existsSync(absolutePath)) {
+        const warningMsg = `${absolutePath} does not exist!`
         console.warn(`[vitepress]: ${warningMsg}`)
-        return `<demo src="${importPath}" >
+        return `<demo src="${absolutePath}" >
         <p>${warningMsg}</p>`
       }
       if (!language) {
-        language = (importPath.match(/\.(.+)$/) || [])[1] ?? 'vue'
+        language = (absolutePath.match(/\.(.+)$/) || [])[1] ?? 'vue'
       }
 
       // TODO cache it
-      const codeStr = fs.readFileSync(srcFilePath).toString()
+      const codeStr = fs.readFileSync(absolutePath).toString()
       // const { content: codeContent, data: frontmatter } = matter(codeStr)
       const htmlStr = encodeURIComponent(highlight(codeStr, language))
 
       hoistedTags.script!.unshift(
-        `import ${componentName} from '${importPath}' \n`
+        `import ${componentName} from '${absolutePath}' \n`
       )
       hoistedTags.components!.push(componentName)
 

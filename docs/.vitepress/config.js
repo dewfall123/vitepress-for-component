@@ -50,7 +50,7 @@ function getGuideSidebar() {
       text: '用法',
       children: [
         { text: '文件映射', link: '/guide/mapping' },
-        { text: '写Demo', link: '/guide/demo' },
+        { text: '写Demo', link: '/guide/write-demo' },
         { text: '配置', link: '/guide/config' }
       ]
     }

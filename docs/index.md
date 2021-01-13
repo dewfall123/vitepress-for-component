@@ -21,7 +21,7 @@ title: 介绍
 我们可以在`.md`文件中这样来引入`demo`。
 
 ```md
-<demo src="./demo.vue"
+<demo src="./demo-example.vue"
   language="vue"
   title="Demo演示"
   desc="这是一个Demo渲染示例">
@@ -29,7 +29,7 @@ title: 介绍
 ```
 
 渲染效果如下
-<demo src="./demo.vue"
+<demo src="./demo-example.vue"
   language="vue"
   title="Demo演示"
   desc="这是一个Demo渲染示例">

@@ -24,7 +24,7 @@ $ yarn dev
 2. `yarn test`: [jest](https://jestjs.io/) 单元测试.
 3. `yarn build`: [Rollup](https://www.rollupjs.com/) 打包源码.
 4. `yarn docs-build`: 文档打包（SSR）.
-5. `docs-static`: 验证文档打包（通过 koa 开启静态文件服务）.
+5. `yarn docs-static`: 验证文档打包.
 6. `yarn docs-deploy`: 使用 [gh-pages](https://pages.github.com/) 以分支的形式部署到 github.io.
 7. `yarn changelog`: 用`conventional-changelog-cli`生成 changelog .
 8. `yarn lint` && `yarn ls-lint`: lint 检查.

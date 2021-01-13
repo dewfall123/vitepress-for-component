@@ -1,7 +1,7 @@
 {
   "name": "vitepress-for-component",
-  "version": "0.11.1",
-  "description": "",
+  "version": "0.11.4",
+  "description": "dumi like documentation tool",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
   "bin": {
@@ -48,7 +48,7 @@
     "docs-build": "yarn build && cross-env NODE_ENV=production node ./bin/vitepress-fc build docs",
     "docs-serve": "yarn docs-build && cross-env NODE_ENV=production node ./bin/vitepress-fc serve --root docs",
     "docs-build-serve": "yarn docs-build && yarn docs-serve",
-    "docs-deploy": "gh-pages -d docs/dist",
+    "docs-deploy": "gh-pages -d docs/dist -t true",
     "docs-build-deploy": "yarn docs-build && yarn docs-deploy"
   },
   "engines": {
@@ -74,6 +74,7 @@
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/server-renderer": "^3.0.5",
     "chalk": "^4.1.0",
+    "chokidar": "^3.5.0",
     "compression": "^1.7.4",
     "debug": "^4.1.1",
     "diacritics": "^1.3.0",
@@ -89,8 +90,8 @@
     "markdown-it-table-of-contents": "^0.4.4",
     "minimist": "^1.2.5",
     "ora": "^5.1.0",
-    "portfinder": "^1.0.28",
     "polka": "^0.5.2",
+    "portfinder": "^1.0.28",
     "prismjs": "^1.20.0",
     "sirv": "^1.0.10",
     "slash": "^3.0.0",
@@ -108,7 +109,6 @@
     "@types/markdown-it": "^10.0.2",
     "@types/node": "^13.13.4",
     "@types/postcss-load-config": "^2.0.1",
-    "chokidar": "^3.4.2",
     "conventional-changelog-cli": "^2.1.0",
     "cross-env": "^7.0.3",
     "enquirer": "^2.3.6",
