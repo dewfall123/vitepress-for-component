@@ -107,5 +107,8 @@ function tolocalePath(mapping: Record<string, string> | null, path: string) {
   const lang = extname(fileName.slice(0, -ext.length))
   // en/
   const langPrefix = mapping[lang.slice(1)]
+  if (!(langPrefix in mapping)) {
+    return path
+  }
   return `${langPrefix}${path.slice(0, -(ext + lang).length)}${ext}`
 }
