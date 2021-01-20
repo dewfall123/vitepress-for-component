@@ -66,7 +66,7 @@ export async function resolveConfig(root: string): Promise<SiteConfig> {
     tempDir: path.resolve(APP_PATH, 'temp'),
     userConfig,
     markdown: userConfig.markdown,
-    alias: resolveAliases(root, themeDir, userConfig)
+    alias: resolveAliases(themeDir, userConfig)
   }
 
   return config
