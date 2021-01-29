@@ -36,7 +36,7 @@ export async function bundle(
 
   const resolveViteConfig = (ssr: boolean): ViteUserConfig => ({
     root,
-    base: config.site.base,
+    // base: config.site.base,
     logLevel: 'warn',
     plugins: createVitePressPlugin(root, config, ssr, pageToHashMap),
     // @ts-ignore
