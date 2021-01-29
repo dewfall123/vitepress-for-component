@@ -109,7 +109,7 @@ function tolocalePath(mapping: Record<string, string> | null, path: string) {
   // en/
   const langPrefix = mapping[lang.slice(1)]
 
-  if (!lang) {
+  if (!(lang.slice(1) in mapping)) {
     return path
   }
   return `${langPrefix}${path.slice(0, -(ext + lang).length)}${ext}`
