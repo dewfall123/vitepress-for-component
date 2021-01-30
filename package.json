@@ -1,6 +1,6 @@
 {
   "name": "vitepress-for-component",
-  "version": "0.11.10",
+  "version": "0.11.12",
   "description": "dumi like documentation tool",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
@@ -45,8 +45,8 @@
     "release": "node scripts/release.js",
     "docs": "run-p dev docs-dev",
     "docs-dev": "node ./bin/vitepress-fc dev docs",
-    "docs-build": "yarn build && cross-env NODE_ENV=production node ./bin/vitepress-fc build docs",
-    "docs-serve": "yarn docs-build && cross-env NODE_ENV=production node ./bin/vitepress-fc serve --root docs",
+    "docs-build": "cross-env NODE_ENV=production yarn build && cross-env NODE_ENV=production node ./bin/vitepress-fc build docs",
+    "docs-serve": "cross-env NODE_ENV=production node ./bin/vitepress-fc serve --root docs",
     "docs-build-serve": "yarn docs-build && yarn docs-serve",
     "docs-deploy": "gh-pages -d docs/dist -t true",
     "docs-build-deploy": "yarn docs-build && yarn docs-deploy"
@@ -70,7 +70,7 @@
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
     "@docsearch/js": "^1.0.0-alpha.28",
-    "@vitejs/plugin-vue": "1.0.3",
+    "@vitejs/plugin-vue": "1.1.0",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/server-renderer": "^3.0.5",
     "chalk": "^4.1.0",
@@ -115,8 +115,6 @@
     "execa": "^4.1.0",
     "gh-pages": "^3.1.0",
     "jest": "^26.6.3",
-    "koa": "^2.13.0",
-    "koa-static": "^5.0.0",
     "koa-static-server": "^1.5.2",
     "lint-staged": "^10.3.0",
     "npm-run-all": "^4.1.5",

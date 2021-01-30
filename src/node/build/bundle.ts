@@ -45,6 +45,7 @@ export async function bundle(
     },
     build: {
       ...options,
+      base: config.site.base,
       emptyOutDir: true,
       ssr,
       outDir: ssr ? config.tempDir : config.outDir,
