@@ -1,17 +1,17 @@
 <template>
-  <Teleport to="body">
-    <ul class="right-slug">
-      <li
-        v-for="{ level, link, title } of slugs"
-        :class="`slug-item level-${level}`"
-        :key="link"
-      >
-        <a :href="link" class="link">
-          {{ title }}
-        </a>
-      </li>
-    </ul>
-  </Teleport>
+  <!-- <aside to="body"> -->
+  <ul class="right-slug">
+    <li
+      v-for="{ level, link, title } of slugs"
+      :class="`slug-item level-${level}`"
+      :key="link"
+    >
+      <a :href="link" class="link">
+        {{ title }}
+      </a>
+    </li>
+  </ul>
+  <!-- </aside> -->
 </template>
 
 <script lang="ts">

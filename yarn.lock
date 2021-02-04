@@ -729,6 +729,11 @@
     "@types/keygrip" "*"
     "@types/node" "*"
 
+"@types/es-module-lexer@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@types/es-module-lexer/-/es-module-lexer-0.3.0.tgz#9fee3f19f64e6b3f999eeb3a70bd177a4d57a6cb"
+  integrity sha512-XI3MGSejUQIJ3wzY0i5IHy5J3eb36M/ytgG8jIOssP08ovtRPcjpjXQqrx51AHBNBOisTS/NQNWJitI17+EwzQ==
+
 "@types/express-serve-static-core@^4.17.18":
   version "4.17.18"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.18.tgz#8371e260f40e0e1ca0c116a9afcd9426fa094c40"
@@ -955,10 +960,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@vitejs/plugin-vue@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-1.1.0.tgz#8ae0b11388897b07259c9e5198c0e3fb5e4b37d9"
-  integrity sha512-ExlAt3nb3PB31jV9AgRZSMoGd+aQRU53fc/seghV8/l0JCzaX2mqlgpG8iytWkRxbBPgtAx4TpCPdiVKnTFT/A==
+"@vitejs/plugin-vue@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-1.1.4.tgz#1dd388519b75439b7733601b55238ca691864796"
+  integrity sha512-cUDILd++9jdhdjpuhgJofQqOabOKe+kTWTE2HQY2PBHEUO2fgwTurLE0cJg9UcIo1x4lHfsp+59S9TBCHgTZkw==
 
 "@vue/compiler-core@3.0.5":
   version "3.0.5"
@@ -2289,10 +2294,10 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild@^0.8.26:
-  version "0.8.38"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.38.tgz#04dc395e15c77bbc9d6798e9b31275546bcf7b9a"
-  integrity sha512-wSunJl8ujgBs9eVGubc8Y6fn/DkDjNyfQBVOFTY1E7sRxr8KTjmqyLIiE0M3Z4CjMnCu/rttCugwnOzY+HiwIw==
+esbuild@^0.8.34:
+  version "0.8.39"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.39.tgz#18b84a3d56173c55ee8f45bc6c7b5374b0a98ecb"
+  integrity sha512-/do5H74a5ChyeKRWfkDh3EpICXpsz6dWTtFFbotb7BlIHvWqnRrZYDb8IBubOHdEtKzuiksilRO19aBtp3/HHQ==
 
 escape-html@^1.0.3:
   version "1.0.3"
@@ -6256,12 +6261,12 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vite@2.0.0-beta.32:
-  version "2.0.0-beta.32"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.0.0-beta.32.tgz#c9281013dfd73794887fc0ed7e96579677beb79a"
-  integrity sha512-RluPnnm4Zyjfu/IBxEmGZe/2QcFqc7qXfhjxzFNiqzyVkmc935HcmSnejkVa7KoW/PeX0wKrtag432esByKVGg==
+vite@^2.0.0-beta.64:
+  version "2.0.0-beta.64"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.0.0-beta.64.tgz#245cabc72335911d4cb704545f713d47e880d84f"
+  integrity sha512-/dR5rOXohhdXfkAIBAjmwX7JmoMWhQc7+VI6/EjyqXQCQzREmfBztLgTk/rPkmsNY87Cd71u9b+nlbcYK4TDCA==
   dependencies:
-    esbuild "^0.8.26"
+    esbuild "^0.8.34"
     postcss "^8.2.1"
     resolve "^1.19.0"
     rollup "^2.35.1"

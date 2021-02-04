@@ -7,9 +7,8 @@
     <SideBarLinks />
 
     <slot name="sidebar-bottom" />
-
-    <Slugs />
   </aside>
+  <Slugs />
 </template>
 
 <script setup lang="ts">
