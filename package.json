@@ -1,6 +1,6 @@
 {
   "name": "vitepress-for-component",
-  "version": "0.11.14",
+  "version": "0.11.16",
   "description": "dumi like documentation tool",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
@@ -82,6 +82,7 @@
     "fs-extra": "^9.0.0",
     "globby": "^11.0.1",
     "gray-matter": "^4.0.2",
+    "less": "^4.1.1",
     "lru-cache": "^6.0.0",
     "markdown-it": "^10.0.0",
     "markdown-it-anchor": "^5.2.7",
@@ -93,8 +94,10 @@
     "polka": "^0.5.2",
     "portfinder": "^1.0.28",
     "prismjs": "^1.20.0",
+    "sass": "^1.32.6",
     "sirv": "^1.0.10",
     "slash": "^3.0.0",
+    "stylus": "^0.54.8",
     "vite": "^2.0.0-beta.64",
     "vue": "^3.0.5"
   },
