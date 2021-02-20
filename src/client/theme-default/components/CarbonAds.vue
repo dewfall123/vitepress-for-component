@@ -22,7 +22,6 @@ onMounted(() => {
 
 <style scoped>
 .carbon-ads {
-  padding: 1.75rem 0 0;
   border-radius: 4px;
   margin: 0 auto;
   max-width: 280px;
@@ -60,7 +59,7 @@ onMounted(() => {
 .carbon-ads :deep(.carbon-img) {
   float: left;
   margin-right: 0.75rem;
-  max-width: 100px;
+  max-width: 110px;
   border: 1px solid var(--c-divider);
 }
 
@@ -76,6 +75,7 @@ onMounted(() => {
 .carbon-ads :deep(.carbon-img img) {
   display: block;
   width: 100%;
+  height: auto;
 }
 
 @media (min-width: 420px) {

@@ -28,7 +28,7 @@ export default {
 
 <style lang="less">
 .text {
-  color: #777;
+  color: red;
   padding: 0 16px 0 4px;
   font-size: 14px;
 }
