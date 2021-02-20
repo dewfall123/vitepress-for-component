@@ -11,7 +11,8 @@ import chokidar from 'chokidar'
 export async function copyAndWatchSrc(
   root: string,
   srcIncludes: string[],
-  langToPathMapping: Record<string, string> | null
+  langToPathMapping: Record<string, string> | null,
+  watch = true
 ) {
   const srcPaths = srcIncludes.map((src) => `${clearSuffix(src)}/**/*.md`)
   const files = await globby(srcPaths, {
@@ -51,20 +52,23 @@ export async function copyAndWatchSrc(
 
   await Promise.all(files.map((file) => injectMatterAndCopy(file)))
 
-  chokidar
-    .watch(srcPaths, {
-      cwd: process.cwd(),
-      ignored: ['node_modules', '**/node_modules']
-    })
-    .on('change', (file) => injectMatterAndCopy(file))
-    .on('add', (file) => injectMatterAndCopy(file))
-    .on('unlink', (file) => injectMatterAndCopy(file, true))
+  if (watch) {
+    chokidar
+      .watch(srcPaths, {
+        cwd: process.cwd(),
+        ignored: ['node_modules', '**/node_modules']
+      })
+      .on('change', (file) => injectMatterAndCopy(file))
+      .on('add', (file) => injectMatterAndCopy(file))
+      .on('unlink', (file) => injectMatterAndCopy(file, true))
+  }
 }
 
 // copy all file at root to .temp dir
 export async function copyAndWatchRoot(
   root: string,
-  langToPathMapping: Record<string, string> | null
+  langToPathMapping: Record<string, string> | null,
+  watch = true
 ) {
   const docsPath = join(root, '..')
   const files = await globby([`**`, `!${TempFileName}`, '!dist'], {
@@ -85,14 +89,16 @@ export async function copyAndWatchRoot(
 
   await Promise.all(files.map((file) => copyFile(file)))
 
-  chokidar
-    .watch('.', {
-      cwd: docsPath,
-      ignored: [`${TempFileName}`, 'dist']
-    })
-    .on('change', (file) => copyFile(file))
-    .on('add', (file) => copyFile(file))
-    .on('unlink', (file) => copyFile(file, true))
+  if (watch) {
+    chokidar
+      .watch('.', {
+        cwd: docsPath,
+        ignored: [`${TempFileName}`, 'dist']
+      })
+      .on('change', (file) => copyFile(file))
+      .on('add', (file) => copyFile(file))
+      .on('unlink', (file) => copyFile(file, true))
+  }
 }
 
 // resolve /comp/foo.zh-CN.md -> /zh/comp/foo.md

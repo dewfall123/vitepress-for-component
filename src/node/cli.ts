@@ -15,7 +15,7 @@ root = argv.root
 console.log('root = ' + argv.root)
 
 async function run() {
-  await genTemporary(argv)
+  await genTemporary(argv, command === 'dev')
 
   if (!command || command === 'dev') {
     createServer(root, argv)

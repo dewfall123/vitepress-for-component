@@ -8,7 +8,7 @@ export const TempFileName = '.temp'
 export const DefaultSrcIncludes = ['src']
 
 // generate a .temp dir
-export async function genTemporary(options: ServeOptions = {}) {
+export async function genTemporary(options: ServeOptions = {}, watch: boolean) {
   const root = options.root!
   const config = await resolveConfig(join(root, '..'))
   const userConfig = config.userConfig
@@ -25,8 +25,8 @@ export async function genTemporary(options: ServeOptions = {}) {
   await fsExtra.ensureDir(root)
 
   await Promise.all([
-    copyAndWatchRoot(root, langToPathMapping),
-    copyAndWatchSrc(root, srcIncludes, langToPathMapping)
+    copyAndWatchRoot(root, langToPathMapping, watch),
+    copyAndWatchSrc(root, srcIncludes, langToPathMapping, watch)
   ])
 
   console.log('copy to .temp success.')
