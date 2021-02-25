@@ -1,4 +1,4 @@
-`VitePress` 配置地址[vitepress-config](https://vitepress.vuejs.org/config/).
+`VitePress` 配置地址[vitepress-config](https://vitepress.vuejs.org/config/basics.html).
 
 新增的配置如下：
 
