@@ -2,7 +2,7 @@ import path from 'path'
 import fs from 'fs-extra'
 import chalk from 'chalk'
 import globby from 'globby'
-import { AliasOptions } from 'vite'
+import { AliasOptions, Plugin } from 'vite'
 import { Options as VuePluginOptions } from '@vitejs/plugin-vue'
 import { SiteData, HeadConfig, LocaleConfig } from '../../types/shared'
 export { resolveSiteDataByRoute } from './shared/config'
@@ -26,6 +26,7 @@ export interface UserConfig<ThemeConfig = any> {
   srcIncludes?: string[]
   customData?: any
   vueOptions?: VuePluginOptions
+  userPlugins?: Plugin[]
 }
 
 export interface SiteConfig<ThemeConfig = any> {
@@ -40,6 +41,7 @@ export interface SiteConfig<ThemeConfig = any> {
   userConfig: UserConfig
   markdown?: MarkdownOptions
   vueOptions?: VuePluginOptions
+  userPlugins?: Plugin[]
 }
 
 const resolve = (root: string, file: string) =>
@@ -70,7 +72,8 @@ export async function resolveConfig(root: string): Promise<SiteConfig> {
     userConfig,
     markdown: userConfig.markdown,
     alias: resolveAliases(themeDir, userConfig),
-    vueOptions: userConfig.vueOptions
+    vueOptions: userConfig.vueOptions,
+    userPlugins: userConfig.userPlugins
   }
 
   return config
