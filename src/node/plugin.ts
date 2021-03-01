@@ -24,7 +24,15 @@ const isPageChunk = (
 
 export function createVitePressPlugin(
   root: string,
-  { configPath, alias, markdown, site, vueOptions, pages }: SiteConfig,
+  {
+    configPath,
+    alias,
+    markdown,
+    site,
+    vueOptions,
+    pages,
+    userPlugins = []
+  }: SiteConfig,
   ssr = false,
   pageToHashMap?: Record<string, string>
 ): Plugin[] {
@@ -197,5 +205,5 @@ export function createVitePressPlugin(
     }
   }
 
-  return [vitePressPlugin, vuePlugin]
+  return [vitePressPlugin, vuePlugin, ...userPlugins]
 }
