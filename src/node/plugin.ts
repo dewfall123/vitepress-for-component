@@ -31,7 +31,7 @@ export function createVitePressPlugin(
     site,
     vueOptions,
     pages,
-    userPlugins = []
+    vitePlugins = []
   }: SiteConfig,
   ssr = false,
   pageToHashMap?: Record<string, string>
@@ -205,5 +205,5 @@ export function createVitePressPlugin(
     }
   }
 
-  return [vitePressPlugin, vuePlugin, ...userPlugins]
+  return [vitePressPlugin, vuePlugin, ...vitePlugins]
 }

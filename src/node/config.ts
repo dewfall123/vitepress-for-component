@@ -26,7 +26,7 @@ export interface UserConfig<ThemeConfig = any> {
   srcIncludes?: string[]
   customData?: any
   vueOptions?: VuePluginOptions
-  userPlugins?: Plugin[]
+  vitePlugins?: Plugin[]
 }
 
 export interface SiteConfig<ThemeConfig = any> {
@@ -41,7 +41,7 @@ export interface SiteConfig<ThemeConfig = any> {
   userConfig: UserConfig
   markdown?: MarkdownOptions
   vueOptions?: VuePluginOptions
-  userPlugins?: Plugin[]
+  vitePlugins?: Plugin[]
 }
 
 const resolve = (root: string, file: string) =>
@@ -73,7 +73,7 @@ export async function resolveConfig(root: string): Promise<SiteConfig> {
     markdown: userConfig.markdown,
     alias: resolveAliases(themeDir, userConfig),
     vueOptions: userConfig.vueOptions,
-    userPlugins: userConfig.userPlugins
+    vitePlugins: userConfig.vitePlugins
   }
 
   return config
