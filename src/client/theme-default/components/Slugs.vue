@@ -65,4 +65,15 @@ export default {
 .link {
   color: var(--text-color);
 }
+
+.right-slug {
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+@media (min-width: 900px) {
+  .right-slug {
+    transform: translateX(0);
+  }
+}
 </style>

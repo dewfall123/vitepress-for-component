@@ -46,6 +46,13 @@ import NextAndPrevLinks from './NextAndPrevLinks.vue'
   width: calc(100% - var(--slug-width));
 }
 
+@media (max-width: 900px) {
+  .container {
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
 .content {
   padding-bottom: 1.5rem;
 }
