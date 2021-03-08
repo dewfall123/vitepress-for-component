@@ -4,14 +4,19 @@
       <span class="text">点击次数:</span>
       <span>{{ count }}</span>
     </p>
-    <button @click="onClick">count++</button>
+    <ElButton @click="onClick">count++</ElButton>
   </div>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue'
+import { ElButton } from 'element-plus'
+import 'element-plus/lib/theme-chalk/index.css'
 
 export default {
+  components: {
+    ElButton,
+  },
   setup() {
     const count = ref(0)
     function onClick() {
@@ -28,8 +33,6 @@ export default {
 
 <style lang="less">
 .text {
-  color: red;
-  padding: 0 16px 0 4px;
   font-size: 14px;
 }
 </style>

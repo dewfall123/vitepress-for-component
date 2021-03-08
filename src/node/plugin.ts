@@ -60,7 +60,9 @@ export function createVitePressPlugin(
           __ALGOLIA__: !!site.themeConfig.algolia
         },
         optimizeDeps: {
-          exclude: ['@docsearch/js']
+          exclude: ['@docsearch/js'],
+          // 让第三方库使用vue的时候从vite预编译导致，保证只引入一次runtime
+          include: ['vue']
         }
       }
     },
