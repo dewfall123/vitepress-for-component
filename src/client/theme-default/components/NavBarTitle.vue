@@ -19,6 +19,8 @@
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--c-text);
+  display: flex;
+  align-items: center;
 }
 
 .nav-bar-title:hover {

@@ -6,7 +6,7 @@ code {
   margin: 0;
   padding: 2px 5px;
   color: #d56161;
-  background: #f6f7f9;
+  /* background: #f6f7f9; */
 }
 
 code .token.deleted {
