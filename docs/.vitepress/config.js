@@ -6,7 +6,6 @@ module.exports = {
   title: 'vitepress-for-component',
   description: 'Fork自vitepress，针对组件开发做了一些功能增强',
 
-  outDir: '../dist/',
   base,
   themeConfig: {
     repo: 'dewfall123/vitepress-for-component',

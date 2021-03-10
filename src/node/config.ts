@@ -67,7 +67,7 @@ export async function resolveConfig(root: string): Promise<SiteConfig> {
       ignore: ['node_modules', '**/node_modules']
     }),
     configPath: resolve(root, 'config.js'),
-    outDir: path.resolve(root, userConfig.outDir ?? 'dist'),
+    outDir: path.resolve(root, '../', userConfig.outDir ?? 'dist'),
     tempDir: path.resolve(APP_PATH, 'temp'),
     userConfig,
     markdown: userConfig.markdown,

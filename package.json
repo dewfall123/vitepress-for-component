@@ -1,6 +1,6 @@
 {
   "name": "vitepress-for-component",
-  "version": "0.13.2",
+  "version": "0.14.0",
   "description": "dumi like documentation tool",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
