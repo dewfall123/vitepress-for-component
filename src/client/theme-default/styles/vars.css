@@ -1,5 +1,5 @@
 /** Base Styles */
-:root {
+html {
   /**
    * Colors
    * --------------------------------------------------------------------- */
@@ -60,7 +60,7 @@
 }
 
 /** Fallback Styles */
-:root {
+html {
   --c-divider: var(--c-divider-light);
 
   --c-text: var(--c-text-light-1);
