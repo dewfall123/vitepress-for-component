@@ -1,20 +1,31 @@
 # vitepress-for-component
 
-## vitepress-for-component 是什么?
+[![npm](https://img.shields.io/npm/v/vitepress-for-component.svg)](https://www.npmjs.com/package/vitepress-for-component)
+[![npm](https://img.shields.io/npm/l/vitepress-for-component.svg)](https://github.com/faressoft/vitepress-for-component/blob/master/LICENSE)
 
-`VFC` Fork 自[`VitePress`](https://github.com/vuejs/vitepress)，针对**组件开发**场景做了一些功能增强和默认样式修改。
+> `VFC` Fork 自[`VitePress`](https://github.com/vuejs/vitepress)，针对**组件开发**场景做了一些功能增强和默认样式修改。
 
-可以理解为是一个在 `VitePress` 的基础上向 [`dumi`](https://d.umijs.org/) 靠拢的工具。
+> 可以理解为是一个在 `VitePress` 的基础上向 [`dumi`](https://d.umijs.org/) 靠拢的工具。
 
-## 详细文档
+[详细文档](https://dewfall123.github.io/vitepress-for-component/).
 
-[https://dewfall123.github.io/vitepress-for-component/](https://dewfall123.github.io/vitepress-for-component/).
+## 快速开始
+
+- 使用脚手架[create-vlib](https://github.com/dewfall123/create-vlib)
+
+```
+yarn create vlib
+```
+
+- 不使用脚手架
+
+像 vitepress 一样使用即可。
 
 ## 示例站点
 
 - [ahooks-vue](https://dewfall123.github.io/ahooks-vue/zh/)
 
-## 它做了哪些增强?
+## Features
 
 ### 1. 内置`Demo`组件
 

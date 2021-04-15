@@ -6,15 +6,15 @@ title: 介绍
 
 下面简称`VFC`。
 
-## VFC 是什么?
-
+:::tip
 `VFC` Fork 自[`VitePress`](https://github.com/vuejs/vitepress)，针对 **组件开发** 场景做了一些功能增强和默认样式修改。
+:::
 
 :::warning
 可以理解为是一个在 `VitePress` 的基础上向 [`dumi`](https://d.umijs.org/) 靠拢的工具。
 :::
 
-## VFC 做了哪些增强?
+## Fearures
 
 ### 1. 内置`Demo`组件
 

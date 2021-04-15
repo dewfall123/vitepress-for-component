@@ -1,36 +1,28 @@
-## 使用脚手架（推荐）
+## 1. 使用脚手架 create-vlib
 
-### 初始化
+快速创建 Vue 组件库的脚手架。
 
 ```
 yarn create vlib
 ```
 
-按照提示输入项目信息后，会看到如下信息：
+### Features
 
-```
-�  Successfully created project test-project.
-�  Get started with the following commands:
+- 基于[`vitepress-for-component`](https://github.com/dewfall123/vitepress-for-component.git)一键启动开发环境，一键生成文档。
+- 基于`vite`一键打包。
+- 使用[`np`](https://github.com/sindresorhus/np)发布版本（非常 nice 的发布工具）。
+- 使用`gh-pages`一键发布 github.io 文档。
+- 集成`eslint` `prettier` `ls-lint` 等 lint 工具。
+- 集成`husky` `conventional-changelog-cli`等工具。
 
-$ cd test-project
-$ yarn dev
-```
+### 模板
 
-### 开发
+三种模板可以选择：
 
-成功初始化后，会有一个简单的模板项目，并且包含一些组件开发常用的功能。
+- vue-multiple-components Vue 组件（多个）。
+- vue-single-component Vue 组件（单个）。
+- ts-lib TS 库。
 
-1. `yarn dev`: 热更新的开发服务.
-2. `yarn test`: [jest](https://jestjs.io/) 单元测试.
-3. `yarn build`: [Rollup](https://www.rollupjs.com/) 打包源码.
-4. `yarn docs-build`: 文档打包（SSR）.
-5. `yarn docs-static`: 验证文档打包.
-6. `yarn docs-deploy`: 使用 [gh-pages](https://pages.github.com/) 以分支的形式部署到 github.io.
-7. `yarn changelog`: 用`conventional-changelog-cli`生成 changelog .
-8. `yarn lint` && `yarn ls-lint`: lint 检查.
+## 2. 不使用脚手架
 
-## 普通使用
-
-像`vitepress`一样使用。
-
-[getting-started](https://vitepress.vuejs.org/guide/getting-started.html).
+像 vitepress 一样使用即可。

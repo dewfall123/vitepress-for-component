@@ -42,7 +42,7 @@ function getGuideSidebar() {
       text: '介绍',
       children: [
         { text: '介绍', link: '/' },
-        { text: '快速上手', link: '/guide/getting-started' }
+        { text: '开始', link: '/guide/getting-started' }
       ]
     },
     {
