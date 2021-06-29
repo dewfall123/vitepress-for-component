@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <article class="demo">
+    <article v-bind="$attrs" class="demo">
       <div class="demo-slot">
         <slot></slot>
       </div>
