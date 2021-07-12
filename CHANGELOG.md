@@ -1,3 +1,5 @@
+## [0.14.8](https://github.com/dewfall123/vitepress-for-component/compare/v0.14.6...v0.14.8) (2021-07-12)
+
 ## [0.14.6](https://github.com/dewfall123/vitepress-for-component/compare/v0.12.2...v0.14.6) (2021-06-30)
 
 ### Bug Fixes
