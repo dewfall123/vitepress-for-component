@@ -1,5 +1,5 @@
 <template>
-  <aside class="sidebar" :class="{ open }">
+  <aside class="sidebar hover-scrollbar" :class="{ open }">
     <NavLinks class="nav" />
 
     <slot name="sidebar-top" />

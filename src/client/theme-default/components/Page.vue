@@ -1,6 +1,6 @@
 <template>
   <main class="page">
-    <div class="container">
+    <div class="container hover-scrollbar">
       <slot name="top" />
 
       <div class="content">
@@ -44,6 +44,7 @@ import NextAndPrevLinks from './NextAndPrevLinks.vue'
   padding: 0.025rem 2.5rem 2rem;
   /* max-width: 50rem; */
   width: calc(100% - var(--slug-width));
+  height: 100%;
 }
 
 @media (max-width: 900px) {

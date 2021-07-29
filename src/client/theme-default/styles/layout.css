@@ -207,7 +207,6 @@ form {
   max-height: calc(100% - var(--header-height) - 10rem);
   width: var(--slug-width);
   padding: 50px 24px 0 0;
-  border-right: 1px solid var(--border-color);
   background-color: #fff;
   z-index: 3;
   overflow-y: auto;
@@ -249,14 +248,26 @@ form {
   height: 100vh;
 }
 
+.hover-scrollbar {
+  overflow-y: hidden !important;
+}
+
+.hover-scrollbar:hover {
+  overflow-y: auto !important;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
-  background-color: #d3d7dd;
+  background-color: rgba(144, 147, 153, 0.3);
   border-radius: 5px;
+  transition: all 1s;
+  opacity: 0;
 }
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
