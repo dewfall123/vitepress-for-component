@@ -1,37 +1,32 @@
 <template>
   <div>
+    <v-typical
+      class="blink"
+      :steps="['Hello', 1000, 'Hello World !', 500, 'Hello World ! 👋', 1000]"
+      :loop="Infinity"
+      :wrapper="'h2'"
+    ></v-typical>
+
     <p>
       <span class="text">点击次数:</span>
       <span>{{ count }}</span>
     </p>
-    <ElButton @click="onClick">count++</ElButton>
+    <button @click="onClick">count++</button>
   </div>
 </template>
 
-<script lang="ts">
+<script setup>
 import { ref } from 'vue'
-import { ElButton } from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
+import VTypical from 'vue-typical'
 
-export default {
-  components: {
-    ElButton,
-  },
-  setup() {
-    const count = ref(0)
-    function onClick() {
-      count.value++
-    }
 
-    return {
-      count,
-      onClick
-    }
-  }
+const count = ref(0)
+function onClick() {
+  count.value++
 }
 </script>
 
-<style lang="less">
+<style>
 .text {
   font-size: 14px;
 }

@@ -35,7 +35,7 @@ export const demoPlugin = (md: MarkdownIt) => {
       let language = (content.match(/language=("|')(.*)('|")/) || [])[2] ?? ''
       const src = (content.match(/src=("|')(\S+)('|")/) || [])[2] ?? ''
 
-      const { realPath, urlPath } = md as any
+      const { realPath, urlPath, importMap } = md as any
       const absolutePath = path
         .resolve(realPath ?? urlPath, '../', src)
         .split(path.sep)
@@ -69,7 +69,11 @@ export const demoPlugin = (md: MarkdownIt) => {
         '>',
         ` componentName="${componentName}" htmlStr="${htmlStr}" codeStr="${encodeURIComponent(
           codeStr
-        )}" >
+        )}" ${
+          importMap
+            ? `importMap="${encodeURIComponent(JSON.stringify(importMap))}"`
+            : ''
+        } >
         <${componentName}></${componentName}>
         `
       )

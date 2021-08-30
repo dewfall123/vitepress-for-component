@@ -27,6 +27,7 @@ export interface UserConfig<ThemeConfig = any> {
   customData?: any
   vueOptions?: VuePluginOptions
   vitePlugins?: Plugin[]
+  importMap?: Record<string, string>
 }
 
 export interface SiteConfig<ThemeConfig = any> {

@@ -24,7 +24,8 @@ interface MarkdownCompileResult {
 export function createMarkdownToVueRenderFn(
   root: string,
   options: MarkdownOptions = {},
-  pages: string[]
+  pages: string[],
+  importMap?: Record<string, string>
 ) {
   const md = createMarkdownRenderer(root, options)
   pages = pages.map((p) => slash(p.replace(/\.md$/, '')))
@@ -44,6 +45,7 @@ export function createMarkdownToVueRenderFn(
     const { content, data: frontmatter } = matter(src)
     md.realPath = frontmatter?.map?.realPath
     md.urlPath = file
+    md.importMap = importMap
     let { html, data } = md.render(content)
 
     // avoid env variables being replaced by vite
