@@ -7,6 +7,10 @@ module.exports = {
   description: 'Fork自vitepress，针对组件开发做了一些功能增强',
 
   base,
+  importMap: {
+    'vue-typical':
+      'https://cdn.jsdelivr.net/npm/vue-typical@2.1.0/dist/vue-typical.es.min.js'
+  },
   themeConfig: {
     repo: 'dewfall123/vitepress-for-component',
     docsDir: 'docs',

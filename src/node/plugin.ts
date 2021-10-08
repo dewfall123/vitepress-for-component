@@ -31,12 +31,18 @@ export function createVitePressPlugin(
     site,
     vueOptions,
     pages,
-    vitePlugins = []
+    vitePlugins = [],
+    userConfig
   }: SiteConfig,
   ssr = false,
   pageToHashMap?: Record<string, string>
 ): Plugin[] {
-  const markdownToVue = createMarkdownToVueRenderFn(root, markdown, pages)
+  const markdownToVue = createMarkdownToVueRenderFn(
+    root,
+    markdown,
+    pages,
+    userConfig.importMap
+  )
 
   const vuePlugin = createVuePlugin({
     include: [/\.vue$/, /\.md$/],

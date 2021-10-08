@@ -13,10 +13,8 @@
       <div class="demo-actions">
         <div class="demo-platforms">
           <OnlineEdit
-            v-for="platform in platforms"
-            :key="platform"
-            v-bind="parsedCode"
-            :platform="platform"
+            :content="decodedCodeStr"
+            :importMap="importMap"
           />
         </div>
         <div class="demo-buttons">
@@ -54,6 +52,7 @@ export default {
     componentName: String,
     htmlStr: String,
     codeStr: String,
+    importMap: Object,
     language: { default: 'vue', type: String },
     platforms: {
       default: () => ['codepen'],
@@ -90,7 +89,8 @@ export default {
       decodedHtmlStr,
       parsedCode,
       showTip,
-      copyCode
+      copyCode,
+      decodedCodeStr
     }
   }
 }

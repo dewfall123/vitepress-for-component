@@ -6667,6 +6667,11 @@ vite@2.4.1:
   optionalDependencies:
     fsevents "~2.3.2"
 
+vue-typical@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vue-typical/-/vue-typical-2.1.0.tgz#68731300f8b747548e0f36da0364d03614ba3a15"
+  integrity sha512-vqfN08VgfhV8zuvf/UwDs4/P3VtQxHWK9ZshDwc1cEqWDUXzgwJwLiEUqYtksIug5wkhgoedyTAeEG6kJao6WA==
+
 vue@^3.2.19:
   version "3.2.19"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.19.tgz#da2c80a6a0271c7097fee9e31692adfd9d569c8f"
