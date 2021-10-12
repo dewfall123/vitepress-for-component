@@ -1,5 +1,9 @@
 <template>
-  <a :href="sfcPlaygroundUrl" style="display: flex; align-items: center" target="_blank">
+  <a
+    :href="sfcPlaygroundUrl"
+    style="display: flex; align-items: center"
+    target="_blank"
+  >
     <div style="width: 16px; margin-left: 6px">
       <svg
         version="1.1"
@@ -28,11 +32,10 @@ import { computed, defineProps } from 'vue'
 
 const sfcBaseUrl = 'https://sfc.vuejs.org/'
 
-const props =
-  defineProps<{
-    content: string
-    importMap?: string
-  }>()
+const props = defineProps<{
+  content: string
+  importMap?: string
+}>()
 
 const sfcPlaygroundUrl = computed(() => {
   const sfcJson = {
@@ -43,7 +46,7 @@ const sfcPlaygroundUrl = computed(() => {
       sfcJson['import-map.json'] = JSON.stringify({
         imports: JSON.parse(decodeURIComponent(props.importMap))
       })
-    } catch { }
+    } catch {}
   }
 
   return `${sfcBaseUrl}#${btoa(
