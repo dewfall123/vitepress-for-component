@@ -2373,10 +2373,113 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild@^0.12.8:
-  version "0.12.29"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.29.tgz#be602db7c4dc78944a9dbde0d1ea19d36c1f882d"
-  integrity sha512-w/XuoBCSwepyiZtIRsKsetiLDUVGPVw1E/R3VTFSecIy8UR7Cq3SOtwKHJMFoVqqVG36aGkzh4e8BvpO1Fdc7g==
+esbuild-android-arm64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-android-arm64/-/esbuild-android-arm64-0.13.14.tgz#c85083ece26be3d67e6c720e088968a98409e023"
+  integrity sha1-yFCD7OJr49Z+bHIOCIloqYQJ4CM=
+
+esbuild-darwin-64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-darwin-64/-/esbuild-darwin-64-0.13.14.tgz#8e4e237ad847cc54a1d3a5caee26a746b9f0b81f"
+  integrity sha1-jk4jethHzFSh06XK7ianRrnwuB8=
+
+esbuild-darwin-arm64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.13.14.tgz#b3b5ebd40b2cb06ee0f6fb342dd4bdcca54ad273"
+  integrity sha1-s7Xr1AsssG7g9vs0LdS9zKVK0nM=
+
+esbuild-freebsd-64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-freebsd-64/-/esbuild-freebsd-64-0.13.14.tgz#175ecb2fa8141428cf70ea2d5f4c27534bad53e0"
+  integrity sha1-F17LL6gUFCjPcOotX0wnU0utU+A=
+
+esbuild-freebsd-arm64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-freebsd-arm64/-/esbuild-freebsd-arm64-0.13.14.tgz#a7d64e41d1fa581f8db7775e5200f18e67d70c4d"
+  integrity sha1-p9ZOQdH6WB+Nt3deUgDxjmfXDE0=
+
+esbuild-linux-32@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-linux-32/-/esbuild-linux-32-0.13.14.tgz#14bdd4f6b6cfd35c65c835894651ba335c2117da"
+  integrity sha1-FL3U9rbP01xlyDWJRlG6M1whF9o=
+
+esbuild-linux-64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-linux-64/-/esbuild-linux-64-0.13.14.tgz#7fd56851b2982fdd0cd8447ee9858c2c5711708a"
+  integrity sha1-f9VoUbKYL90M2ER+6YWMLFcRcIo=
+
+esbuild-linux-arm64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-linux-arm64/-/esbuild-linux-arm64-0.13.14.tgz#a55634d70679ba509adeafd68eebb9fd1ec5af6c"
+  integrity sha1-pVY01wZ5ulCa3q/Wjuu5/R7Fr2w=
+
+esbuild-linux-arm@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-linux-arm/-/esbuild-linux-arm-0.13.14.tgz#bb96a99677e608b31ff61f37564326d38e846ca2"
+  integrity sha1-u5aplnfmCLMf9h83VkMm046EbKI=
+
+esbuild-linux-mips64le@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-linux-mips64le/-/esbuild-linux-mips64le-0.13.14.tgz#6a55362a8fd1e593dea2ecc41877beed8b8184b9"
+  integrity sha1-alU2Ko/R5ZPeouzEGHe+7YuBhLk=
+
+esbuild-linux-ppc64le@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-linux-ppc64le/-/esbuild-linux-ppc64le-0.13.14.tgz#9e0048587ece0a7f184ab147f20d077098045e7f"
+  integrity sha1-ngBIWH7OCn8YSrFH8g0HcJgEXn8=
+
+esbuild-netbsd-64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-netbsd-64/-/esbuild-netbsd-64-0.13.14.tgz#dcab16a4bbcfa16e2e8535dadc5f64fdc891c63b"
+  integrity sha1-3KsWpLvPoW4uhTXa3F9k/ciRxjs=
+
+esbuild-openbsd-64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-openbsd-64/-/esbuild-openbsd-64-0.13.14.tgz#3c7453b155ebb68dc34d5aec3bd6505337bdda08"
+  integrity sha1-PHRTsVXrto3DTVrsO9ZQUze92gg=
+
+esbuild-sunos-64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-sunos-64/-/esbuild-sunos-64-0.13.14.tgz#85addf5fef6b5db154a955d4f2e88953359d75ce"
+  integrity sha1-ha3fX+9rXbFUqVXU8uiJUzWddc4=
+
+esbuild-windows-32@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-windows-32/-/esbuild-windows-32-0.13.14.tgz#f77f98f30a5c636c44db2428ecdf9bcbbaedb1a7"
+  integrity sha1-93+Y8wpcY2xE2yQo7N+by7rtsac=
+
+esbuild-windows-64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-windows-64/-/esbuild-windows-64-0.13.14.tgz#bc778674c40d65150d12385e0f23eb3a0badbd0d"
+  integrity sha1-vHeGdMQNZRUNEjheDyPrOgutvQ0=
+
+esbuild-windows-arm64@0.13.14:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild-windows-arm64/-/esbuild-windows-arm64-0.13.14.tgz#91a8dad35ab2c4dd27cd83860742955b25a354d7"
+  integrity sha1-kaja01qyxN0nzYOGB0KVWyWjVNc=
+
+esbuild@^0.13.2:
+  version "0.13.14"
+  resolved "http://npm.vivo.com.cn/esbuild/-/esbuild-0.13.14.tgz#98a3f7f42809abdc2b57c84565d0f713382dc1a5"
+  integrity sha1-mKP39CgJq9wrV8hFZdD3EzgtwaU=
+  optionalDependencies:
+    esbuild-android-arm64 "0.13.14"
+    esbuild-darwin-64 "0.13.14"
+    esbuild-darwin-arm64 "0.13.14"
+    esbuild-freebsd-64 "0.13.14"
+    esbuild-freebsd-arm64 "0.13.14"
+    esbuild-linux-32 "0.13.14"
+    esbuild-linux-64 "0.13.14"
+    esbuild-linux-arm "0.13.14"
+    esbuild-linux-arm64 "0.13.14"
+    esbuild-linux-mips64le "0.13.14"
+    esbuild-linux-ppc64le "0.13.14"
+    esbuild-netbsd-64 "0.13.14"
+    esbuild-openbsd-64 "0.13.14"
+    esbuild-sunos-64 "0.13.14"
+    esbuild-windows-32 "0.13.14"
+    esbuild-windows-64 "0.13.14"
+    esbuild-windows-arm64 "0.13.14"
 
 escape-html@^1.0.3:
   version "1.0.3"
@@ -4562,6 +4665,11 @@ nanoid@^3.1.28:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.29.tgz#214fb2d7a33e1a5bef4757b779dfaeb6a4e5aeb4"
   integrity sha512-dW2pUSGZ8ZnCFIlBIA31SV8huOGCHb6OwzVCc7A69rb/a+SgPBwfmLvK5TKQ3INPbRkcI8a/Owo0XbiTNH19wg==
 
+nanoid@^3.1.30:
+  version "3.1.30"
+  resolved "http://npm.vivo.com.cn/nanoid/-/nanoid-3.1.30.tgz#63f93cc548d2a113dc5dfbc63bfa09e2b9b64362"
+  integrity sha1-Y/k8xUjSoRPcXfvGO/oJ4rm2Q2I=
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/nanomatch/-/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -4994,6 +5102,11 @@ picocolors@^0.2.1:
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-0.2.1.tgz#570670f793646851d1ba135996962abad587859f"
   integrity sha512-cMlDqaLEqfSaW8Z7N5Jw+lyIW869EzT73/F5lhtY9cLGoVxSXznfgfXMO0Z5K0o0Q2TkTXq+0KFsdnSe3jDViA==
 
+picocolors@^1.0.0:
+  version "1.0.0"
+  resolved "http://npm.vivo.com.cn/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
+  integrity sha1-y1vcdP8/UYkiNur3nWi8RFZKuBw=
+
 picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
@@ -5083,13 +5196,22 @@ postcss@^7.0.0:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.1.10, postcss@^8.3.5:
+postcss@^8.1.10:
   version "8.3.9"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.3.9.tgz#98754caa06c4ee9eb59cc48bd073bb6bd3437c31"
   integrity sha512-f/ZFyAKh9Dnqytx5X62jgjhhzttjZS7hMsohcI7HEI5tjELX/HxCy3EFhsRxyzGvrzFF+82XPvCS8T9TFleVJw==
   dependencies:
     nanoid "^3.1.28"
     picocolors "^0.2.1"
+    source-map-js "^0.6.2"
+
+postcss@^8.3.8:
+  version "8.3.11"
+  resolved "http://npm.vivo.com.cn/postcss/-/postcss-8.3.11.tgz#c3beca7ea811cd5e1c4a3ec6d2e7599ef1f8f858"
+  integrity sha1-w77KfqgRzV4cSj7G0udZnvH4+Fg=
+  dependencies:
+    nanoid "^3.1.30"
+    picocolors "^1.0.0"
     source-map-js "^0.6.2"
 
 preact@^10.0.0:
@@ -5480,6 +5602,13 @@ rollup@^2.38.5:
   integrity sha512-VoWt8DysFGDVRGWuHTqZzT02J0ASgjVq/hPs9QcBOGMd7B+jfTr/iqMVEyOi901rE3xq+Deq66GzIT1yt7sGwQ==
   optionalDependencies:
     fsevents "~2.3.1"
+
+rollup@^2.57.0:
+  version "2.60.0"
+  resolved "http://npm.vivo.com.cn/rollup/-/rollup-2.60.0.tgz#4ee60ab7bdd0356763f87d7099f413e5460fc193"
+  integrity sha1-TuYKt73QNWdj+H1wmfQT5UYPwZM=
+  optionalDependencies:
+    fsevents "~2.3.2"
 
 rsvp@^4.8.4:
   version "4.8.5"
@@ -6429,15 +6558,15 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vite@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.4.1.tgz#2e48b8dbfc69e4edbf7f4d1c0798d621585cb8da"
-  integrity sha512-4BpKRis9uxIqPfIEcJ18LTBsamqnDFxTx45CXwagHjNltHa6PFEvf8Pe6OpgIHb0OyWT30OXOSSQvdOaX4OBiQ==
+vite@^2.6.14:
+  version "2.6.14"
+  resolved "http://npm.vivo.com.cn/vite/-/vite-2.6.14.tgz#35c09a15e4df823410819a2a239ab11efb186271"
+  integrity sha1-NcCaFeTfgjQQgZoqI5qxHvsYYnE=
   dependencies:
-    esbuild "^0.12.8"
-    postcss "^8.3.5"
+    esbuild "^0.13.2"
+    postcss "^8.3.8"
     resolve "^1.20.0"
-    rollup "^2.38.5"
+    rollup "^2.57.0"
   optionalDependencies:
     fsevents "~2.3.2"
 
