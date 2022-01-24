@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineProps } from 'vue'
+import { computed } from 'vue'
 
 const sfcBaseUrl = 'https://sfc.vuejs.org/'
 

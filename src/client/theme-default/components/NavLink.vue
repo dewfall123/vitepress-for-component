@@ -7,13 +7,13 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import type { DefaultTheme } from '../config'
 import { useNavLink } from '../composables/navLink'
 import OutboundLink from './icons/OutboundLink.vue'
 
 const props = defineProps<{
-  item: DefaultTheme.NavItemWithLink,
+  item: DefaultTheme.NavItemWithLink
 }>()
 
 const propsRefs = toRefs(props)

@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import NavLinks from './NavLinks.vue'
 import SideBarLinks from './SideBarLinks.vue'
 import Slugs from './Slugs.vue'
