@@ -1,3 +1,88 @@
+## [0.16.7](https://github.com/dewfall123/vitepress-for-component/compare/v0.20.1...v0.16.7) (2022-01-24)
+
+### Bug Fixes
+
+- [#38](https://github.com/dewfall123/vitepress-for-component/issues/38) props importMap type warning ([47e7776](https://github.com/dewfall123/vitepress-for-component/commit/47e7776bf9e41f084afe4db06e188e99f2ef2a5a))
+- [#52](https://github.com/dewfall123/vitepress-for-component/issues/52) ([0839035](https://github.com/dewfall123/vitepress-for-component/commit/0839035c064f2506c2f0421ef986af8c30129b30))
+- update vue ([1a3ca9c](https://github.com/dewfall123/vitepress-for-component/commit/1a3ca9cc897b42066f216e4349a7c12fe0e0c5b2))
+
+### Features
+
+- scrollbar style ([34b15ab](https://github.com/dewfall123/vitepress-for-component/commit/34b15abbd424fa6d109d874e6e65280b47e76a4a))
+- 改用 sfc.vuejs.org ([280adc1](https://github.com/dewfall123/vitepress-for-component/commit/280adc144fe25e5f54932e8a6ea20b0a5cf9d7a5))
+- change scrollbar style ([294c003](https://github.com/dewfall123/vitepress-for-component/commit/294c0037fa74bdcfaec5eeb1ea94f6523a44dd9a))
+- upgrade docsearch version ([#441](https://github.com/dewfall123/vitepress-for-component/issues/441)) ([1b245e2](https://github.com/dewfall123/vitepress-for-component/commit/1b245e22d8a00ea7c01c052ac1ea3d8d94aaeefb))
+
+## [0.14.8](https://github.com/dewfall123/vitepress-for-component/compare/v0.15.6...v0.14.8) (2021-07-12)
+
+## [0.14.6](https://github.com/dewfall123/vitepress-for-component/compare/v0.15.5...v0.14.6) (2021-06-30)
+
+### Bug Fixes
+
+- [#11](https://github.com/dewfall123/vitepress-for-component/issues/11) ([3238964](https://github.com/dewfall123/vitepress-for-component/commit/3238964eacb93fe99a39e9ea2e6d9fff28c57062))
+- [#15](https://github.com/dewfall123/vitepress-for-component/issues/15) ([5c356a4](https://github.com/dewfall123/vitepress-for-component/commit/5c356a44f7417555f8cbbcb934b7ce4b6e7dc754))
+- 修复 build 重复渲染 demo bug ([88fa603](https://github.com/dewfall123/vitepress-for-component/commit/88fa603d6beb07d079c7fabb64a1c86533d5ac7f))
+- 修复 chokidar 监听导致复制文件为空 bug ([9ca15de](https://github.com/dewfall123/vitepress-for-component/commit/9ca15de14d4f444618f9d0566788921b7e4c9c30))
+- 修复 suffix 错误识别 bug ([111ed01](https://github.com/dewfall123/vitepress-for-component/commit/111ed01b9d9b275191479be18b80b58a53317a97))
+- 增加 srcAlias ([54c6a2f](https://github.com/dewfall123/vitepress-for-component/commit/54c6a2f68de1536b0750fb85d5a5f7c49a5ab1ac))
+- base error ([8e5c625](https://github.com/dewfall123/vitepress-for-component/commit/8e5c62519058f2e30fb06dea4fe06a396c16c25b))
+- copy suffix bug ([530d9f3](https://github.com/dewfall123/vitepress-for-component/commit/530d9f34b22a9c4d7508c21a67b95e839295299d))
+- no lang suffix file copy error ([e7a4979](https://github.com/dewfall123/vitepress-for-component/commit/e7a4979efeb4e0bbe46987ca795ef24196432730))
+- pre-bundling vue. 保证第三方库使用一份 vue runtime ([9a54467](https://github.com/dewfall123/vitepress-for-component/commit/9a54467aeba4e5098a26cb4ab85d88d8dbe28c62))
+- rollback @vitejs/plugin-vue ([94f9e93](https://github.com/dewfall123/vitepress-for-component/commit/94f9e93c2d8a6e2e2b237b38d8ce9763141b9e96))
+- rollback 2.0.0-beta.32 ([2390f51](https://github.com/dewfall123/vitepress-for-component/commit/2390f511fd2083574ba00398ff2c730a56e5bb92))
+- teleport 会导致 ssr mismatch ([7e93a34](https://github.com/dewfall123/vitepress-for-component/commit/7e93a34fd0ebab3d4221af59d538dd6eff1f4250))
+
+### Features
+
+- 支持 less scss stylus ([cac9c73](https://github.com/dewfall123/vitepress-for-component/commit/cac9c730cc1d798b1a2fe9b879b843f387c7d98d))
+- logo 居中 ([17f8a72](https://github.com/dewfall123/vitepress-for-component/commit/17f8a722d12833aef20e480bdf2b93f3701968a2))
+- outDir 基本路径改变 ([c8a325e](https://github.com/dewfall123/vitepress-for-component/commit/c8a325e3c3d924c8517e7f2968d6abdd73f773a7))
+- **config:** 使用用户自定义的 vite plugins ([ee51650](https://github.com/dewfall123/vitepress-for-component/commit/ee51650676b765747071539d16c211f23e7d2bd9))
+
+## [0.9.4](https://github.com/dewfall123/vitepress-for-component/compare/v0.9.3...v0.9.4) (2020-12-31)
+
+## [0.9.3](https://github.com/dewfall123/vitepress-for-component/compare/v0.10.1...v0.9.3) (2020-12-31)
+
+### Bug Fixes
+
+- add serve command ([1a1277d](https://github.com/dewfall123/vitepress-for-component/commit/1a1277d20575528b393e72ff8d4c0fced7241056))
+- allow locales empty ([a735dfa](https://github.com/dewfall123/vitepress-for-component/commit/a735dfa2a7c0b26365f23db5d12e93196df4812b))
+- failed at first time ([3b13e41](https://github.com/dewfall123/vitepress-for-component/commit/3b13e4189511bfd1bd9ab8b0d0d895e4c625b93b))
+- import demo in root error ([1a84180](https://github.com/dewfall123/vitepress-for-component/commit/1a84180ccb0ac28d26cff791ed836d3ba9f3cb99))
+- set repo ([5b91529](https://github.com/dewfall123/vitepress-for-component/commit/5b91529bad9c610e4d607379d68b7ac779ede2c0))
+
+### Features
+
+- 增加文档说明 ([5dd1e45](https://github.com/dewfall123/vitepress-for-component/commit/5dd1e450b23c5e8feb6031d2a8d1d9af208a0235))
+- add copy watch ([c6a615d](https://github.com/dewfall123/vitepress-for-component/commit/c6a615d5e1f51168c369a145dc36e0c2fffe219e))
+- change name ([feddbb3](https://github.com/dewfall123/vitepress-for-component/commit/feddbb36da1fa8c690e9442bafc9550cbff6d99f))
+- remane to vitepress-dg ([cba6080](https://github.com/dewfall123/vitepress-for-component/commit/cba6080600142120562d3d045eb4a84fdbfc258e))
+- slug style change ([ffc24d3](https://github.com/dewfall123/vitepress-for-component/commit/ffc24d3d4b8007dab4b4f95c8232ebe8d8903279))
+- support locale ([77e2bfb](https://github.com/dewfall123/vitepress-for-component/commit/77e2bfbcbc83445535e3d2f11b818245665d73c2))
+- support locale ([1c79c74](https://github.com/dewfall123/vitepress-for-component/commit/1c79c746ff1ee5aeef05eaa9b94ef6ead0fe8959))
+
+## [0.3.1](https://github.com/dewfall123/vitepress-for-component/compare/v0.7.0...v0.3.1) (2020-10-29)
+
+### Bug Fixes
+
+- 样式修改 ([0094bf7](https://github.com/dewfall123/vitepress-for-component/commit/0094bf79c709292faa9b24745e47f608fc65504d))
+- fix switch language error [#103](https://github.com/dewfall123/vitepress-for-component/issues/103) ([e937fc0](https://github.com/dewfall123/vitepress-for-component/commit/e937fc0f1a28a3fc6167818cb76a3198d73a8593))
+- support relative path at demo ([2383519](https://github.com/dewfall123/vitepress-for-component/commit/23835196ba1af28745ab7b4e2f5e89c865120667))
+- switch language bug. [#106](https://github.com/dewfall123/vitepress-for-component/issues/106) ([944bf80](https://github.com/dewfall123/vitepress-for-component/commit/944bf801b78cc78fb7d771045ee51e2120e36353))
+- switch language error ([c55d125](https://github.com/dewfall123/vitepress-for-component/commit/c55d12574a1d13761d26565a5b38220d2c4164ee))
+
+### Features
+
+- 独立发包 ([7b80893](https://github.com/dewfall123/vitepress-for-component/commit/7b808939574f1ed44163c904c4b80950a346a208))
+- add outDir config ([5255a9a](https://github.com/dewfall123/vitepress-for-component/commit/5255a9afe6edad7c683f344dd5c6fd3ba4abbfde))
+- change assets path ([311aca1](https://github.com/dewfall123/vitepress-for-component/commit/311aca12ef66f6fb17e185d05d9bf03c8c737411))
+- remane ([52b745a](https://github.com/dewfall123/vitepress-for-component/commit/52b745a150b9d3c4339bac8c319fb82d73e79dfe))
+- support alias ([5e7d30b](https://github.com/dewfall123/vitepress-for-component/commit/5e7d30bc8c54c8fdda9f928f75c69eafd28e7b8e))
+- support copy and title ([b692303](https://github.com/dewfall123/vitepress-for-component/commit/b692303d0d82cb0f9b7f798c2344ae7c569d8d32))
+- support demo file ([5695129](https://github.com/dewfall123/vitepress-for-component/commit/5695129dfa6d8060206e60b33a8a16f18cc37698))
+- support online edit ([7c267e0](https://github.com/dewfall123/vitepress-for-component/commit/7c267e01dfe69a062b4508cd5bc7c795e88d0b31))
+
 ## [0.14.8](https://github.com/dewfall123/vitepress-for-component/compare/v0.14.6...v0.14.8) (2021-07-12)
 
 ## [0.14.6](https://github.com/dewfall123/vitepress-for-component/compare/v0.12.2...v0.14.6) (2021-06-30)
