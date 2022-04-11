@@ -7,6 +7,7 @@
     "declaration": true,
     "noUnusedLocals": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "lib": ["ESNext", "DOM"],
     "types": ["node", "jest"],
     "paths": {
@@ -23,5 +24,8 @@
   "include": [
     "src",
     "__tests__"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
