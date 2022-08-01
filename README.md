@@ -3,6 +3,8 @@
 [![npm](https://img.shields.io/npm/v/vitepress-for-component.svg)](https://www.npmjs.com/package/vitepress-for-component)
 [![npm](https://img.shields.io/npm/l/vitepress-for-component.svg)](https://github.com/faressoft/vitepress-for-component/blob/master/LICENSE)
 
+将以插件形式重构此项目，建议使用新版本! https://github.com/dewfall123/vfc
+
 > `VFC` Fork 自[`VitePress`](https://github.com/vuejs/vitepress)，针对**组件开发**场景做了一些功能增强和默认样式修改。
 
 > 可以理解为是一个在 `VitePress` 的基础上向 [`dumi`](https://d.umijs.org/) 靠拢的工具。
