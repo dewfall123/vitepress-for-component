@@ -57,6 +57,9 @@ export function createVitePressPlugin(
 
     config() {
       return {
+        server: {
+          fs: { strict: false }
+        },
         resolve: {
           alias
         },

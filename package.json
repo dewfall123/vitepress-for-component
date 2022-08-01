@@ -1,6 +1,6 @@
 {
   "name": "vitepress-for-component",
-  "version": "0.16.0",
+  "version": "0.17.1",
   "description": "dumi like documentation tool",
   "main": "dist/node/index.js",
   "typings": "types/index.d.ts",
@@ -71,9 +71,7 @@
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
     "@docsearch/js": "^1.0.0-alpha.28",
-    "@vitejs/plugin-vue": "^1.1.4",
-    "@vue/compiler-sfc": "^3.0.5",
-    "@vue/server-renderer": "^3.0.5",
+    "@vitejs/plugin-vue": "^2.1.0",
     "chalk": "^4.1.0",
     "chokidar": "^3.5.1",
     "compression": "^1.7.4",
@@ -99,8 +97,8 @@
     "sirv": "^1.0.11",
     "slash": "^3.0.0",
     "stylus": "^0.54.8",
-    "vite": "^2.4.1",
-    "vue": "^3.0.5"
+    "vite": "^2.9.1",
+    "vue": "^3.2.20"
   },
   "devDependencies": {
     "@types/compression": "^1.7.0",

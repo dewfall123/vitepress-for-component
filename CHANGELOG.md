@@ -1,3 +1,209 @@
+## [0.17.1](https://github.com/dewfall123/vitepress-for-component/compare/v0.17.0...v0.17.1) (2022-04-11)
+
+# [0.17.0](https://github.com/dewfall123/vitepress-for-component/compare/v0.14.8...v0.17.0) (2022-04-11)
+
+### Bug Fixes
+
+- [#52](https://github.com/dewfall123/vitepress-for-component/issues/52) ([0839035](https://github.com/dewfall123/vitepress-for-component/commit/0839035c064f2506c2f0421ef986af8c30129b30))
+- **hmr:** avoid relying on revertd vite hmr behavior ([4114674](https://github.com/dewfall123/vitepress-for-component/commit/4114674c69f917ff2e611ec30eb72d224f175f62))
+- [#38](https://github.com/dewfall123/vitepress-for-component/issues/38) props importMap type warning ([47e7776](https://github.com/dewfall123/vitepress-for-component/commit/47e7776bf9e41f084afe4db06e188e99f2ef2a5a))
+- allow vite server access to theme and local files ([9b9fdc7](https://github.com/dewfall123/vitepress-for-component/commit/9b9fdc710a6cedb3e278805eb07bed669ca2075e))
+- automatically escape vite user defined variables in markdown ([3cec536](https://github.com/dewfall123/vitepress-for-component/commit/3cec536c1f3d5d027ee16cd0629f84461e565096))
+- avoid error when theme does not have .nav-bar class ([a9d5800](https://github.com/dewfall123/vitepress-for-component/commit/a9d580069fff90298b197808379cd0c4b756d463))
+- avoid resetting head tags on hmr/page switch ([f52f20e](https://github.com/dewfall123/vitepress-for-component/commit/f52f20e02f6908411ad9cddb341583456a3c2a8c))
+- avoid scroll behavior reliance on .nav-bar class ([9b35dfc](https://github.com/dewfall123/vitepress-for-component/commit/9b35dfcde4c00e6f10b2631103f95e97cbf4af9e))
+- avoid using spread for client code ([03abee7](https://github.com/dewfall123/vitepress-for-component/commit/03abee7f7c0fac95806f31ff5761b9e912a1f232))
+- badge for language-javascript ([#245](https://github.com/dewfall123/vitepress-for-component/issues/245)) ([f8b4aa5](https://github.com/dewfall123/vitepress-for-component/commit/f8b4aa5baa7f2fba843427f2f4f3985222c3c78d))
+- build fails without css chunks ([#209](https://github.com/dewfall123/vitepress-for-component/issues/209)) ([#239](https://github.com/dewfall123/vitepress-for-component/issues/239)) ([fa469fd](https://github.com/dewfall123/vitepress-for-component/commit/fa469fd2750ac74417238de7547cd8e7cd939cb0))
+- chinese filenames can't build ([#217](https://github.com/dewfall123/vitepress-for-component/issues/217)) ([#262](https://github.com/dewfall123/vitepress-for-component/issues/262)) ([b940397](https://github.com/dewfall123/vitepress-for-component/commit/b940397cd0e5135e7433bac6fc99da8553915053))
+- detect public folder for dead link ([#290](https://github.com/dewfall123/vitepress-for-component/issues/290)) ([3aa185f](https://github.com/dewfall123/vitepress-for-component/commit/3aa185fa9f9dd49e32cfd60f96a30da8616e419e))
+- emit prevented hashchange event ([4fb387d](https://github.com/dewfall123/vitepress-for-component/commit/4fb387d94ea9d7ae28a871929cbbc57e931b8d7a))
+- encode urls that conflict w/ vite built-in replacements ([3940625](https://github.com/dewfall123/vitepress-for-component/commit/3940625121455b7ad6e5ea8ebb3e1cf2faf9c7fc))
+- ensure stable pages entry order across builds ([929bcf5](https://github.com/dewfall123/vitepress-for-component/commit/929bcf50ee634d9fe73adbe2aae5f7038b048e5a))
+- fix code line hightlighting ([4c042b6](https://github.com/dewfall123/vitepress-for-component/commit/4c042b61e7beb70d0a0b77cc9a00d725c7863089)), closes [#408](https://github.com/dewfall123/vitepress-for-component/issues/408)
+- fix frontmatter sidebarDepth for headers ([424a4ca](https://github.com/dewfall123/vitepress-for-component/commit/424a4ca379f028e3542e2e9598cb5beacaf50067))
+- fix vue code block type indication ([76fa173](https://github.com/dewfall123/vitepress-for-component/commit/76fa1733fff4e3aa4356df08272e4811db996dab))
+- force optimize vue to avoid duplication when linked ([eefba39](https://github.com/dewfall123/vitepress-for-component/commit/eefba398b0e5a4b5afb47ce6e06b0c39a6be55d2))
+- functional templates with vue v3.1 ([#312](https://github.com/dewfall123/vitepress-for-component/issues/312)) ([8988aad](https://github.com/dewfall123/vitepress-for-component/commit/8988aadbcbd781a81df0a8d1a4a6964d324c58a3))
+- handle case when there is no themeConfig ([034c737](https://github.com/dewfall123/vitepress-for-component/commit/034c7375ad2de4b42c0ac861c2dd18183511771d))
+- improve fs allow ([2e9264f](https://github.com/dewfall123/vitepress-for-component/commit/2e9264f03259354e7739e2a56a7c1306fb167843))
+- include emoji text in nav link to match toc ([#284](https://github.com/dewfall123/vitepress-for-component/issues/284)) ([80ff360](https://github.com/dewfall123/vitepress-for-component/commit/80ff36066ef6a4ed4a18548993bc5d8d9a6dab58))
+- invalid active props when `base` option is added ([#342](https://github.com/dewfall123/vitepress-for-component/issues/342)) ([383d8ff](https://github.com/dewfall123/vitepress-for-component/commit/383d8ffbba5283774e0f1e39302a29efc0db7e79))
+- make config hmr work in window ([#364](https://github.com/dewfall123/vitepress-for-component/issues/364)) ([58663bb](https://github.com/dewfall123/vitepress-for-component/commit/58663bbd02aa3da0efd939bd27de2ee5c0ab14d8))
+- print urls again ([df69b76](https://github.com/dewfall123/vitepress-for-component/commit/df69b76427ab2c770010cd79e1076a1c414fb3bc))
+- support vite plugins provided via `config.vite` ([#394](https://github.com/dewfall123/vitepress-for-component/issues/394)) ([4b76617](https://github.com/dewfall123/vitepress-for-component/commit/4b7661762143b033e82fad526e256f7bc54df9af))
+- tolerant invalid hash ([#399](https://github.com/dewfall123/vitepress-for-component/issues/399)) ([efc5e1b](https://github.com/dewfall123/vitepress-for-component/commit/efc5e1b2566eedc47a9420accae3dfba1a594ba4))
+- update vue ([1a3ca9c](https://github.com/dewfall123/vitepress-for-component/commit/1a3ca9cc897b42066f216e4349a7c12fe0e0c5b2))
+- **code:** code block highlight bug in ul ([#352](https://github.com/dewfall123/vitepress-for-component/issues/352)) ([9245226](https://github.com/dewfall123/vitepress-for-component/commit/9245226b16f6113c722e5e8c7b876bea1cf1c255))
+- **css:** remove 720px breakpoint in home layout ([#347](https://github.com/dewfall123/vitepress-for-component/issues/347)) ([0c1a1f2](https://github.com/dewfall123/vitepress-for-component/commit/0c1a1f2ef43cd7d995f3e9d43f19be8b3f961cb1))
+- **css:** reuse css vars ([#256](https://github.com/dewfall123/vitepress-for-component/issues/256)) ([8d91524](https://github.com/dewfall123/vitepress-for-component/commit/8d915245c6740874abad0e11f374703aa07afec3))
+- **default-theme:** use description as tagline by default ([b94c827](https://github.com/dewfall123/vitepress-for-component/commit/b94c82710a7b230a918790ac0b6aa1d2f5afc1c3))
+- **docs:** global-component link ([#271](https://github.com/dewfall123/vitepress-for-component/issues/271)) ([a43933c](https://github.com/dewfall123/vitepress-for-component/commit/a43933c8ab4474c905005a337da3620621878a1c))
+- **edit-link:** let frontmatter overwrite global editLink ([#340](https://github.com/dewfall123/vitepress-for-component/issues/340)) ([cfbba80](https://github.com/dewfall123/vitepress-for-component/commit/cfbba80a0a6e33bcb2ca3d4450fb9624dcd6d140))
+- **i18n:** fix locales reading, add site.langs ([#353](https://github.com/dewfall123/vitepress-for-component/issues/353)) ([bc78adb](https://github.com/dewfall123/vitepress-for-component/commit/bc78adb468bce8ce2d4e2543423adacc9351cf51)), closes [/vuepress.vuejs.org/guide/i18n.html#site-level-i18](https://github.com//vuepress.vuejs.org/guide/i18n.html/issues/site-level-i18) [/v2.vuepress.vuejs.org/guide/i18n.html#site-i18](https://github.com//v2.vuepress.vuejs.org/guide/i18n.html/issues/site-i18)
+- **locales:** use correct lang ([#276](https://github.com/dewfall123/vitepress-for-component/issues/276)) ([f505db9](https://github.com/dewfall123/vitepress-for-component/commit/f505db945af3ca4e4ce0a06b5aa2a4d32d47bac7))
+- **locales:** use correct lang ([#283](https://github.com/dewfall123/vitepress-for-component/issues/283)) ([de89c1e](https://github.com/dewfall123/vitepress-for-component/commit/de89c1e5ebf09557532eec93269b7143f454f9d1))
+- **theme:** fix algolia search filter ([5fd7db2](https://github.com/dewfall123/vitepress-for-component/commit/5fd7db2b7fcd947d77c97b1e9bdaf83845c1321d))
+- **theme-default/algolia:** avoid creating multiple algolia searches ([#292](https://github.com/dewfall123/vitepress-for-component/issues/292)) ([389e863](https://github.com/dewfall123/vitepress-for-component/commit/389e863b4d5e69c856d1e647d4d4c1807bd94c5d))
+- override target and rel links attribute in config ([#332](https://github.com/dewfall123/vitepress-for-component/issues/332)) ([9d98dbb](https://github.com/dewfall123/vitepress-for-component/commit/9d98dbbe60d477a78d6dc0e80d16fdddedcd4ed5))
+- remove unnecessary 'vite/dynamic-import-polyfill' ([6b4a4aa](https://github.com/dewfall123/vitepress-for-component/commit/6b4a4aa7a6cd2f2e044a5cc54c5bf72a50f9df67))
+- skip external URLs in `withBase` ([#328](https://github.com/dewfall123/vitepress-for-component/issues/328)) ([53bb961](https://github.com/dewfall123/vitepress-for-component/commit/53bb961a925cbafe53730450c5b069e255b54e03))
+- use useData() instead of $site ([#365](https://github.com/dewfall123/vitepress-for-component/issues/365)) ([1e64773](https://github.com/dewfall123/vitepress-for-component/commit/1e6477393308a5d8bd03a614cecf9573466f6e6c))
+- **nav:** display nav if locales are present ([#321](https://github.com/dewfall123/vitepress-for-component/issues/321)) ([e76e6ec](https://github.com/dewfall123/vitepress-for-component/commit/e76e6ecd54f8a202a9d5051afd72553080f898c9))
+- **search:** correctly detect multilang ([c046905](https://github.com/dewfall123/vitepress-for-component/commit/c046905b032a765352ff6bb9944f72db76c5cf45)), closes [#316](https://github.com/dewfall123/vitepress-for-component/issues/316)
+- watch config file when using srcDir ([348f19a](https://github.com/dewfall123/vitepress-for-component/commit/348f19a537930b1d4c7272e05e91edcb72219f34))
+- **navbar:** use css var for background-color ([#264](https://github.com/dewfall123/vitepress-for-component/issues/264)) ([f385bc4](https://github.com/dewfall123/vitepress-for-component/commit/f385bc467306c075871485e6a9bfe773fc9054a1))
+- **search:** silence warning for prop ([0716ffa](https://github.com/dewfall123/vitepress-for-component/commit/0716ffade743c65c240d616329c1a6bc3e83c4bd))
+- **theme:** set search box min-width for >=751px ([#286](https://github.com/dewfall123/vitepress-for-component/issues/286)) ([9589a5d](https://github.com/dewfall123/vitepress-for-component/commit/9589a5d0e6458da07054a84d2df6ef99a5ad1dbd))
+
+### Features
+
+- more efficient `useData()` method that exposes all data ([0661063](https://github.com/dewfall123/vitepress-for-component/commit/0661063d29c0e1dce108cac608be0ff754d2d4c1))
+- scrollbar style ([34b15ab](https://github.com/dewfall123/vitepress-for-component/commit/34b15abbd424fa6d109d874e6e65280b47e76a4a))
+- 改用 sfc.vuejs.org ([280adc1](https://github.com/dewfall123/vitepress-for-component/commit/280adc144fe25e5f54932e8a6ea20b0a5cf9d7a5))
+- change scrollbar style ([294c003](https://github.com/dewfall123/vitepress-for-component/commit/294c0037fa74bdcfaec5eeb1ea94f6523a44dd9a))
+- exclude option ([#281](https://github.com/dewfall123/vitepress-for-component/issues/281)) ([71a5e1c](https://github.com/dewfall123/vitepress-for-component/commit/71a5e1c2a2b552ced8a994dc60201c4be89b4ac9))
+- import code snippet with region ([#237](https://github.com/dewfall123/vitepress-for-component/issues/237)) ([#238](https://github.com/dewfall123/vitepress-for-component/issues/238)) ([d1a62e1](https://github.com/dewfall123/vitepress-for-component/commit/d1a62e1c6630b289777b78eea359acd49174148d))
+- info custom container ([4925fb5](https://github.com/dewfall123/vitepress-for-component/commit/4925fb5c29c59b7e17d050ab4346f71afc0463cd))
+- support ts/esm config file + defineConfig() helper ([d3b1521](https://github.com/dewfall123/vitepress-for-component/commit/d3b1521ebef831e0d0307b3b12e4fc1f6ce4721a)), closes [#339](https://github.com/dewfall123/vitepress-for-component/issues/339) [#376](https://github.com/dewfall123/vitepress-for-component/issues/376)
+- upgrade docsearch version ([#441](https://github.com/dewfall123/vitepress-for-component/issues/441)) ([1b245e2](https://github.com/dewfall123/vitepress-for-component/commit/1b245e22d8a00ea7c01c052ac1ea3d8d94aaeefb))
+- upgrade vite ([39a7bf7](https://github.com/dewfall123/vitepress-for-component/commit/39a7bf76e16fdf6ca2cf82e7e7f9f86a561f3032))
+- **theme-default:** home slot for customizing the entire homepage easily ([#314](https://github.com/dewfall123/vitepress-for-component/issues/314)) ([07bf145](https://github.com/dewfall123/vitepress-for-component/commit/07bf1451909ad615565e01d719e8a350ea07e69e))
+- map mode + remove deprecated options ([b94b163](https://github.com/dewfall123/vitepress-for-component/commit/b94b163a3a931fe03e69547391d6ac22eb41b789))
+- Render titles for social sharing and improve home page sharing ([#263](https://github.com/dewfall123/vitepress-for-component/issues/263)) ([e651f97](https://github.com/dewfall123/vitepress-for-component/commit/e651f977d6b9f50fef25f6d736f8d4880c997305))
+- support `<script client>` in mpa mode ([e0b6997](https://github.com/dewfall123/vitepress-for-component/commit/e0b69973f840bfa281fae209da1f1c674c1301a8))
+- support config.extends ([f749b27](https://github.com/dewfall123/vitepress-for-component/commit/f749b272d4603a3b8eaf251b0feebe2d33da3983))
+- support function config ([e74c5f0](https://github.com/dewfall123/vitepress-for-component/commit/e74c5f06d1d5890fad6dd728df9bf85dcfda87d1))
+- support partial include directive ([7b3a9e5](https://github.com/dewfall123/vitepress-for-component/commit/7b3a9e59b44e9e354692eed6c1ca453be9cb7a86))
+- support passing vite config in vitepress config file via `vite` option ([3737b10](https://github.com/dewfall123/vitepress-for-component/commit/3737b1055dc1145dc70b10994564c6d83affd15d))
+- support srcDir config option ([aaf4910](https://github.com/dewfall123/vitepress-for-component/commit/aaf4910d938f4449fdab576ffd0ae853b5aace24))
+- upgrade markdown-it-anchor ([#350](https://github.com/dewfall123/vitepress-for-component/issues/350)) ([26b5aa9](https://github.com/dewfall123/vitepress-for-component/commit/26b5aa931f1935bd67dcd1d511461ff5fa8a00ec))
+- upgrade vue, simplify deps ([9030486](https://github.com/dewfall123/vitepress-for-component/commit/9030486409f10a59115d874b9365f71348ed76c2))
+- use `markdown-it-attrs` for markdown-it plugins ([#393](https://github.com/dewfall123/vitepress-for-component/issues/393)) ([610e9b7](https://github.com/dewfall123/vitepress-for-component/commit/610e9b7111462d3aace878017fa4d359cd2ae7ea))
+
+### Performance Improvements
+
+- avoid double resolve user config on startup ([5733fc6](https://github.com/dewfall123/vitepress-for-component/commit/5733fc625ea33ab1b07ddfd4f8412e15473d8cca))
+- minor optimizations ([96bcdda](https://github.com/dewfall123/vitepress-for-component/commit/96bcddabedac9af4e1c817ed651bb4ce692c75e7))
+- only update necessary head tags in prod ([e6bb5a4](https://github.com/dewfall123/vitepress-for-component/commit/e6bb5a4806bb16f1ace26f27f43b5ed83885bf1a))
+
+### BREAKING CHANGES
+
+- the `markdown.anchor` option is updated. Refer to
+  valeriangalliat/markdown-it-anchor#permalinks for
+  instructions to upgrade your existing `markdown.anchor.permalink`
+  option. **This doesn't affect you if you weren't changing the header
+  permalinks behavior**.
+- Some config options have changed.
+
+  - `vueOptions` renamed to `vue`
+  - `alias` option has been removed. Use `vite.resovle.alias` instead.
+
+-     - Individual `useX()` data methods are removed.
+
+        ```js
+        // before
+        import { useSiteDataByRoute, usePageData } from 'vitepress'
+        const site = useSiteDataByRoute()
+        const page = usePageData()
+        const theme = computed(() => site.value.themeConfig)
+
+        // after
+        import { useData } from 'vitepress'
+        const { site, page, theme } = useData()
+        ```
+
+      All destructured values are computed refs injected from app root
+      so they are created only once globally.
+
+  - Global mixin properties (e.g. `$site`) are removed. Always use
+    `useData()` to retrieve VitePress data.
+
+## [0.16.7](https://github.com/dewfall123/vitepress-for-component/compare/v0.20.1...v0.16.7) (2022-01-24)
+
+### Bug Fixes
+
+- [#38](https://github.com/dewfall123/vitepress-for-component/issues/38) props importMap type warning ([47e7776](https://github.com/dewfall123/vitepress-for-component/commit/47e7776bf9e41f084afe4db06e188e99f2ef2a5a))
+- [#52](https://github.com/dewfall123/vitepress-for-component/issues/52) ([0839035](https://github.com/dewfall123/vitepress-for-component/commit/0839035c064f2506c2f0421ef986af8c30129b30))
+- update vue ([1a3ca9c](https://github.com/dewfall123/vitepress-for-component/commit/1a3ca9cc897b42066f216e4349a7c12fe0e0c5b2))
+
+### Features
+
+- scrollbar style ([34b15ab](https://github.com/dewfall123/vitepress-for-component/commit/34b15abbd424fa6d109d874e6e65280b47e76a4a))
+- 改用 sfc.vuejs.org ([280adc1](https://github.com/dewfall123/vitepress-for-component/commit/280adc144fe25e5f54932e8a6ea20b0a5cf9d7a5))
+- change scrollbar style ([294c003](https://github.com/dewfall123/vitepress-for-component/commit/294c0037fa74bdcfaec5eeb1ea94f6523a44dd9a))
+- upgrade docsearch version ([#441](https://github.com/dewfall123/vitepress-for-component/issues/441)) ([1b245e2](https://github.com/dewfall123/vitepress-for-component/commit/1b245e22d8a00ea7c01c052ac1ea3d8d94aaeefb))
+
+## [0.14.8](https://github.com/dewfall123/vitepress-for-component/compare/v0.15.6...v0.14.8) (2021-07-12)
+
+## [0.14.6](https://github.com/dewfall123/vitepress-for-component/compare/v0.15.5...v0.14.6) (2021-06-30)
+
+### Bug Fixes
+
+- [#11](https://github.com/dewfall123/vitepress-for-component/issues/11) ([3238964](https://github.com/dewfall123/vitepress-for-component/commit/3238964eacb93fe99a39e9ea2e6d9fff28c57062))
+- [#15](https://github.com/dewfall123/vitepress-for-component/issues/15) ([5c356a4](https://github.com/dewfall123/vitepress-for-component/commit/5c356a44f7417555f8cbbcb934b7ce4b6e7dc754))
+- 修复 build 重复渲染 demo bug ([88fa603](https://github.com/dewfall123/vitepress-for-component/commit/88fa603d6beb07d079c7fabb64a1c86533d5ac7f))
+- 修复 chokidar 监听导致复制文件为空 bug ([9ca15de](https://github.com/dewfall123/vitepress-for-component/commit/9ca15de14d4f444618f9d0566788921b7e4c9c30))
+- 修复 suffix 错误识别 bug ([111ed01](https://github.com/dewfall123/vitepress-for-component/commit/111ed01b9d9b275191479be18b80b58a53317a97))
+- 增加 srcAlias ([54c6a2f](https://github.com/dewfall123/vitepress-for-component/commit/54c6a2f68de1536b0750fb85d5a5f7c49a5ab1ac))
+- base error ([8e5c625](https://github.com/dewfall123/vitepress-for-component/commit/8e5c62519058f2e30fb06dea4fe06a396c16c25b))
+- copy suffix bug ([530d9f3](https://github.com/dewfall123/vitepress-for-component/commit/530d9f34b22a9c4d7508c21a67b95e839295299d))
+- no lang suffix file copy error ([e7a4979](https://github.com/dewfall123/vitepress-for-component/commit/e7a4979efeb4e0bbe46987ca795ef24196432730))
+- pre-bundling vue. 保证第三方库使用一份 vue runtime ([9a54467](https://github.com/dewfall123/vitepress-for-component/commit/9a54467aeba4e5098a26cb4ab85d88d8dbe28c62))
+- rollback @vitejs/plugin-vue ([94f9e93](https://github.com/dewfall123/vitepress-for-component/commit/94f9e93c2d8a6e2e2b237b38d8ce9763141b9e96))
+- rollback 2.0.0-beta.32 ([2390f51](https://github.com/dewfall123/vitepress-for-component/commit/2390f511fd2083574ba00398ff2c730a56e5bb92))
+- teleport 会导致 ssr mismatch ([7e93a34](https://github.com/dewfall123/vitepress-for-component/commit/7e93a34fd0ebab3d4221af59d538dd6eff1f4250))
+
+### Features
+
+- 支持 less scss stylus ([cac9c73](https://github.com/dewfall123/vitepress-for-component/commit/cac9c730cc1d798b1a2fe9b879b843f387c7d98d))
+- logo 居中 ([17f8a72](https://github.com/dewfall123/vitepress-for-component/commit/17f8a722d12833aef20e480bdf2b93f3701968a2))
+- outDir 基本路径改变 ([c8a325e](https://github.com/dewfall123/vitepress-for-component/commit/c8a325e3c3d924c8517e7f2968d6abdd73f773a7))
+- **config:** 使用用户自定义的 vite plugins ([ee51650](https://github.com/dewfall123/vitepress-for-component/commit/ee51650676b765747071539d16c211f23e7d2bd9))
+
+## [0.9.4](https://github.com/dewfall123/vitepress-for-component/compare/v0.9.3...v0.9.4) (2020-12-31)
+
+## [0.9.3](https://github.com/dewfall123/vitepress-for-component/compare/v0.10.1...v0.9.3) (2020-12-31)
+
+### Bug Fixes
+
+- add serve command ([1a1277d](https://github.com/dewfall123/vitepress-for-component/commit/1a1277d20575528b393e72ff8d4c0fced7241056))
+- allow locales empty ([a735dfa](https://github.com/dewfall123/vitepress-for-component/commit/a735dfa2a7c0b26365f23db5d12e93196df4812b))
+- failed at first time ([3b13e41](https://github.com/dewfall123/vitepress-for-component/commit/3b13e4189511bfd1bd9ab8b0d0d895e4c625b93b))
+- import demo in root error ([1a84180](https://github.com/dewfall123/vitepress-for-component/commit/1a84180ccb0ac28d26cff791ed836d3ba9f3cb99))
+- set repo ([5b91529](https://github.com/dewfall123/vitepress-for-component/commit/5b91529bad9c610e4d607379d68b7ac779ede2c0))
+
+### Features
+
+- 增加文档说明 ([5dd1e45](https://github.com/dewfall123/vitepress-for-component/commit/5dd1e450b23c5e8feb6031d2a8d1d9af208a0235))
+- add copy watch ([c6a615d](https://github.com/dewfall123/vitepress-for-component/commit/c6a615d5e1f51168c369a145dc36e0c2fffe219e))
+- change name ([feddbb3](https://github.com/dewfall123/vitepress-for-component/commit/feddbb36da1fa8c690e9442bafc9550cbff6d99f))
+- remane to vitepress-dg ([cba6080](https://github.com/dewfall123/vitepress-for-component/commit/cba6080600142120562d3d045eb4a84fdbfc258e))
+- slug style change ([ffc24d3](https://github.com/dewfall123/vitepress-for-component/commit/ffc24d3d4b8007dab4b4f95c8232ebe8d8903279))
+- support locale ([77e2bfb](https://github.com/dewfall123/vitepress-for-component/commit/77e2bfbcbc83445535e3d2f11b818245665d73c2))
+- support locale ([1c79c74](https://github.com/dewfall123/vitepress-for-component/commit/1c79c746ff1ee5aeef05eaa9b94ef6ead0fe8959))
+
+## [0.3.1](https://github.com/dewfall123/vitepress-for-component/compare/v0.7.0...v0.3.1) (2020-10-29)
+
+### Bug Fixes
+
+- 样式修改 ([0094bf7](https://github.com/dewfall123/vitepress-for-component/commit/0094bf79c709292faa9b24745e47f608fc65504d))
+- fix switch language error [#103](https://github.com/dewfall123/vitepress-for-component/issues/103) ([e937fc0](https://github.com/dewfall123/vitepress-for-component/commit/e937fc0f1a28a3fc6167818cb76a3198d73a8593))
+- support relative path at demo ([2383519](https://github.com/dewfall123/vitepress-for-component/commit/23835196ba1af28745ab7b4e2f5e89c865120667))
+- switch language bug. [#106](https://github.com/dewfall123/vitepress-for-component/issues/106) ([944bf80](https://github.com/dewfall123/vitepress-for-component/commit/944bf801b78cc78fb7d771045ee51e2120e36353))
+- switch language error ([c55d125](https://github.com/dewfall123/vitepress-for-component/commit/c55d12574a1d13761d26565a5b38220d2c4164ee))
+
+### Features
+
+- 独立发包 ([7b80893](https://github.com/dewfall123/vitepress-for-component/commit/7b808939574f1ed44163c904c4b80950a346a208))
+- add outDir config ([5255a9a](https://github.com/dewfall123/vitepress-for-component/commit/5255a9afe6edad7c683f344dd5c6fd3ba4abbfde))
+- change assets path ([311aca1](https://github.com/dewfall123/vitepress-for-component/commit/311aca12ef66f6fb17e185d05d9bf03c8c737411))
+- remane ([52b745a](https://github.com/dewfall123/vitepress-for-component/commit/52b745a150b9d3c4339bac8c319fb82d73e79dfe))
+- support alias ([5e7d30b](https://github.com/dewfall123/vitepress-for-component/commit/5e7d30bc8c54c8fdda9f928f75c69eafd28e7b8e))
+- support copy and title ([b692303](https://github.com/dewfall123/vitepress-for-component/commit/b692303d0d82cb0f9b7f798c2344ae7c569d8d32))
+- support demo file ([5695129](https://github.com/dewfall123/vitepress-for-component/commit/5695129dfa6d8060206e60b33a8a16f18cc37698))
+- support online edit ([7c267e0](https://github.com/dewfall123/vitepress-for-component/commit/7c267e01dfe69a062b4508cd5bc7c795e88d0b31))
+
 ## [0.14.8](https://github.com/dewfall123/vitepress-for-component/compare/v0.14.6...v0.14.8) (2021-07-12)
 
 ## [0.14.6](https://github.com/dewfall123/vitepress-for-component/compare/v0.12.2...v0.14.6) (2021-06-30)
